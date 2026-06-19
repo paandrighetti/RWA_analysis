@@ -12,4 +12,4 @@ Under the following terms:
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 
 Suggested citation:
-> Pierre-Antoine Andrighetti. (2026). RWA HQLA Framework v1.0: A regulatory and empirical assessment of tokenised treasury HQLA eligibility. Available at <repository URL>.
+> Pierre-Antoine Andrighetti. (2026). RWA HQLA Framework v1.1: A regulatory and empirical assessment of tokenised treasury HQLA eligibility. Available at https://github.com/paandrighetti/RWA_analysis.

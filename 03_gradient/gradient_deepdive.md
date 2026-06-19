@@ -10,12 +10,12 @@ The S3 verdict closed at L0: no tokenised RWA product currently qualifies as HQL
 
 | Level | Description | Required structural change | Resulting potential |
 |---|---|---|---|
-| **L0** | Status quo |, | Not HQLA, not ECB-eligible |
+| **L0** | Status quo | Today | Not HQLA, not ECB-eligible |
 | **L1** | UCITS-compatible MMF wrapper | Restructure issuance as authorised UCITS MMF under MMFR (2017/1131) | Level 1 or 2A HQLA potential via DR 2015/61 Art. 15 look-through |
 | **L2** | DLT-issued via authorised CSD | Token issuance via CSD using DLT-based services, T2S-reachable | ECB collateral eligibility (operational since 30 March 2026) |
 | **L3** | Native sovereign DLT issuance | Sovereign treasury issues debt natively on DLT-SS | Direct Level 1 HQLA + full ECB eligibility |
 
-The critical update for v1.0: **L2 has moved from prospective to operational on 30 March 2026** following the ECB Governing Council decision of 27 January 2026.
+The critical update for this version: **L2 has moved from prospective to operational on 30 March 2026** following the ECB Governing Council decision of 27 January 2026.
 
 ## L1: UCITS MMF restructuration
 
@@ -193,7 +193,7 @@ The four-level gradient is best visualised as a staircase showing structural dis
   /  • HQLA Level 1/2A via look-through (Art. 15)
  /   • EU passport access
 /    • Timeline: 12-30 months
-L0: Status quo (current state May 2026)
+L0: Status quo (current state June 2026)
  • Not HQLA
  • Not ECB collateral
  • All three products (BUIDL, OUSG, bIB01)

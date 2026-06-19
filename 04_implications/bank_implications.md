@@ -184,7 +184,7 @@ Section 7 (Implications) of the article should:
 ## Caveats and limitations
 
 1. This framework is one analyst's proposal. Other analysts may propose different cap percentages, haircut compositions, or product preferences with equally defensible rationales.
-2. The framework reflects May 2026 product structures. Regulatory evolution toward L1/L2 will materially change the framework parameters (lower haircuts, possibly higher caps).
+2. The framework reflects June 2026 product structures. Regulatory evolution toward L1/L2 will materially change the framework parameters (lower haircuts, possibly higher caps).
 3. The framework focuses on European prudential context (CRR, DR 2015/61, ECB collateral framework). US bank treasurers operating under FRB/OCC/FDIC technology-neutral guidance (March 2026) have a different starting point and may calibrate differently.
 4. Fintechs and neo-banks not subject to LCR have more operational flexibility but should still consider the haircut and limits framework for prudent treasury management.
 

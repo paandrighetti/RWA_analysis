@@ -1,4 +1,4 @@
-# RWA HQLA Eligibility Matrix: v1.0
+# RWA HQLA Eligibility Matrix: v1.1
 
 **Framework**: Basel III LCR HQLA eligibility scoring for tokenised Real-World Assets
 **Version**: 1.0, 2026-05-11
@@ -42,8 +42,8 @@ Reference: DR 2015/61 art. 12(1)(b) ; CRR Annex VI Credit Quality Steps.
 
 | Product | Score | Justification | Source |
 |---|---|---|---|
-| BUIDL | N/A | Equity-like fund interest, not corporate debt. |, |
-| OUSG | N/A | Equity-like fund interest. |, |
+| BUIDL | N/A | Equity-like fund interest, not corporate debt. | n/a |
+| OUSG | N/A | Equity-like fund interest. | n/a |
 | bIB01 | Fail | Backed Assets (JE) Limited is unrated. Treatment under CRR art. 122 as corporate debt unrated → 100% risk weight under Standardised Approach. Disqualifies Level 2A (requires 20% RW). | bIB01 Final Terms ; CRR art. 122 |
 
 ### A.4: Level 2B equity major index
@@ -131,8 +131,8 @@ Reference: BCBS 238 §24(c)-(f).
 ### C.3: Committed market makers
 | Product | Score | Justification | Source |
 |---|---|---|---|
-| BUIDL | Fail | No committed market makers ; collateral on Binance/Crypto.com/Deribit is not market making. |, |
-| OUSG | Fail | No committed market makers. |, |
+| BUIDL | Fail | No committed market makers ; collateral on Binance/Crypto.com/Deribit is not market making. | n/a |
+| OUSG | Fail | No committed market makers. | n/a |
 | bIB01 | Fail | "Market Maker: Not applicable", verbatim in Final Terms. | bIB01 Final Terms §1.1 |
 
 ### C.4: Low bid-ask spread historical
@@ -244,7 +244,7 @@ Frictions not directly addressed by current DR 2015/61. Qualitative risk overlay
 
 ## Roadmap to HQLA: gradient of eligibility
 
-### L0: Status quo (current state, May 2026)
+### L0: Status quo (current state, June 2026)
 All three products fail Block A categorically. Frictions in Blocks B-D compound. Verdict: not eligible for any HQLA level.
 
 ### L1: UCITS-compatible wrapper
@@ -275,7 +275,7 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 ## Limitations and caveats
 
 1. This framework is based on **public documentation only**. Private Placement Memoranda (PPMs) for BUIDL and Ondo I LP are not public ; analysis relies on Form D filings, regulatory compliance pages, and issuer press releases.
-2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, four days before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at snapshot date. Additionally, the First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. This change is consequential for the gradient analysis: Kraken lacks the UCITS management infrastructure that would be required for an L1 pivot.
+2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at snapshot date. Additionally, the First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. This change is consequential for the gradient analysis: Kraken lacks the UCITS management infrastructure that would be required for an L1 pivot.
 3. Scoring is qualitative judgement based on regulatory text interpretation. Final supervisory verdict (PRA, ACPR, BaFin, CSSF, etc.) may differ in specific cases. Framework is intended as analytical guide, not regulatory advice.
 4. Product structures evolve. BlackRock filed new tokenised fund offerings on 9 May 2026 ; any post-publication structural change requires framework re-application.
 5. Stress event track record is insufficient (longest = BUIDL since March 2024). No supervisory-relevant 30-day stress observed. C.5 scoring is N/A.
@@ -306,4 +306,4 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 
 ---
 
-*Framework v1.0, 2026-05-11. Methodology open for iteration. Comments and supervisory feedback welcome.*
+*Framework v1.1, 2026-06-17. Methodology open for iteration. Comments and supervisory feedback welcome.*

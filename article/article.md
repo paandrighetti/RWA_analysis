@@ -26,7 +26,7 @@ These are not minor procedural updates. They are structural moves that reshape h
 
 The analytical gap is wide. The primary regulatory texts predate the existence of these products. The product disclosures focus on operational mechanics, not prudential classification. Supervisory positions exist for fragments of the question (capital treatment, collateral eligibility) but not for the full HQLA assessment. This article fills that gap with a methodology that any institution can apply to existing or future tokenised products.
 
-The contribution is intentionally modest: a v1.0 framework, open to peer challenge, applied to the three largest products as of May 2026. The framework is in the public domain. The matrix and the empirical analysis are reproducible. The verdict, however, is unambiguous.
+The contribution is intentionally modest: a first-version framework, open to peer challenge, applied to the three largest products as of June 2026. The framework is in the public domain. The matrix and the empirical analysis are reproducible. The verdict, however, is unambiguous.
 
 ---
 
@@ -40,7 +40,7 @@ Basel III HQLA eligibility is a cascade. An asset must satisfy four cumulative c
 
 **Block C: Market criteria.** Under BCBS 238 §24, an HQLA asset must trade in an active and sizable market, be listed on a developed and recognised exchange, be supported by committed market makers, exhibit low bid-ask spreads in normal conditions, and demonstrate proven liquidity in stress. The empirical layer of this article validates whether tokenised treasuries satisfy these conditions in practice.
 
-**Block D: Wrapper-specific friction.** The Basel and EU texts predate tokenised wrappers. This block, contributed by the framework as v1.0, identifies frictions specific to current wrapper designs: settlement finality under SFD 98/26/EC, custody chain layers, oracle dependency, smart contract upgradeability, pause and freeze functions, unilateral issuer call options, substitution clauses without investor consent, extraordinary event clauses, creditor cascade structures, and explicit ECB collateral eligibility status.
+**Block D: Wrapper-specific friction.** The Basel and EU texts predate tokenised wrappers. This block, the framework's own contribution, identifies frictions specific to current wrapper designs: settlement finality under SFD 98/26/EC, custody chain layers, oracle dependency, smart contract upgradeability, pause and freeze functions, unilateral issuer call options, substitution clauses without investor consent, extraordinary event clauses, creditor cascade structures, and explicit ECB collateral eligibility status.
 
 Each criterion is rated per product on a four-level scale: Pass, Conditional, Fail, or N/A. Block A is cascading: any Fail closes the level for that product. Blocks B, C, and D are independent. The overall HQLA verdict requires Pass in Blocks A and C; Block B Fails are typically remediable through operational changes; Block D Fails are qualitative red flags for supervisory review.
 
@@ -165,7 +165,7 @@ For BUIDL specifically, the 22% secondary share masks a redemption-driven micros
 ![Figure 3: Block C empirical comparison across the three products](../05_figures/market_comparison.png)
 *Figure 3: Four-panel empirical comparison of BUIDL, OUSG, and bIB01 against the BCBS 238 §24(d) "active and sizable market" criterion (Dune snapshot 17 June 2026). AUM on a log scale spans three orders of magnitude. The secondary-share panel (bottom right) captures the bIB01 paradox: a 96% secondary ratio that nonetheless represents only 0.43 transfers per day in absolute terms.*
 
-The interpretive consequence matters. The "tokenisation enables 24/7 liquid markets" narrative is empirically falsified for treasuries specifically. What tokenisation has enabled is *programmable settlement* of institutional cash management positions, a genuine operational improvement, but distinct from market liquidity in the prudential sense. The Block C scoring failures are not theoretical artifacts of an overly strict framework. They reflect the actual microstructure of these products as of May 2026. Any supervisory analysis would reach the same conclusion working from the same primary data.
+The interpretive consequence matters. The "tokenisation enables 24/7 liquid markets" narrative is empirically falsified for treasuries specifically. What tokenisation has enabled is *programmable settlement* of institutional cash management positions, a genuine operational improvement, but distinct from market liquidity in the prudential sense. The Block C scoring failures are not theoretical artifacts of an overly strict framework. They reflect the actual microstructure of these products as of June 2026. Any supervisory analysis would reach the same conclusion working from the same primary data.
 
 ---
 
@@ -206,9 +206,9 @@ These are analytical recommendations, not operational practice of any specific i
 
 ## 8. Caveats, limitations, and what's next
 
-This framework is v1.0. It reflects publicly available documentation as of 11 May 2026 and is intended as an opening contribution to a methodological debate, not a closed analytical verdict.
+This framework is a first version (v1.1 with measured on-chain data). It reflects publicly available documentation as of 17 June 2026 and is intended as an opening contribution to a methodological debate, not a closed analytical verdict.
 
-Five limitations bear explicit mention. The analysis relies on public documentation; the Private Placement Memoranda for BUIDL and Ondo I LP are not public, and supervisory positions may evolve. The bIB01 Securities Note dated 8 May 2025 expires on 7 May 2026 per Article 12 of the Prospectus Regulation, four days before the publication date of this framework. No Successor Base Prospectus has been published on the issuer's website as of the snapshot date, which means new public offerings of bIB01 may be paused pending the new prospectus approval, although outstanding tokens issued under previous Final Terms remain legally valid. Any treasurer or analyst applying this framework after 7 May 2026 should verify the current prospectus status before relying on the Block D analysis. The empirical snapshot is one point in time; concentration metrics and volume data will evolve. The scoring is qualitative judgement based on regulatory text interpretation; final supervisory verdicts may differ in specific cases. And the framework has not been peer-reviewed by an external regulatory or academic body; it represents one analyst's structured analysis.
+Five limitations bear explicit mention. The analysis relies on public documentation; the Private Placement Memoranda for BUIDL and Ondo I LP are not public, and supervisory positions may evolve. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus has been published on the issuer's website as of the snapshot date, which means new public offerings of bIB01 may be paused pending the new prospectus approval, although outstanding tokens issued under previous Final Terms remain legally valid. Any treasurer or analyst applying this framework after 7 May 2026 should verify the current prospectus status before relying on the Block D analysis. The empirical snapshot is one point in time; concentration metrics and volume data will evolve. The scoring is qualitative judgement based on regulatory text interpretation; final supervisory verdicts may differ in specific cases. And the framework has not been peer-reviewed by an external regulatory or academic body; it represents one analyst's structured analysis.
 
 The framework can be applied to other products. Superstate USTB, Hashnote USYC, OpenEden TBILL, WisdomTree Government Money Market Digital Fund, and Janus Henderson tokenised funds can all be run through the same 24-criteria assessment, the same four-block cascade, and the same empirical layer. The matrix in JSON format is designed for programmatic re-application. The Dune Analytics queries can be re-run against any contract address.
 
@@ -259,7 +259,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 
 ---
 
-*Framework v1.0, 2026-05-11. Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
+*Framework v1.1, 2026-06-17. Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
 
 *Author: Pierre-Antoine Andrighetti*
 *Repository: https://github.com/paandrighetti/RWA_analysis*

@@ -66,7 +66,7 @@ The framework operates on a **4-block cascade**:
 | **A. Eligibility category** | Direct sovereign claim, UCITS look-through, Corporate debt CQS1, Level 2B equity | DR 2015/61 art. 10-15; BCBS 238 §49-54 |
 | **B. Operational requirements** | Unencumbered, control, monetisation, documentation, diversification | DR 2015/61 art. 7-8; BCBS 238 §28-43 |
 | **C. Market criteria** | Listed exchange, sizable market, committed MMs, low spreads, stress liquidity | BCBS 238 §24(c)-(f) |
-| **D. Wrapper-specific friction** | Settlement finality, custody layers, oracle, upgradeability, pause function, issuer call, substitution, extraordinary event, creditor cascade, ECB eligibility | Framework v1.0 contribution |
+| **D. Wrapper-specific friction** | Settlement finality, custody layers, oracle, upgradeability, pause function, issuer call, substitution, extraordinary event, creditor cascade, ECB eligibility | Framework v1.1 contribution |
 
 Each criterion is rated per product on a Pass / Conditional / Fail / N/A scale, with primary legal reference and source documentation.
 
@@ -107,7 +107,7 @@ Compare to 1-year US Treasury Bill: ~100,000 holders worldwide, $500B+ daily vol
 
 | Level | Description | Timeline | Resulting eligibility |
 |---|---|---|---|
-| **L0** | Status quo (May 2026) |, | Not HQLA |
+| **L0** | Status quo (June 2026) | Today | Not HQLA |
 | **L1** | UCITS MMF restructuration | 12-30 months | HQLA Level 1/2A via Art. 15 look-through |
 | **L2** | DLT-issued via authorised CSD | 6-24 months | ECB collateral eligibility (operational since 30 March 2026) |
 | **L3** | Native sovereign DLT | 5-7 years | Direct Level 1 HQLA |
@@ -215,7 +215,7 @@ If this framework informs your research or analysis, please cite:
 
 ## Contributing
 
-This framework is intended as v1.0, an opening contribution to an analytical debate. Constructive challenges and methodological improvements are welcome via GitHub issues or pull requests.
+This framework is intended as a first version, an opening contribution to an analytical debate. Constructive challenges and methodological improvements are welcome via GitHub issues or pull requests.
 
 Topics where peer feedback would be particularly valuable:
 - Block A.2 UCITS look-through interpretation (especially for OUSG fund-of-funds structure)
