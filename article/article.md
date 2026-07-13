@@ -255,7 +255,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 - DLT Pilot Regime authorisations: CSD Prague (October 2024), 21X AG (December 2024), 360X AG (April 2025).
 - DTCC-Digital Asset Canton Network tokenized US Treasury pilot, announced December 2025.
 
-*Note on the framework's empirical figures: concentration metrics (Gini coefficient) are estimated by anchoring on documented historical observations (Ondo OUSG ≈ 35% single-holder share in July 2024) and applying a power-law tail. For production-grade precision, re-run the Dune queries in the accompanying repository.*
+*Note on the framework's empirical figures: as of v1.1, concentration and volume metrics are measured directly from on-chain data via the Dune Analytics queries in `02_empirical/dune_queries.sql` (snapshot 17 June 2026). The BUIDL Gini coefficient of 0.866 is computed from the full per-holder balance export (query M2-bis), not estimated. The v1.0 Pareto-anchored estimates are documented in the changelog for traceability. Figures reflect a single point in time; re-run the queries for current values.*
 
 ---
 

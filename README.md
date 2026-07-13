@@ -23,12 +23,16 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 ├── 01_framework/
 │   ├── eligibility_matrix.md       # 24-criteria scoring matrix (Markdown)
 │   ├── eligibility_matrix.json     # Structured scoring (JSON)
-│   └── methodology.md              # Framework methodology
+│   ├── methodology.md              # Framework methodology
+│   └── scoring_heatmap.py          # Heatmap figure generator
 │
 ├── 02_empirical/
-│   ├── dune_queries.sql            # 5 SQL queries for Dune Analytics
+│   ├── dune_queries.sql            # SQL queries for Dune Analytics
 │   ├── onchain_analysis.py         # Python concentration metrics
+│   ├── lorenz_real_data.py         # Lorenz curve + Gini from holder export
+│   ├── market_comparison.py        # Block C four-panel comparison figure
 │   ├── aum_timeseries.py           # AUM trajectory visualisation
+│   ├── DUNE_SETUP_GUIDE.md         # Reproduce the live Dune dashboard
 │   └── empirical_findings.md       # Synthesis of empirical findings
 │
 ├── 03_gradient/
@@ -43,13 +47,14 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 ├── 05_figures/
 │   ├── aum_timeseries.png/svg      # AUM trajectory 2024-2026
 │   ├── scoring_heatmap.png         # 24 criteria across 3 products heatmap
-│   ├── lorenz_buidl.png            # BUIDL concentration Lorenz curve
+│   ├── lorenz_buidl.png (+_wide)   # BUIDL concentration Lorenz curve
 │   ├── market_comparison.png       # Block C empirical validation
 │   └── gradient_staircase.png/svg  # L0 → L3 roadmap visualisation
 │
 ├── article/
 │   └── article.md                  # Final publication article (~6600 words)
 │
+├── CHANGELOG.md                     # v1.0 → v1.1 measured-data refresh
 ├── LICENSE-CONTENT.md               # CC-BY-4.0 for content
 ├── LICENSE-CODE.md                  # MIT for code
 └── README.md                        # This file

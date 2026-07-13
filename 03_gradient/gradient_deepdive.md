@@ -153,13 +153,13 @@ The US has no public sector equivalent to Pontes/Appia. The closest functional p
 
 Critical distinctions with Pontes:
 - **Operator**: DTCC is a private-sector clearing house (regulated, but not central bank). Pontes is run by the Eurosystem (ECB + NCBs).
-- **Settlement asset**: DTCC initiative settles in commercial bank money or tokenized deposits, not central bank money. Pontes settles in central bank money.
-- **HQLA implications**: DTCC tokenization of existing book-entry Treasuries preserves their Level 1 HQLA status (per FRB/OCC/FDIC joint FAQ of 5 March 2026, which confirmed that the capital rule is technology neutral and tokenized representations of traditional financial instruments should receive the same risk weight as their non-tokenized counterparts). This is closer to L2 in the framework, same legal substance, new technology layer, than to genuine L3 native issuance.
+- **Settlement asset**: DTCC initiative settles in commercial bank money or tokenised deposits, not central bank money. Pontes settles in central bank money.
+- **HQLA implications**: DTCC tokenisation of existing book-entry Treasuries preserves their Level 1 HQLA status (per FRB/OCC/FDIC joint FAQ of 5 March 2026, which confirmed that the capital rule is technology neutral and tokenized representations of traditional financial instruments should receive the same risk weight as their non-tokenized counterparts). This is closer to L2 in the framework, same legal substance, new technology layer, than to genuine L3 native issuance.
 
 For genuine L3 in the US sense, the relevant question is when the Treasury itself would issue T-bills natively as tokens on a DLT-SS. As of May 2026, no public roadmap exists. The October 2024 TBAC presentation explicitly cited concerns about the incumbent advantage of legacy infrastructure and the high transition costs.
 
 A reasonable US L3 timeline is therefore:
-- 2026 H1, DTCC-Canton MVP launches (tokenized representation of existing book-entry Treasuries)
+- 2026 H1, DTCC-Canton MVP launches (tokenised representation of existing book-entry Treasuries)
 - 2027-2029, possible Federal Reserve pilot for wholesale DLT settlement (no commitment publicly)
 - 2030+, earliest realistic horizon for native Treasury issuance on DLT
 - 2032-2035, meaningful share of primary issuance

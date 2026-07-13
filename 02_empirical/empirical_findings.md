@@ -1,8 +1,8 @@
-# RWA HQLA Framework: S4 Empirical Findings
+# RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.0, 2026-05-11
-**Source data**: Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
-**Methodology**: snapshot extraction + concentration metrics via Python (`s4_onchain_analysis.py`) ; full Dune Analytics extraction recommended for production publication.
+**Version**: 1.1, 2026-06-17 (initial extraction 2026-05-11)
+**Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
+**Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`onchain_analysis.py` and `lorenz_real_data.py`).
 
 ## Executive summary
 
@@ -39,44 +39,49 @@ The market microstructure is closer to a **bilateral institutional product** (ar
 
 **Interpretation**: BUIDL is structurally a wholesale institutional money market product accessed through a fund-share token wrapper. The "blockchain" property adds 24/7 transferability and USDC settlement rails but **does not create a secondary market in any meaningful sense**.
 
-### OUSG: empirical snapshot (estimates pending Dune)
+### OUSG: empirical snapshot
 
 | Metric | Value | Source |
 |---|---|---|
 | AUM global (Apr 2026) | ~$770M | RWA.xyz |
-| Holders Ethereum (estimate) | ~80 | TBC via Dune |
-| 24h trading volume (estimate) | ~$50K | TBC |
+| Holders Ethereum mainnet | ~80 | Dune 2026-06-17 |
+| Cumulative transfers Ethereum | 2,119 (851 secondary) | Dune 2026-06-17 |
+| Secondary transfer rate | ~0.7/day | Computed |
+| 24h secondary volume | Low five-digit USD range (estimate) | CoinGecko / aggregators |
 | Major position | Ripple (post-XRPL pilot 6 May 2026) | Press release |
 
 Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, and Ripple validates operational rails, but is an **institutional B2B integration**, not a public secondary market.
 
-### bIB01: empirical snapshot (estimates pending Dune)
+### bIB01: empirical snapshot
 
 | Metric | Value | Source |
 |---|---|---|
 | Contract Ethereum | `0xCA30c93B02514f86d5C86a6e375E3A330B435Fb5` | bIB01 Final Terms |
 | AUM (Backed combined) | ~$250M+ | CV5 Capital |
 | Max issue volume per Final Terms | CHF 100,000,000 | FMA filing |
-| Holders Ethereum (estimate) | ~35 | TBC via Dune |
-| 24h trading volume (estimate) | ~$5K | TBC |
+| Holders Ethereum mainnet | ~35 | Dune 2026-06-17 |
+| Cumulative transfers Ethereum | 510 (492 secondary, 96%) | Dune 2026-06-17 |
+| Secondary transfer rate | ~0.43/day | Computed |
 | INX ATS listing | Yes, no market making | Final Terms §3 |
 
-**Particularity**: structural cap of CHF 100M per Final Terms limits scale by design. Smaller AUM is therefore not a market failure but a **deliberate issuance limit by the issuer**.
+**Particularity 1**: structural cap of CHF 100M per Final Terms limits scale by design. Smaller AUM is therefore not a market failure but a **deliberate issuance limit by the issuer**.
+
+**Particularity 2**: the 96% secondary transfer ratio is the highest of the three products, a mechanical consequence of bIB01 being a freely transferable debt instrument rather than a whitelisted fund share. In absolute terms, however, 492 secondary transfers over three years (roughly one every two days) remains structurally indistinguishable from no market. The ratio is high because the denominator is tiny; the scoring matrix records this as a Conditional rather than a Fail on criterion C.2.
 
 ## Block C scoring: empirical validation
 
-| Criterion | Theoretical S3 | Empirical S4 | Strengthens or weakens ? |
+| Criterion | Framework verdict (regulatory text) | Empirical verdict (measured) | Strengthens or weakens? |
 |---|---|---|---|
-| C.1 Listed on developed exchange | Fail | Fail (BUIDL/OUSG: not listed ; bIB01: ATS without market making) | **Strengthens** |
-| C.2 Active and sizable market | Fail | Fail (BUIDL: $0 24h volume) | **Strengthens decisively** |
-| C.2 Low market concentration | Fail (qualitative) | Fail (Gini ~0.866, Top-3 = 55%) | **Strengthens** |
-| C.3 Committed market makers | Fail | Fail (no on-chain MMs identified ; AMM presence minimal due to whitelist) | **Strengthens** |
+| C.1 Listed on developed exchange | Fail | Fail (BUIDL/OUSG: not listed; bIB01: ATS without market making) | **Strengthens** |
+| C.2 Active and sizable market, volume dimension | Fail | Fail (BUIDL: $0 24h volume) | **Strengthens decisively** |
+| C.2 Active and sizable market, concentration dimension | Fail (qualitative) | Fail (Gini ~0.866, Top-3 = 55%) | **Strengthens** |
+| C.3 Committed market makers | Fail | Fail (no on-chain MMs identified; AMM presence minimal due to whitelist) | **Strengthens** |
 
 The empirical layer **does not change the verdict**, but it makes the conclusion *unassailable* under any supervisory review.
 
 ## Comparison with traditional HQLA proxies
 
-Reference benchmarks for comparison :
+Reference benchmarks for comparison:
 
 | Asset | Holders worldwide | Daily volume USD | Gini equivalent |
 |---|---|---|---|
@@ -89,43 +94,35 @@ Reference benchmarks for comparison :
 
 The gap with traditional HQLA assets is two-to-four orders of magnitude on volume and holders count. **This is the structural disqualifier that the framework captures empirically.**
 
-## Implications for the article narrative
+## How the article uses this layer
 
-Three concrete additions to the publication draft :
-
-1. **Lead with the $0 24h volume statistic for BUIDL**. It is the single most striking empirical fact and immediately collapses the "tokenisation creates liquid markets" narrative.
-
-2. **Use the Lorenz curve and Gini = 0.866 as visual centerpiece**. Compared to typical traditional HQLA assets (Gini 0.40-0.65), tokenised RWAs are *more* concentrated, not less.
-
-3. **Frame the secondary transfer rate (about 4 per day for BUIDL on Ethereum mainnet)** as the "trading metabolism" of the asset. A truly liquid HQLA asset trades thousands of times per day across hundreds of venues. BUIDL records single-digit secondary transfers per day on its primary host chain.
+Section 5 of `../article/article.md` builds directly on these measurements: the $0 24h volume statistic for BUIDL leads the empirical argument, the Lorenz curve (Gini = 0.866) serves as the visual centerpiece against traditional HQLA benchmarks (Gini 0.40-0.65), and the secondary transfer rates (~4/day BUIDL, ~0.7/day OUSG, ~0.43/day bIB01) quantify the "trading metabolism" gap against assets that trade thousands of times per day across hundreds of venues.
 
 ## Limitations and roadmap
 
 - **Concentration metrics now measured directly** (v1.1, 17 June 2026). The Gini coefficient of 0.866 is computed from the per-holder balance export (Dune query M2-bis), not estimated. Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%. Previous v1.0 estimates used Pareto fitting anchored on the historical July 2024 observation of Ondo OUSG holding ~35% of supply; the actual distribution proved even more concentrated due to the dust-wallet tail.
 
-- **Multi-chain aggregation not yet performed**. BUIDL is deployed on 8 chains ; OUSG on 5 ; bIB01 on 5. Cross-chain holder de-duplication (same entity holding on multiple chains) requires entity-resolution heuristics. Full Dune queries in `s4_dune_queries.sql` cover Ethereum primarily ; multi-chain extension is straightforward but increases complexity.
+- **AUM time-series now plotted** (v1.1). See `../05_figures/aum_timeseries.png` and Figure 0 of the article. Anchor data points: Mar 2024 launch $0 → Apr 2024 $245M → Jul 2024 $502M → Aug 2025 $2.4B → May 2026 $2.28B (recent outflow phase noted).
 
-- **Time-series M1 (AUM trajectory) not yet plotted**. Requires Dune execution + clean historical curve. Anchor data points : Mar 2024 launch $0 → Apr 2024 $245M → Jul 2024 $502M → Aug 2025 $2.4B → May 2026 $2.28B (recent outflow phase noted).
+- **Multi-chain aggregation not yet performed**. BUIDL is deployed on 8 chains; OUSG on 5; bIB01 on 5. Cross-chain holder de-duplication (same entity holding on multiple chains) requires entity-resolution heuristics. The Dune queries in `dune_queries.sql` cover Ethereum primarily; multi-chain extension is straightforward but increases complexity.
 
-- **Settlement time distribution (M5) requires Circle treasury wallet address mapping** to match BUIDL burns with USDC payouts. Not in public Securitize/Circle disclosures with sufficient precision ; would require API integration.
+- **Settlement time distribution (query M5) requires Circle treasury wallet address mapping** to match BUIDL burns with USDC payouts. Not in public Securitize/Circle disclosures with sufficient precision; would require API integration.
 
-## Files in this S4 deliverable
+## Files in this section
 
 | File | Purpose |
 |---|---|
-| `s4_dune_queries.sql` | 5 SQL queries ready to execute on Dune Analytics |
-| `s4_onchain_analysis.py` | Python notebook for concentration metrics + visualisation |
-| `figures/lorenz_buidl.png` | Lorenz curve BUIDL with Gini = 0.866 |
-| `figures/market_comparison.png` | 4-panel comparison BUIDL/OUSG/bIB01 on Block C metrics |
-| `figures/scoring_heatmap.png` | Final verdict heatmap, 18 criteria × 3 products |
-| `s4_empirical_findings.md` | This document |
+| `dune_queries.sql` | SQL queries ready to execute on Dune Analytics |
+| `onchain_analysis.py` | Python script for concentration metrics + visualisation |
+| `lorenz_real_data.py` | Lorenz curve and Gini computation from the per-holder export |
+| `market_comparison.py` | Four-panel Block C comparison figure |
+| `aum_timeseries.py` | AUM trajectory figure |
+| `DUNE_SETUP_GUIDE.md` | Step-by-step guide to reproduce the live dashboard |
+| `../05_figures/lorenz_buidl.png` | Lorenz curve BUIDL with Gini = 0.866 |
+| `../05_figures/market_comparison.png` | 4-panel comparison BUIDL/OUSG/bIB01 on Block C metrics |
+| `../05_figures/scoring_heatmap.png` | Final verdict heatmap, 24 criteria × 3 products |
+| `empirical_findings.md` | This document |
 
 ## Next steps
 
-S5, case study deep dive on BUIDL Level 1 hypothetical pathway. Use the gradient L0 → L1 → L2 → L3 to walk through what BlackRock would need to change structurally for BUIDL to be Level 1 HQLA eligible under DR 2015/61 art. 10. Effort estimate : 10h.
-
-S6, implications for European banks and fintechs. Practical recommendations on how a bank treasury department should *currently* treat tokenised RWA exposures (custody framework, valuation haircuts, internal limits). Effort 7h.
-
-S7, final write-up + repo + Dune dashboard + LinkedIn/X distribution. Effort 10h.
-
-Total remaining effort to publication : ~27h.
+The gradient analysis (what each product would need to change structurally to reach progressively higher HQLA eligibility, L0 → L3) is developed in `../03_gradient/gradient_deepdive.md`, including the BUIDL Level 1 hypothetical pathway under DR 2015/61 art. 10. Open empirical extensions are the two items above: multi-chain holder de-duplication and the M5 settlement time distribution.
