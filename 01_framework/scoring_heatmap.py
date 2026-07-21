@@ -1,6 +1,6 @@
 """
-RWA HQLA Framework — Scoring Heatmap Generator
-Version 1.1 — 2026-06-17
+RWA HQLA Framework: Scoring Heatmap Generator
+Version 1.1: 2026-06-17
 
 Reads eligibility_matrix.json and produces the heatmap PNG used in
 Section 4 (Block-by-block verdict) of the article.
@@ -23,7 +23,7 @@ import os
 
 
 VERDICT_TO_VALUE = {"Pass": 3, "Conditional": 2, "Fail": 1, "N/A": 0}
-VERDICT_TO_LABEL = {"Pass": "P", "Conditional": "C", "Fail": "F", "N/A": "—"}
+VERDICT_TO_LABEL = {"Pass": "P", "Conditional": "C", "Fail": "F", "N/A": "-"}
 COLORS = ["#e8e8e8", "#d62728", "#ff9933", "#2ca02c"]
 
 
@@ -123,11 +123,11 @@ def print_summary(rows, cols, texts):
     print("Scoring summary by product (verdict counts):")
     print("=" * 70)
     for col_idx, product in enumerate(cols):
-        counts = {"P": 0, "C": 0, "F": 0, "—": 0}
+        counts = {"P": 0, "C": 0, "F": 0, "-": 0}
         for row_idx in range(len(rows)):
             counts[texts[row_idx, col_idx]] += 1
         print(f"  {product:8s} : Pass={counts['P']}, Conditional={counts['C']}, "
-              f"Fail={counts['F']}, N/A={counts['—']}")
+              f"Fail={counts['F']}, N/A={counts['-']}")
     print("=" * 70 + "\n")
 
 

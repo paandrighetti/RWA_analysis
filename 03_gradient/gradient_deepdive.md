@@ -13,7 +13,7 @@ The S3 verdict closed at L0: no tokenised RWA product currently qualifies as HQL
 | **L0** | Status quo | Today | Not HQLA, not ECB-eligible |
 | **L1** | UCITS-compatible MMF wrapper | Restructure issuance as authorised UCITS MMF under MMFR (2017/1131) | Level 1 or 2A HQLA potential via DR 2015/61 Art. 15 look-through |
 | **L2** | DLT-issued via authorised CSD | Token issuance via CSD using DLT-based services, T2S-reachable | ECB collateral eligibility (operational since 30 March 2026) |
-| **L3** | Native sovereign DLT issuance | Sovereign treasury issues debt natively on DLT-SS | Direct Level 1 HQLA + full ECB eligibility |
+| **L3** | Native sovereign DLT issuance | Sovereign treasury issues debt natively on DLT-SS | Candidate Level 1 HQLA + ECB eligibility, subject to the usual issuer/claim/currency/operational criteria |
 
 The critical update for this version: **L2 has moved from prospective to operational on 30 March 2026** following the ECB Governing Council decision of 27 January 2026.
 

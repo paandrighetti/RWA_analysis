@@ -1,5 +1,5 @@
 """
-RWA HQLA Framework — Real BUIDL Holder Distribution Lorenz Curve
+RWA HQLA Framework: Real BUIDL Holder Distribution Lorenz Curve
 Data extracted from Dune M2-bis query on 17 June 2026.
 Replaces the previously estimated Pareto-based distribution.
 """
@@ -7,6 +7,7 @@ Replaces the previously estimated Pareto-based distribution.
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
+from scipy.optimize import linprog
 
 
 # ============================================================================
@@ -54,48 +55,112 @@ TOP25_SHARE  = 0.9954
 N_HOLDERS    = 76
 
 
+def _tilted_flat_split(total: float, n: int, upper: float, lower: float) -> list[float]:
+    """Descending split of `total` across `n` holders: each value sits at the
+    block mean plus a small linear tilt, with the largest value kept below
+    `upper` (the previous block's minimum) and the smallest above `lower`
+    (the next block's maximum). All Top-k constraints then hold exactly on
+    the sorted result, because blocks never interleave."""
+    m = total / n
+    if not (lower < m < upper):
+        raise ValueError(f"infeasible block: mean {m} outside ({lower}, {upper})")
+    if n == 1:
+        return [total]
+    half = (n - 1) / 2.0
+    tilt = 0.5 * min(upper - m, m - lower) / half
+    vals = [m + tilt * (half - k) for k in range(n)]
+    vals[-1] += total - sum(vals)   # exact total; adjustment is O(1e-9)
+    return vals
+
+
 def reconstruct_distribution():
     """
     Reconstruct the full 76-holder distribution using:
-      - the 25 smallest balances (measured)
+      - the 25 smallest balances (measured verbatim)
       - the Top-3, Top-10, Top-25 cumulative share constraints
-      - a power-law decay for the middle range
+      - near-flat descending blocks between the constrained ranks, with
+        block boundaries pinned so the global ordering is monotone
+
+    The Top-3/10/25 cumulative shares and the 25 smallest balances are
+    MEASURED; the scalar Gini is computed on this constrained
+    reconstruction, and every Top-k constraint holds exactly on the sorted
+    result. Feasible extremes consistent with the same constraints span
+    Gini in [0.850, 0.885] (recomputed by compute_gini_bounds below), so
+    the conclusions do not depend on the reconstruction assumptions.
     """
-    # Top 3 holders
     top3_total = TOP3_SHARE * TOTAL_SUPPLY
-    # Top 3 split: assume first = 25%, second = 18%, third = 12% of total
-    # (a credible institutional concentration pattern)
-    top3 = [TOTAL_SUPPLY * 0.25, TOTAL_SUPPLY * 0.18, TOTAL_SUPPLY * 0.12]
+    # Split of the measured Top-3 aggregate (55.22%) across ranks 1-3.
+    # The 25/18/12 pattern is an assumption; renormalised so the three
+    # balances sum EXACTLY to the measured Top-3 share.
+    top3 = [top3_total * w / 0.55 for w in (0.25, 0.18, 0.12)]
 
-    # Ranks 4-10 (7 holders) capture (Top10 - Top3) = 27.8% of total
-    ranks_4_10_total = (TOP10_SHARE - TOP3_SHARE) * TOTAL_SUPPLY
-    # Distribute via power law alpha=0.7 (less steep than top)
-    weights_4_10 = np.array([1.0 / (i ** 0.7) for i in range(1, 8)])
-    weights_4_10 = weights_4_10 / weights_4_10.sum()
-    ranks_4_10 = (weights_4_10 * ranks_4_10_total).tolist()
+    tail = sorted(SMALLEST_25, reverse=True)
+    ranks_4_10 = _tilted_flat_split(
+        (TOP10_SHARE - TOP3_SHARE) * TOTAL_SUPPLY, 7,
+        upper=0.95 * min(top3), lower=0.0)
+    ranks_11_25 = _tilted_flat_split(
+        (TOP25_SHARE - TOP10_SHARE) * TOTAL_SUPPLY, 15,
+        upper=0.95 * min(ranks_4_10), lower=0.0)
+    remaining_total = (TOTAL_SUPPLY - sum(top3) - sum(ranks_4_10)
+                       - sum(ranks_11_25) - sum(SMALLEST_25))
+    middle = _tilted_flat_split(
+        remaining_total, N_HOLDERS - 25 - 25,
+        upper=0.95 * min(ranks_11_25), lower=1.05 * max(tail))
 
-    # Ranks 11-25 (15 holders) capture (Top25 - Top10) = 16.5% of total
-    ranks_11_25_total = (TOP25_SHARE - TOP10_SHARE) * TOTAL_SUPPLY
-    weights_11_25 = np.array([1.0 / (i ** 0.5) for i in range(1, 16)])
-    weights_11_25 = weights_11_25 / weights_11_25.sum()
-    ranks_11_25 = (weights_11_25 * ranks_11_25_total).tolist()
-
-    # Ranks 26-76 (51 holders) capture (1 - Top25) = 0.46% of total
-    # We know the smallest 25 — these are the very bottom
-    # Ranks 26-51 (the middle of the tail): fit between the bottom 25 and Top 25 boundary
-    remaining_total = TOTAL_SUPPLY - sum(top3) - sum(ranks_4_10) - sum(ranks_11_25) - sum(SMALLEST_25)
-    # We have 76 - 25 (top) - 25 (bottom) = 26 holders in the middle
-    # Distribute remaining_total across them
-    middle_n = 76 - 25 - 25  # 26 holders
-    weights_middle = np.array([1.0 / (i ** 0.3) for i in range(1, middle_n + 1)])
-    weights_middle = weights_middle / weights_middle.sum()
-    middle_balances = (weights_middle * remaining_total).tolist()
-
-    # Combine all (descending order)
-    all_balances = top3 + ranks_4_10 + ranks_11_25 + middle_balances + SMALLEST_25[::-1]
-    # Sort descending for proper Top-K computation
-    all_balances = sorted(all_balances, reverse=True)
+    all_balances = top3 + ranks_4_10 + ranks_11_25 + middle + tail
+    assert all(all_balances[i] >= all_balances[i + 1] - 1e-9
+               for i in range(len(all_balances) - 1)), "ordering violated"
     return np.array(all_balances)
+
+
+def compute_gini_bounds():
+    """Exact Gini bounds over ALL descending 76-holder distributions
+    consistent with the measured constraints (linear programme, HiGHS).
+
+    The Gini coefficient is linear in the balances once the total is fixed:
+    with descending balances b_1 >= ... >= b_n summing to T,
+        G = (2 / (n T)) * sum_k (n + 1 - k) * b_k  -  (n + 1) / n.
+    Free variables: ranks 1..51 (the 25 smallest balances are measured
+    verbatim and fixed). Constraints: total supply; Top-3, Top-10, Top-25
+    cumulative shares; monotonic descending ordering; continuity with the
+    fixed tail (b_51 >= max of the measured smallest balances); b >= 0.
+    Minimising and maximising the linear objective yields the exact bounds.
+    """
+    n = N_HOLDERS
+    tail = sorted(SMALLEST_25, reverse=True)          # b_52..b_76 descending
+    n_free = n - len(tail)                            # 51
+    T = TOTAL_SUPPLY
+    s_free = T - sum(tail)
+
+    # objective coefficients for free ranks k = 1..51
+    c = np.array([(n + 1 - k) for k in range(1, n_free + 1)], dtype=float)
+    fixed_term = sum((n + 1 - k) * b for k, b in
+                     zip(range(n_free + 1, n + 1), tail))
+
+    A_eq = [np.ones(n_free)]
+    b_eq = [s_free]
+    for top_k, share in ((3, TOP3_SHARE), (10, TOP10_SHARE), (25, TOP25_SHARE)):
+        row = np.zeros(n_free); row[:top_k] = 1.0
+        A_eq.append(row); b_eq.append(share * T)
+
+    # monotonic descending: x_{k+1} - x_k <= 0 ; and tail continuity -x_51 <= -max(tail)
+    A_ub, b_ub = [], []
+    for k in range(n_free - 1):
+        row = np.zeros(n_free); row[k] = -1.0; row[k + 1] = 1.0
+        A_ub.append(row); b_ub.append(0.0)
+    row = np.zeros(n_free); row[-1] = -1.0
+    A_ub.append(row); b_ub.append(-max(tail))
+
+    bounds = []
+    for sense in (1.0, -1.0):
+        res = linprog(sense * c, A_ub=np.array(A_ub), b_ub=np.array(b_ub),
+                      A_eq=np.array(A_eq), b_eq=np.array(b_eq),
+                      bounds=[(0, None)] * n_free, method="highs")
+        if not res.success:
+            raise RuntimeError(f"LP failed: {res.message}")
+        obj = sense * res.fun
+        bounds.append((2.0 * (obj + fixed_term)) / (n * T) - (n + 1) / n)
+    return min(bounds), max(bounds)
 
 
 def gini_coefficient(balances):
@@ -126,13 +191,19 @@ def plot_lorenz(output_path="05_figures/lorenz_buidl.png",
     print(f"  Top-10 share        : {balances[:10].sum() / balances.sum():.3f}")
     print(f"  Top-25 share        : {balances[:25].sum() / balances.sum():.3f}")
     print(f"  Computed Gini       : {g:.3f}")
+    lo, hi = compute_gini_bounds()
+    print(f"  Exact LP bounds     : [{lo:.3f}, {hi:.3f}] over all descending"
+          f" distributions matching the measured constraints")
+    if abs(lo - 0.850) > 0.0015 or abs(hi - 0.885) > 0.0015:
+        print("  WARNING: recomputed bounds drift from the documented"
+              " [0.850, 0.885]; investigate before publishing")
 
     # Wide landscape format (2.6:1) for dashboard embedding; square for standalone
     figsize = (13, 5) if wide else (8, 7)
     fig, ax = plt.subplots(figsize=figsize)
     ax.plot([0, 1], [0, 1], "k--", linewidth=1, alpha=0.5,
             label="Perfect equality (Gini = 0)")
-    ax.plot(pop, cum, "C0-", linewidth=2.5, label=f"BUIDL measured (Gini = {g:.3f})")
+    ax.plot(pop, cum, "C0-", linewidth=2.5, label=f"BUIDL, reconstructed under measured constraints (Gini = {g:.3f})")
     ax.fill_between(pop, cum, pop, alpha=0.15, color="C0")
 
     ax.set_xlabel("Cumulative share of holders (sorted ascending)", fontsize=11)
@@ -146,7 +217,7 @@ def plot_lorenz(output_path="05_figures/lorenz_buidl.png",
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     ax.grid(alpha=0.3)
     ax.legend(loc="upper left", fontsize=10)
-    # No set_aspect('equal') in wide mode — let it fill the rectangle
+    # No set_aspect('equal') in wide mode: let it fill the rectangle
     if not wide:
         ax.set_aspect("equal")
 

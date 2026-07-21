@@ -1,6 +1,6 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1, 2026-06-17 (initial extraction 2026-05-11)
+**Version**: 1.1.1 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
 **Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`onchain_analysis.py` and `lorenz_real_data.py`).
 
@@ -8,9 +8,9 @@
 
 The on-chain empirical analysis **strongly confirms and extends the scoring matrix verdict**. Block C (Market Criteria), which scored Fail across all three products on the regulatory text alone, is now validated by directly measured data (Dune Analytics, snapshot 17 June 2026):
 
-- BUIDL Ethereum mainnet: **76 holders** for ~$181M, of which roughly 25 hold dust balances below $2 (effective holder count ~50). The multi-chain global figure of $2.28B means Ethereum now represents only about 8% of total AUM, the bulk having migrated to Solana and other chains.
+- BUIDL Ethereum mainnet: **76 holders** for ~$181M, of which 25 hold dust balances below $2 (effective holder count 51). The multi-chain global figure of $2.28B means Ethereum now represents only about 8% of total AUM, the bulk having migrated to Solana and other chains.
 - **Near-zero secondary trading volume** on the only public price aggregator (CoinGecko)
-- Measured Gini coefficient: **0.866** (computed from the per-holder balance export, query M2-bis)
+- Cumulative concentration measured from the per-holder export (query M2-bis): Top-3 = 55.2%, Top-10 = 83.0%, Top-25 = 99.5%. Scalar Gini = **0.863** on a reconstruction under these measured constraints; exact LP bounds show every consistent distribution has Gini in **[0.850, 0.885]**
 - Top-3 holders: 55% of supply; Top-10: 83%; Top-25: 99.5%
 - 14,046 cumulative transfers, of which 3,151 secondary, approximately 4 secondary transfers per day averaged over the fund's 26-month history
 
@@ -31,8 +31,8 @@ The market microstructure is closer to a **bilateral institutional product** (ar
 | Number of chains deployed | 8 | RWA.xyz |
 | Time since launch | ~826 days (2.26 years) | Computed |
 
-**Concentration (measured from per-holder Dune export, query M2-bis):**
-- Gini coefficient = 0.866
+**Concentration (Dune per-holder export, query M2-bis):**
+- Gini = 0.863 on the constrained reconstruction (exact feasible range [0.850, 0.885]; see `lorenz_real_data.py`)
 - Top-3 holders = 55% of supply
 - Top-10 holders = 83% of supply
 - Top-25 holders = 99.5% of supply
@@ -74,21 +74,21 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 |---|---|---|---|
 | C.1 Listed on developed exchange | Fail | Fail (BUIDL/OUSG: not listed; bIB01: ATS without market making) | **Strengthens** |
 | C.2 Active and sizable market, volume dimension | Fail | Fail (BUIDL: $0 24h volume) | **Strengthens decisively** |
-| C.2 Active and sizable market, concentration dimension | Fail (qualitative) | Fail (Gini ~0.866, Top-3 = 55%) | **Strengthens** |
+| C.2 Active and sizable market, concentration dimension | Fail (qualitative) | Fail (Gini 0.863, Top-3 = 55%) | **Strengthens** |
 | C.3 Committed market makers | Fail | Fail (no on-chain MMs identified; AMM presence minimal due to whitelist) | **Strengthens** |
 
 The empirical layer **does not change the verdict**, but it makes the conclusion *unassailable* under any supervisory review.
 
 ## Comparison with traditional HQLA proxies
 
-Reference benchmarks for comparison:
+Reference points, indicative orders of magnitude only (heterogeneous bases: onchain addresses vs beneficial owners, venue-reported vs interdealer volumes):
 
 | Asset | Holders worldwide | Daily volume USD | Gini equivalent |
 |---|---|---|---|
-| 1-year US Treasury Bill | 100,000+ (via primary + secondary) | $500B+ | ~0.50 (institutional) |
+| 1-year US Treasury Bill | 100,000+ (via primary + secondary) | $500B+ | ~0.5 (illustrative) |
 | Money market mutual fund (typical) | 1,000-50,000 | $50M-$1B | ~0.65 |
 | iShares IB01 UCITS ETF | n/a (intra-exchange) | $1-10M | ~0.40 (ETF wrapper) |
-| **BUIDL global** | ~150-200 | **$0 secondary** | **~0.866** |
+| **BUIDL global** | ~150-200 | **$0 secondary** | **0.863** (reconstr.) |
 | **OUSG** | ~80-100 | ~$50K | ~0.70 (est.) |
 | **bIB01** | ~35-50 | ~$5K | ~0.65 (est.) |
 
@@ -96,11 +96,11 @@ The gap with traditional HQLA assets is two-to-four orders of magnitude on volum
 
 ## How the article uses this layer
 
-Section 5 of `../article/article.md` builds directly on these measurements: the $0 24h volume statistic for BUIDL leads the empirical argument, the Lorenz curve (Gini = 0.866) serves as the visual centerpiece against traditional HQLA benchmarks (Gini 0.40-0.65), and the secondary transfer rates (~4/day BUIDL, ~0.7/day OUSG, ~0.43/day bIB01) quantify the "trading metabolism" gap against assets that trade thousands of times per day across hundreds of venues.
+Section 5 of `../article/article.md` builds directly on these measurements: the $0 24h volume statistic for BUIDL leads the empirical argument, the Lorenz curve (Gini = 0.863, reconstruction) serves as the visual centerpiece against traditional HQLA benchmarks (Gini 0.40-0.65), and the secondary transfer rates (~4/day BUIDL, ~0.7/day OUSG, ~0.43/day bIB01) quantify the "trading metabolism" gap against assets that trade thousands of times per day across hundreds of venues.
 
 ## Limitations and roadmap
 
-- **Concentration metrics now measured directly** (v1.1, 17 June 2026). The Gini coefficient of 0.866 is computed from the per-holder balance export (Dune query M2-bis), not estimated. Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%. Previous v1.0 estimates used Pareto fitting anchored on the historical July 2024 observation of Ondo OUSG holding ~35% of supply; the actual distribution proved even more concentrated due to the dust-wallet tail.
+- **Concentration: measured constraints, reconstructed scalar** (v1.1). The per-holder export (query M2-bis) measures the cumulative shares directly (Top-3 = 55.2%, Top-10 = 83.0%, Top-25 = 99.5%) and the 25 smallest balances verbatim; the Gini of 0.863 is computed on a reconstruction under those constraints, and exact LP bounds give [0.850, 0.885] across all consistent distributions. The v1.0 Pareto estimate (anchored on the July 2024 Ondo OUSG ~35% observation) landed in the same region.
 
 - **AUM time-series now plotted** (v1.1). See `../05_figures/aum_timeseries.png` and Figure 0 of the article. Anchor data points: Mar 2024 launch $0 → Apr 2024 $245M → Jul 2024 $502M → Aug 2025 $2.4B → May 2026 $2.28B (recent outflow phase noted).
 
@@ -113,12 +113,11 @@ Section 5 of `../article/article.md` builds directly on these measurements: the 
 | File | Purpose |
 |---|---|
 | `dune_queries.sql` | SQL queries ready to execute on Dune Analytics |
-| `onchain_analysis.py` | Python script for concentration metrics + visualisation |
 | `lorenz_real_data.py` | Lorenz curve and Gini computation from the per-holder export |
 | `market_comparison.py` | Four-panel Block C comparison figure |
 | `aum_timeseries.py` | AUM trajectory figure |
 | `DUNE_SETUP_GUIDE.md` | Step-by-step guide to reproduce the live dashboard |
-| `../05_figures/lorenz_buidl.png` | Lorenz curve BUIDL with Gini = 0.866 |
+| `../05_figures/lorenz_buidl.png` | Lorenz curve BUIDL with Gini = 0.863 (reconstruction) |
 | `../05_figures/market_comparison.png` | 4-panel comparison BUIDL/OUSG/bIB01 on Block C metrics |
 | `../05_figures/scoring_heatmap.png` | Final verdict heatmap, 24 criteria × 3 products |
 | `empirical_findings.md` | This document |

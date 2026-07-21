@@ -1,5 +1,5 @@
 """
-RWA HQLA Framework — Block C Market Criteria Comparison (v1.1)
+RWA HQLA Framework: Block C Market Criteria Comparison (v1.1)
 Regenerated 2026-06-17 with real Dune M6 + M2 measured data.
 
 Replaces the v1.0 figure which had estimated/placeholder values.

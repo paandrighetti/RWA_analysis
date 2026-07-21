@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.1-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 
@@ -12,7 +12,9 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 
 **Verdict**: None of the three qualifies as HQLA Level 1, 2A, or 2B under Basel III LCR. The framework identifies the structural changes required to reach progressively higher eligibility levels (L0 → L3).
 
-**Empirical layer**: On-chain analysis (snapshot 17 June 2026) shows that BUIDL has 76 holders on Ethereum mainnet (roughly 25 of them dust wallets, leaving ~50 effective), a measured Gini coefficient of 0.866 (Top-3 holders = 55% of supply, Top-25 = 99.5%), and approximately 4 secondary transfers per day averaged over 26 months. The market microstructure is materially more concentrated than that of traditional HQLA reference assets.
+**Scope note**: independent analytical assessment under the stated framework and public documentation as of the snapshot date. This is not legal, regulatory, accounting, or investment advice; no affiliation with or endorsement by any issuer is implied; supervisory conclusions may differ in specific cases.
+
+**Empirical layer**: On-chain analysis (snapshot 17 June 2026) shows that BUIDL has 76 holders on Ethereum mainnet (25 of them dust wallets, leaving 51 effective), a Gini coefficient of 0.863 (constrained reconstruction), bounded by linear programming to [0.850, 0.885] across all distributions consistent with the measured concentration constraints (Top-3 = 55% of supply, Top-25 = 99.5%), and approximately 4 secondary transfers per day averaged over 26 months. The market microstructure is materially more concentrated than that of traditional HQLA reference assets.
 
 ---
 
@@ -28,7 +30,6 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 │
 ├── 02_empirical/
 │   ├── dune_queries.sql            # SQL queries for Dune Analytics
-│   ├── onchain_analysis.py         # Python concentration metrics
 │   ├── lorenz_real_data.py         # Lorenz curve + Gini from holder export
 │   ├── market_comparison.py        # Block C four-panel comparison figure
 │   ├── aum_timeseries.py           # AUM trajectory visualisation
@@ -99,10 +100,10 @@ bIB01 fails five contractual disqualifiers that BUIDL and OUSG do not:
 ### Empirical validation of Block C
 
 BUIDL on Ethereum mainnet, snapshot 17 June 2026:
-- 76 holders (roughly 25 dust wallets, ~50 effective)
+- 76 holders (roughly 25 dust wallets, ~51 effective)
 - $181M onchain AUM (approximately 8% of $2.28B multi-chain global; the bulk has migrated to Solana and other chains)
 - 14,046 cumulative transfers, of which 3,151 secondary (~4 secondary transfers per day)
-- Measured Gini coefficient: **0.866** (Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%)
+- Gini coefficient: **0.863** (constrained reconstruction; exact bounds [0.850, 0.885]; Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%)
 
 Compare to 1-year US Treasury Bill: ~100,000 holders worldwide, $500B+ daily volume, Gini ~0.50.
 
@@ -159,7 +160,7 @@ For bank treasurers needing to handle tokenised RWA exposures today (not HQLA bu
 
 ### For DeFi risk analysts
 - Use `02_empirical/dune_queries.sql` to run real-time concentration metrics
-- Adapt `02_empirical/onchain_analysis.py` for new products
+- Adapt `02_empirical/lorenz_real_data.py` and the Dune queries for new products
 - Track AUM, holder concentration, and transfer activity quarterly
 
 ### For bank treasurers
@@ -169,7 +170,7 @@ For bank treasurers needing to handle tokenised RWA exposures today (not HQLA bu
 
 ### For students and researchers
 - The matrix encodes the BCBS/CRR HQLA framework in machine-readable JSON
-- The Python notebook demonstrates Gini and Lorenz curve computation
+- `02_empirical/lorenz_real_data.py` demonstrates Gini, exact LP bounds, and Lorenz curve computation
 - The gradient diagram shows the regulatory evolution path
 
 ---
@@ -179,21 +180,22 @@ For bank treasurers needing to handle tokenised RWA exposures today (not HQLA bu
 To reproduce the empirical analysis:
 
 ```bash
-# Install dependencies
-pip install pandas matplotlib numpy
+pip install -r requirements.txt
 
-# Run the concentration analysis
-python 02_empirical/onchain_analysis.py
-
-# Generate the gradient diagram
+python 01_framework/scoring_heatmap.py       # verdict heatmap from the JSON matrix
+python 02_empirical/lorenz_real_data.py      # prints Gini 0.863 and recomputes the exact LP bounds [0.850, 0.885]
+python 02_empirical/market_comparison.py
+python 02_empirical/aum_timeseries.py
 python 03_gradient/gradient_diagram.py
 ```
+
+All five scripts embed their measured inputs and run offline; figures are written to `05_figures/`.
 
 To extract live on-chain data:
 1. Open a Dune Analytics account
 2. Copy queries from `02_empirical/dune_queries.sql`
 3. Adjust contract addresses if needed (verify via Etherscan)
-4. Export CSV and run the analysis notebook
+4. Compare the exported values against the constants embedded in the scripts
 
 ---
 

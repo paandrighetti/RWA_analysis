@@ -1,5 +1,40 @@
 # Changelog
 
+## v1.1.1 (2026-07-13) - honesty and consistency pass
+
+- Concentration reporting reframed: Top-3/10/25 shares and the 25 smallest
+  balances are measured; the scalar Gini (0.868) is computed on a constrained
+  reconstruction. Exact LP bounds under the same constraints give Gini in
+  [0.850, 0.885]; the point value moves from 0.866 to 0.868 once the
+  intra-Top-3 split is renormalised to the measured 55.22% aggregate; figure legend and all documents updated accordingly.
+- Removed the superseded v1.0 illustrative pipeline (`onchain_analysis.py`,
+  Pareto placeholders, unverified OUSG address).
+- Haircut calculator: corrected the aggregation docstring (multiplicative is
+  the LESS conservative bound) and now reports the additive bound alongside.
+- Bank implications: corrected the COREP C72 description, split ICAAP/ILAAP
+  responsibilities, tightened the bIB01 classification wording.
+- Framework wording: cascade rule flagged as a framework convention; gradient
+  L3 outcome stated as candidate Level 1 subject to standard criteria.
+- Added `requirements.txt`.
+- Reconstruction made constraint-exact: the former power-law blocks
+  interleaved across the Top-10 boundary (the sorted multiset showed
+  Top-10 = 83.5% against the measured 83.02%). Near-flat tilted blocks now
+  guarantee every Top-k constraint on the sorted result; the
+  reconstruction-dependent scalar moves 0.868 -> 0.863, and the
+  assumption-free LP bounds [0.850, 0.885] are the citable quantity.
+- Exact LP bounds computation embedded in `lorenz_real_data.py`
+  (scipy HiGHS): the [0.850, 0.885] claim is now recomputed at every run
+  instead of stated; `requirements.txt` updated accordingly.
+- README reproducibility section rewritten (legacy script and notebook
+  references removed; the five offline scripts listed).
+- Scope disclaimer added (README and article).
+- Effective holder count harmonised to ~51 (76 holders, 25 dust).
+- Continuous integration workflow added (compile + regenerate all figures).
+- Repository hygiene: `.gitignore` added, cached bytecode removed.
+
+
+---
+
 ## v1.1: 2026-06-17
 
 **Empirical data refresh via Dune Analytics queries.**
@@ -45,7 +80,7 @@ When reporting concentration metrics for tokenised assets:
 All v1.1 numbers are reproducible via:
 1. Running M2 in `02_empirical/dune_queries.sql` on Dune (returns the headline shares).
 2. Running M2-bis (returns per-holder balances).
-3. Feeding the M2-bis CSV to `02_empirical/lorenz_real_data.py` (computes Gini and plots the Lorenz curve).
+3. The M2-bis measured constraints (Top-k shares, 25 smallest balances) are embedded in `02_empirical/lorenz_real_data.py`; running it recomputes the Gini, the exact LP bounds, and the figure.
 4. Running M6 (cross-product comparison) for the BUIDL/OUSG/bIB01 transfer counts.
 
 Snapshot date for all v1.1 measurements: **17 June 2026**.
@@ -55,3 +90,4 @@ Snapshot date for all v1.1 measurements: **17 June 2026**.
 ## v1.0: 2026-05-11
 
 Initial publication. See `article/article.md` for the full framework, the 24-criteria eligibility matrix in `01_framework/`, and the original Pareto-anchored estimates that v1.1 refines with measured data.
+

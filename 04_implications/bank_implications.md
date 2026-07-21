@@ -19,7 +19,7 @@ Under Regulation (EU) 575/2013 (CRR), the Liquidity Coverage Ratio is computed a
 
 - **Numerator (HQLA)**: zero contribution. Tokenised treasury holdings cannot be included as Level 1, 2A, or 2B HQLA. They are reported "outside" the LCR numerator.
 - **Denominator (Net Cash Outflows)**: no direct impact. Holdings do not create outflow obligations.
-- **COREP C72 (LCR template)**: tokenised treasuries do not appear in the standard HQLA rows. They appear in the broader "Other Assets" section if reported at all.
+- **COREP C72 (liquid assets template)**: non-eligible instruments simply do not enter the C72 liquid-asset rows; there is no catch-all "other assets" HQLA line for them. Any monitoring of the position happens outside the HQLA stack (internal reporting and, where applicable, additional monitoring metrics), which is precisely the operational consequence of ineligibility.
 
 ### ILAAP and internal liquidity reporting
 
@@ -27,10 +27,10 @@ Within the Internal Liquidity Adequacy Assessment Process, tokenised treasuries 
 
 - *Not* cash and equivalents (insufficient settlement finality, restricted transferability)
 - *Not* sovereign debt holdings (wrapper introduces issuer and operational risk)
-- *Not* corporate bonds (legally distinct structures)
+- *Not* conventional corporate bonds for prudential bucketing: bIB01 is issuer debt (a tracker certificate), so the exposure class and risk weight must be confirmed under the applicable CRR provisions rather than assumed
 - A new category: "Tokenised RWA" or "Digital Asset Backed Securities", with sub-classification by product type (fund share, debt instrument, structured note)
 
-This classification choice has knock-on effects: internal stress testing, contingency funding plan, ICAAP risk categorisation. The treasury function should treat the establishment of this new category as a deliberate ALM committee decision, not a default operational classification.
+This classification choice has knock-on effects: internal stress testing, contingency funding plan, ICAAP/ILAAP risk categorisation (capital and operational aspects sit in ICAAP; liquidity, survival horizon and buffer policy sit in ILAAP). The treasury function should treat the establishment of this new category as a deliberate ALM committee decision, not a default operational classification.
 
 ### What this means in practice
 
@@ -57,7 +57,7 @@ I propose an internal haircut framework composed of four risk premiums, each adj
 | Settlement finality risk | 10-15% | No SFD coverage; settlement legally finalized at chain confirmation, vulnerable to reorganisation in extreme cases. |
 | Contract upgradeability risk | 3-5% | Admin keys risk; pause/freeze functions could be triggered by issuer in stress |
 | Issuer concentration risk | 5-10% | Single fund manager (BlackRock for BUIDL), single tokenisation provider (Securitize, Backed Finance), single chain dominance |
-| **Cumulative range** | **23-40%** | Applied multiplicatively or additively depending on ALM model preference |
+| **Cumulative range** | **23-40%** | Envelope across profiles, aggregation method (additive is the conservative bound) and stress overlay; the coded presets sit at roughly 27-32% multiplicative before overlay |
 
 These are not regulatory haircuts. They are internal management adjustments to reflect wrapper-specific risks that the regulatory framework does not yet price.
 
@@ -138,7 +138,7 @@ Treasurers should establish a quarterly monitoring routine on the following indi
 - Cross-border settlement pilots (JPMorgan / Mastercard / Ripple type collaborations)
 - DLT Pilot Regime authorisation pipeline (3 entities as of Q1 2026, more expected post-Commission amendments)
 
-## 7.5: ICAAP risk category mapping
+## 7.5: ICAAP/ILAAP risk category mapping
 
 The Internal Capital Adequacy Assessment Process should explicitly map tokenised RWA exposures to standard risk categories:
 
@@ -151,7 +151,7 @@ The Internal Capital Adequacy Assessment Process should explicitly map tokenised
 | Legal risk | Non-bankruptcy-remote structure for some products (bIB01 creditor cascade); jurisdictional uncertainty (BVI for BUIDL, Jersey for bIB01) | Pre-investment legal opinion; documentation review per ALM committee |
 | Reputation risk | Public chain transparency means all holdings are visible to competitors and journalists | Communication strategy; coordinated disclosure |
 
-The total ICAAP capital allocation for tokenised RWA exposures should reflect the cumulative materiality of these risks. For a typical European bank holding tokenised treasuries at 1-2% of liquid assets, this would translate to a marginal capital impact under Pillar 2.
+Liquidity-dimension items above belong to the ILAAP; the total ICAAP capital allocation for tokenised RWA exposures should reflect the cumulative materiality of these risks. For a typical European bank holding tokenised treasuries at 1-2% of liquid assets, this would translate to a marginal capital impact under Pillar 2.
 
 ## 7.6: "If I were the treasurer today"
 

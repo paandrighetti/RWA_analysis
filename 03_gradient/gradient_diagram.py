@@ -1,5 +1,5 @@
 """
-RWA HQLA Framework — Gradient L0 to L3 Visualisation
+RWA HQLA Framework: Gradient L0 to L3 Visualisation
 Staircase diagram for Section 6 of the publication article.
 
 Output: 05_figures/gradient_staircase.png (high-res for article)
@@ -129,7 +129,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
         )
         ax.add_patch(header)
 
-        # Title (white on header — top line)
+        # Title (white on header: top line)
         ax.text(
             lev["x"] + 0.15, lev["y"] + lev["h"] - 0.22,
             lev["title"],
@@ -137,7 +137,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
             color="white", va="center", ha="left"
         )
 
-        # Timeline (white on header — bottom line, smaller font)
+        # Timeline (white on header: bottom line, smaller font)
         ax.text(
             lev["x"] + 0.15, lev["y"] + lev["h"] - 0.5,
             f"Timeline: {lev['timeline']}",

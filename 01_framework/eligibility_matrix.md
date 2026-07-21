@@ -13,7 +13,7 @@ Each criterion is rated against three products on a 4-level scale:
 - **Fail**, Criterion materially not satisfied.
 - **N/A**, Criterion does not apply (e.g. equity criterion to fund-share product).
 
-Block A (Eligibility Category) is **cascading**: any Fail closes the cascade for that level, and the asset fails Block A in aggregate. Blocks B, C, D are independent. Overall HQLA verdict requires Pass in A + Pass in B + Pass in C; Block D collects wrapper-specific frictions that may downgrade Level under qualitative supervisory review.
+Block A (Eligibility Category) is **cascading** (a conservative gating convention of this framework, not statutory language): any Fail closes the cascade for that level, and the asset fails Block A in aggregate. Blocks B, C, D are independent. Overall HQLA verdict requires Pass in A + Pass in B + Pass in C; Block D collects wrapper-specific frictions that may downgrade Level under qualitative supervisory review.
 
 ## Block A: Eligibility Category Cascade
 

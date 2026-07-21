@@ -1,6 +1,6 @@
 """
-RWA HQLA Framework — Internal Haircut Calculator
-Version 1.0 — 2026-05-11
+RWA HQLA Framework: Internal Haircut Calculator
+Version 1.0: 2026-05-11
 
 Implements the internal haircut framework proposed in 04_implications/bank_implications.md.
 Computes a cumulative internal management haircut for tokenised RWA exposures,
@@ -42,8 +42,11 @@ class HaircutComponents:
     def total_multiplicative(self) -> float:
         """
         Multiplicative aggregation: 1 - product of (1 - component).
-        More conservative than additive for large haircuts because it
-        compounds residual values rather than summing raw percentages.
+        NOTE: for non-negative components this is LOWER than (or equal to) the
+        additive sum, i.e. LESS conservative: 1 - prod(1-h_i) <= sum(h_i).
+        It is used as the base because it models compounding of residual value
+        and cannot exceed 100%. The additive sum is reported alongside as the
+        conservative upper bound.
         """
         residual = 1.0
         for c in (self.custody_chain, self.settlement_finality,
@@ -118,6 +121,7 @@ def compute_haircut(
 
     return {
         "product": product,
+        "haircut_additive_pct": round(components.total_additive() * 100, 1),
         "method": method,
         "components": {
             "custody_chain": components.custody_chain,
@@ -166,7 +170,7 @@ def apply_haircut_to_position(
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("RWA HQLA Framework — Internal Haircut Calculator")
+    print("RWA HQLA Framework: Internal Haircut Calculator")
     print("=" * 70)
     print("\nBase haircuts by product (multiplicative aggregation):\n")
 
