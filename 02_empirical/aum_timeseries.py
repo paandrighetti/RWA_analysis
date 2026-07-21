@@ -119,6 +119,7 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
 
 
 if __name__ == "__main__":
+    import os as _os; _os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
     import os
     os.makedirs("05_figures", exist_ok=True)
     plot_aum_timeseries()

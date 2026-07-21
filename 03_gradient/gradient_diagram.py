@@ -244,6 +244,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
 
 
 if __name__ == "__main__":
+    import os as _os; _os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
     import os
     os.makedirs("./05_figures", exist_ok=True)
     draw_gradient_diagram()

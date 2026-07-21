@@ -259,7 +259,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 
 ---
 
-*Framework v1.1.1 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
+*Framework v1.1.2 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
 
 *Author: Pierre-Antoine Andrighetti*
 *Repository: https://github.com/paandrighetti/RWA_analysis*

@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.1-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.2-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 

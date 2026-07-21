@@ -1,6 +1,6 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1.1 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
+**Version**: 1.1.2 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
 **Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`onchain_analysis.py` and `lorenz_real_data.py`).
 

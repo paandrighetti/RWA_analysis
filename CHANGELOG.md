@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.2 (2026-07-20)
+
+- Article title and conclusions scoped to the three products examined
+  (previously generalised to all tokenised RWAs); the supervisory
+  sentence made conditional (classification may differ).
+- Editorial planning file removed from the tree.
+- Figure scripts made runnable from any directory (root-anchored
+  output paths under the main guard).
+- Data snapshot unchanged (2026-06-17); no measured value changes.
+
+---
+
 ## v1.1.1 (2026-07-13) - honesty and consistency pass
 
 - Concentration reporting reframed: Top-3/10/25 shares and the 25 smallest

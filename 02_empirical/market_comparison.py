@@ -98,6 +98,7 @@ def plot_comparison(output_path="05_figures/market_comparison.png"):
 
 
 if __name__ == "__main__":
+    import os as _os; _os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
     import os
     os.makedirs("05_figures", exist_ok=True)
     plot_comparison()
