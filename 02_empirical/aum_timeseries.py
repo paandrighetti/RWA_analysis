@@ -22,7 +22,8 @@ import numpy as np
 # ============================================================================
 # BUIDL: launched March 2024, milestones from press releases / RWA.xyz
 # OUSG: launched Jan 2023, ~$770M by April 2026
-# bIB01: launched 2023, capped at CHF 100M per Final Terms
+# Backed product suite: public platform-level milestones. These values are
+# not a bIB01-specific AUM series and must not be interpreted as such.
 # ============================================================================
 
 BUIDL_ANCHORS = [
@@ -42,7 +43,7 @@ OUSG_ANCHORS = [
     ("2026-04-30", 770_000_000),
 ]
 
-BIB01_ANCHORS = [
+BACKED_SUITE_ANCHORS = [
     ("2023-04-15", 0),
     ("2023-10-31", 37_000_000),
     ("2024-12-31", 110_000_000),
@@ -63,7 +64,7 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
     series = [
         ("BUIDL (BlackRock)", BUIDL_ANCHORS, "#1f77b4"),
         ("OUSG (Ondo)", OUSG_ANCHORS, "#ff7f0e"),
-        ("bIB01 (Backed)", BIB01_ANCHORS, "#2ca02c"),
+        ("Backed product suite (not bIB01-specific)", BACKED_SUITE_ANCHORS, "#2ca02c"),
     ]
 
     for label, anchors, color in series:
@@ -81,7 +82,7 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
     ax.set_xlabel("Date", fontsize=11)
     ax.set_ylabel("Assets Under Management (USD billions)", fontsize=11)
     ax.set_title(
-        "Tokenised Treasury AUM Trajectory (2024-2026)\n"
+        "Reported Tokenised-Treasury AUM Milestones (2024-2026)\n"
         "Anchored on public reporting milestones, snapshot 2026-06-17",
         fontsize=13, pad=12
     )
@@ -106,7 +107,7 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
     fig.text(
         0.5, 0.005,
         "Source: BlackRock press releases, Ondo Finance reporting, Backed Assets Final Terms, RWA.xyz, CoinGecko. "
-        "Intermediate values interpolated for visualisation.",
+        "Intermediate values interpolated for visualisation. The Backed line is product-suite AUM, not bIB01-specific.",
         ha="center", fontsize=8, style="italic", color="#888"
     )
 

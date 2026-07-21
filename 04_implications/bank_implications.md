@@ -136,7 +136,7 @@ Treasurers should establish a quarterly monitoring routine on the following indi
 - New product launches (Superstate, Hashnote, OpenEden, etc.) and their structural choices
 - Existing product restructurings (BUIDL share class additions, OUSG fund-of-funds composition changes)
 - Cross-border settlement pilots (JPMorgan / Mastercard / Ripple type collaborations)
-- DLT Pilot Regime authorisation pipeline (3 entities as of Q1 2026, more expected post-Commission amendments)
+- DLT Pilot Regime authorisation pipeline (six infrastructures authorised by March 2026; current list maintained by ESMA)
 
 ## 7.5: ICAAP/ILAAP risk category mapping
 

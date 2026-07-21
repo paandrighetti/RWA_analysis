@@ -2,13 +2,13 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.2-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.1-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 
 ## TL;DR
 
-Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo OUSG ($770M), Backed bIB01 (~$250M), are evaluated against a 24-criteria HQLA eligibility framework derived from BCBS 238, CRR (EU) 575/2013, and Commission Delegated Regulation (EU) 2015/61.
+Three widely cited tokenised treasury products, BlackRock BUIDL, Ondo OUSG, and Backed bIB01, are evaluated against a 24-criteria HQLA eligibility framework derived from BCBS 238, CRR (EU) 575/2013, and Commission Delegated Regulation (EU) 2015/61.
 
 **Verdict**: None of the three qualifies as HQLA Level 1, 2A, or 2B under Basel III LCR. The framework identifies the structural changes required to reach progressively higher eligibility levels (L0 → L3).
 
@@ -35,6 +35,8 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 │   ├── aum_timeseries.py           # AUM trajectory visualisation
 │   ├── DUNE_SETUP_GUIDE.md         # Reproduce the live Dune dashboard
 │   └── empirical_findings.md       # Synthesis of empirical findings
+├── data/
+│   └── snapshot_metrics.json       # Canonical measured and estimated snapshot inputs
 │
 ├── 03_gradient/
 │   ├── gradient_deepdive.md        # L0 → L3 roadmap analysis
@@ -46,7 +48,7 @@ Three of the largest tokenised treasury products, BlackRock BUIDL ($2.28B), Ondo
 │   └── limits_matrix.json          # Default limits configuration
 │
 ├── 05_figures/
-│   ├── aum_timeseries.png/svg      # AUM trajectory 2024-2026
+│   ├── aum_timeseries.png/svg      # Reported AUM milestones; Backed line is product-suite, not bIB01-specific
 │   ├── scoring_heatmap.png         # 24 criteria across 3 products heatmap
 │   ├── lorenz_buidl.png (+_wide)   # BUIDL concentration Lorenz curve
 │   ├── market_comparison.png       # Block C empirical validation
@@ -105,7 +107,7 @@ BUIDL on Ethereum mainnet, snapshot 17 June 2026:
 - 14,046 cumulative transfers, of which 3,151 secondary (~4 secondary transfers per day)
 - Gini coefficient: **0.863** (constrained reconstruction; exact bounds [0.850, 0.885]; Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%)
 
-Compare to 1-year US Treasury Bill: ~100,000 holders worldwide, $500B+ daily volume, Gini ~0.50.
+Direct comparison with traditional securities is not like-for-like: blockchain addresses are not equivalent to beneficial owners or brokerage accounts. The on-chain metrics are therefore used as product-level evidence, not as a harmonised cross-market Gini benchmark.
 
 ---
 
@@ -115,7 +117,7 @@ Compare to 1-year US Treasury Bill: ~100,000 holders worldwide, $500B+ daily vol
 |---|---|---|---|
 | **L0** | Status quo (June 2026) | Today | Not HQLA |
 | **L1** | UCITS MMF restructuration | 12-30 months | HQLA Level 1/2A via Art. 15 look-through |
-| **L2** | DLT-issued via authorised CSD | 6-24 months | ECB collateral eligibility (operational since 30 March 2026) |
+| **L2** | DLT-issued via authorised CSD | 6-24 months | Potential ECB collateral route for assets that also satisfy the standard eligibility and settlement criteria |
 | **L3** | Native sovereign DLT | 5-7 years | Direct Level 1 HQLA |
 
 The L1+L2 combination (24-36 months) is the most credible institutional roadmap for BUIDL, with BlackRock as the natural executor given its existing UCITS infrastructure in Luxembourg and Ireland.

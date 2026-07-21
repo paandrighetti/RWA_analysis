@@ -4,6 +4,9 @@ Data extracted from Dune M2-bis query on 17 June 2026.
 Replaces the previously estimated Pareto-based distribution.
 """
 
+import json
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
@@ -48,11 +51,15 @@ SMALLEST_25 = [
     1.5,
 ]
 
-TOTAL_SUPPLY = 181_293_771.96
-TOP3_SHARE   = 0.5522
-TOP10_SHARE  = 0.8302
-TOP25_SHARE  = 0.9954
-N_HOLDERS    = 76
+DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "snapshot_metrics.json"
+with DATA_PATH.open("r", encoding="utf-8") as fh:
+    _SNAPSHOT = json.load(fh)["BUIDL"]
+
+TOTAL_SUPPLY = _SNAPSHOT["aum_ethereum_usd"]
+TOP3_SHARE = _SNAPSHOT["top3_share"]
+TOP10_SHARE = _SNAPSHOT["top10_share"]
+TOP25_SHARE = _SNAPSHOT["top25_share"]
+N_HOLDERS = _SNAPSHOT["holders_raw"]
 
 
 def _tilted_flat_split(total: float, n: int, upper: float, lower: float) -> list[float]:

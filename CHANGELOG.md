@@ -1,24 +1,12 @@
 # Changelog
 
-## v1.1.2 (2026-07-20)
-
-- Article title and conclusions scoped to the three products examined
-  (previously generalised to all tokenised RWAs); the supervisory
-  sentence made conditional (classification may differ).
-- Editorial planning file removed from the tree.
-- Figure scripts made runnable from any directory (root-anchored
-  output paths under the main guard).
-- Data snapshot unchanged (2026-06-17); no measured value changes.
-
----
-
 ## v1.1.1 (2026-07-13) - honesty and consistency pass
 
 - Concentration reporting reframed: Top-3/10/25 shares and the 25 smallest
-  balances are measured; the scalar Gini (0.868) is computed on a constrained
-  reconstruction. Exact LP bounds under the same constraints give Gini in
-  [0.850, 0.885]; the point value moves from 0.866 to 0.868 once the
-  intra-Top-3 split is renormalised to the measured 55.22% aggregate; figure legend and all documents updated accordingly.
+  balances are measured. The historical 0.866 point estimate was first
+  corrected to 0.868 after Top-3 renormalisation, then to the final 0.863 once
+  rank blocks were made constraint-exact. Exact LP bounds under the measured
+  constraints give Gini in [0.850, 0.885]; these bounds are the citable result.
 - Removed the superseded v1.0 illustrative pipeline (`onchain_analysis.py`,
   Pareto placeholders, unverified OUSG address).
 - Haircut calculator: corrected the aggregation docstring (multiplicative is
@@ -65,7 +53,7 @@ All concentration and volume metrics in Section 5 of the article have been repla
 - Top-3 share: estimated 63% → measured 55.2%.
 
 **Section 5 (empirical layer)**:
-- Gini coefficient: estimated 0.77 → measured **0.866**.
+- Gini coefficient: estimated 0.77 → historically reported **0.866**; superseded by the v1.1.1 constrained reconstruction (0.863) and exact bounds [0.850, 0.885].
 - Top concentration shares: Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%.
 - Volume data: replaced "$0 24h volume" snapshot with cumulative transfer counts (BUIDL: 14,046 total, 3,151 secondary; OUSG: 2,119 / 851; bIB01: 510 / 492).
 - **Added bIB01 paradox discussion**: 96% secondary share ratio but only 0.43 transfers per day in absolute terms.
@@ -74,7 +62,7 @@ All concentration and volume metrics in Section 5 of the article have been repla
 
 ### Figures
 
-**Figure 2 (Lorenz curve)**: regenerated using real per-holder data from M2-bis Dune query. New Gini = 0.866 (vs estimated 0.77). Curve shape is sharper (more L-shaped) than the previous Pareto fit.
+**Figure 2 (Lorenz curve)**: the v1.1 figure initially reported 0.866 from incomplete holder-level reconstruction. v1.1.1 supersedes that scalar with a constraint-exact reconstruction of 0.863 and exact feasible bounds [0.850, 0.885].
 
 ### Methodology evolution
 

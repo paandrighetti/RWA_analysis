@@ -259,11 +259,11 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 **Resulting HQLA potential**: Level 1 or 2A via DR 2015/61 art. 15 UCITS look-through.
 
 ### L2: DLT Pilot Regime compliance
-**Required structural change**: issuance via authorised DLT-SS or DLT-TSS under Regulation (EU) 2022/858. As of 2026-Q1, three entities authorised (21X AG on Polygon, 360X AG, one DLT-SS), none of BUIDL, OUSG, bIB01 operate under DLT-PR.
+**Required structural change**: issuance via authorised DLT-SS or DLT-TSS under Regulation (EU) 2022/858. By March 2026, six DLT market infrastructures had been authorised under the regime; ESMA maintains the current list. None of BUIDL, OUSG, or bIB01 is analysed here as operating through an authorised DLT market infrastructure.
 
-**Timeline**: 18-24 months; depending on Commission EU review (report due 24 March 2026) and possible extension/permanent regime conversion.
+**Timeline**: 18-24 months; dependent on issuer execution, authorisation capacity, and legislative follow-up to ESMA's 2025 review of the regime.
 
-**Resulting HQLA potential**: settlement finality argument resolved; legal certainty under EU law; collateral eligibility ECB discussion opens.
+**Resulting HQLA potential**: stronger settlement-finality and legal-certainty arguments. ECB collateral eligibility remains conditional on the asset satisfying the standard Eurosystem eligibility and settlement requirements; DLT issuance alone is insufficient.
 
 ### L3: Native sovereign DLT issuance
 **Required structural change**: tokens issued directly by sovereign treasury (US Treasury, German Finance Ministry, France AFT) via authorised DLT-SS.
@@ -275,7 +275,7 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 ## Limitations and caveats
 
 1. This framework is based on **public documentation only**. Private Placement Memoranda (PPMs) for BUIDL and Ondo I LP are not public; analysis relies on Form D filings, regulatory compliance pages, and issuer press releases.
-2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at snapshot date. Additionally, the First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. This change is consequential for the gradient analysis: Kraken lacks the UCITS management infrastructure that would be required for an L1 pivot.
+2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at snapshot date. the First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. This change is consequential for the gradient analysis: Kraken lacks the UCITS management infrastructure that would be required for an L1 pivot.
 3. Scoring is qualitative judgement based on regulatory text interpretation. Final supervisory verdict (PRA, ACPR, BaFin, CSSF, etc.) may differ in specific cases. Framework is intended as analytical guide, not regulatory advice.
 4. Product structures evolve. BlackRock filed new tokenised fund offerings on 9 May 2026; any post-publication structural change requires framework re-application.
 5. Stress event track record is insufficient (longest = BUIDL since March 2024). No supervisory-relevant 30-day stress observed. C.5 scoring is N/A.

@@ -20,7 +20,7 @@ The verdict is straightforward. The path forward is not.
 
 The tokenised treasury market has grown from approximately zero in early 2023 to roughly $12.9 billion in cumulative onchain value by April 2026, with US Treasury products accounting for the largest single category. This is no longer a marginal experimental segment of the digital asset universe, it is a structurally relevant slice of institutional cash management infrastructure.
 
-The regulatory environment is in active review mode. The European Banking Authority published its report on tokenised deposits in December 2024. The European Securities and Markets Authority submitted its report on the functioning of the DLT Pilot Regime to the European Commission on 25 June 2025, with the formal Commission review due 24 March 2026. The European Central Bank's Governing Council decided on 27 January 2026 that the Eurosystem will accept marketable assets issued in CSDs using DLT-based services as eligible collateral for Eurosystem credit operations as of 30 March 2026. The Federal Reserve, Office of the Comptroller of the Currency, and Federal Deposit Insurance Corporation issued an interagency FAQ on 5 March 2026 clarifying that the capital rule is technology-neutral and the use of distributed ledger technology to record ownership or facilitate transfers does not, by itself, alter the risk profile of the underlying security.
+The regulatory environment is in active review mode. The European Banking Authority published its report on tokenised deposits in December 2024. The European Securities and Markets Authority submitted its report on the functioning of the DLT Pilot Regime to the European Commission on 25 June 2025 and recommended amendments to improve uptake and clarify the regime's long-term status. The European Central Bank's Governing Council decided on 27 January 2026 that, from 30 March 2026, marketable assets issued in CSDs using DLT-based services can enter the Eurosystem collateral framework when they also satisfy the standard eligibility, settlement, and collateral-management requirements. The Federal Reserve, Office of the Comptroller of the Currency, and Federal Deposit Insurance Corporation issued an interagency FAQ on 5 March 2026 clarifying that the capital rule is technology-neutral and the use of distributed ledger technology to record ownership or facilitate transfers does not, by itself, alter the risk profile of the underlying security.
 
 These are not minor procedural updates. They are structural moves that reshape how prudential frameworks will treat tokenised assets going forward. But none of them addresses the central question this article tackles: under the existing Basel III LCR framework, which has not been amended for tokenised instruments since the 2018/1620 update of DR 2015/61, are tokenised treasuries HQLA-eligible?
 
@@ -53,7 +53,7 @@ The framework deliberately uses primary regulatory references in each cell. Ever
 The three products studied appear interchangeable at the marketing level: all three offer tokenised exposure to short-duration US Treasury risk. Their legal structures are radically different, and these differences drive everything that follows in the eligibility analysis.
 
 ![Figure 0: Tokenised treasury AUM trajectory 2024-2026](../05_figures/aum_timeseries.png)
-*Figure 0: AUM growth of the three products. BUIDL reached $2.4B by August 2025; the gap between its $2.28B AUM and its $0 secondary 24h volume is the empirical paradox this framework dissects. bIB01 is capped at CHF 100M per Final Terms, explaining its lower trajectory.*
+*Figure 0: Reported AUM milestones. BUIDL reached $2.4B by August 2025; the gap between its reported AUM and limited observable secondary activity is the empirical paradox this framework examines. The Backed line is a product-suite series and must not be read as bIB01-specific AUM.*
 
 ### 3.1 BUIDL: BlackRock USD Institutional Digital Liquidity Fund Ltd
 
@@ -212,7 +212,7 @@ Five limitations bear explicit mention. The analysis relies on public documentat
 
 The framework can be applied to other products. Superstate USTB, Hashnote USYC, OpenEden TBILL, WisdomTree Government Money Market Digital Fund, and Janus Henderson tokenised funds can all be run through the same 24-criteria assessment, the same four-block cascade, and the same empirical layer. The matrix in JSON format is designed for programmatic re-application. The Dune Analytics queries can be re-run against any contract address.
 
-The most consequential near-term development to monitor is the European Commission's review of the DLT Pilot Regime due 24 March 2026, the EBA Opinion on tokenised HQLA (anticipated but not yet published), the practical implementation of the ECB 30 March 2026 DLT-based collateral eligibility framework, and the launch of the Pontes pilot in Q3 2026. Any of these could materially shift the scoring of L2 or L3 in subsequent versions of the framework.
+The most consequential near-term developments to monitor are legislative follow-up to ESMA's 2025 DLT Pilot review, any formal EBA position relevant to tokenised HQLA, practical use of the ECB framework that has accepted qualifying CSD-issued DLT assets since 30 March 2026, and the Pontes pilot planned for Q3 2026. Any of these could materially shift the scoring of L2 or L3 in subsequent versions of the framework.
 
 The path forward for tokenised treasuries to become HQLA-grade assets exists. It runs through UCITS MMF restructuration, DLT Pilot Regime authorisation, and ultimately native sovereign DLT issuance. It is neither inevitable nor immediate. But it is structurally available, and the regulatory infrastructure now in place, particularly the operational ECB DLT collateral framework as of 30 March 2026, makes the path materially more credible than it appeared even twelve months ago.
 
@@ -259,7 +259,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 
 ---
 
-*Framework v1.1.2 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
+*Framework v1.1.1 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
 
 *Author: Pierre-Antoine Andrighetti*
 *Repository: https://github.com/paandrighetti/RWA_analysis*

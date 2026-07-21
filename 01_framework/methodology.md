@@ -93,7 +93,7 @@ Every cell in the matrix is anchored to either:
 - A specific statutory provision (e.g. DR 2015/61 Art. 10(1)(a) for direct sovereign claim, CRR Art. 122 for unrated corporate treatment), OR
 - A specific contractual clause from the product's primary documentation (Final Terms, Form D filing, Private Placement Memorandum, press release).
 
-The methodology is therefore auditable: any reader can verify each Fail against the cited source. The conclusions are mechanically derived from the regulatory texts and the product documentation, not from subjective judgement.
+The methodology is designed to be auditable: each verdict should be traceable to a cited source and an explicit interpretation. The scoring still involves legal and supervisory judgement; the matrix makes that judgement inspectable rather than eliminating it.
 
 ## Reproducibility
 
@@ -101,7 +101,7 @@ To apply the framework to a new product:
 1. Gather the product's primary documentation (prospectus, Final Terms, fund formation documents).
 2. Assess each of the 24 criteria, citing the relevant source per cell.
 3. Run the empirical analysis using the Dune queries (`02_empirical/dune_queries.sql`) adjusted for the new contract address.
-4. Compute concentration metrics with `02_empirical/onchain_analysis.py`.
+4. Compute concentration metrics with `02_empirical/lorenz_real_data.py` and the measured constraints from the Dune queries.
 5. Apply the verdict logic.
 
 The matrix in JSON format (`eligibility_matrix.json`) is designed for programmatic re-application.

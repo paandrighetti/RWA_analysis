@@ -81,7 +81,7 @@ This is *not* HQLA eligibility under Basel III, it is **central bank collateral 
 
 ### Current state of DLT Pilot Regime authorisations
 
-Three EU entities are authorised under the DLT Pilot Regime (Regulation (EU) 2022/858):
+Six DLT market infrastructures had been authorised under the DLT Pilot Regime by March 2026. ESMA maintains the current list; the examples below are illustrative rather than exhaustive:
 - **CSD Prague**: DLT-SS, authorised 11 October 2024
 - **21X AG**: DLT-TSS, authorised 3 December 2024, operates on Polygon
 - **360X AG**: DLT-MTF, authorised 29 April 2025

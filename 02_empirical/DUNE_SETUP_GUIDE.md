@@ -58,7 +58,7 @@ If your numbers differ materially from the article, that's expected, the snapsho
 
 4. Save as `RWA_M2_holders_concentration_BUIDL`. Fork for OUSG and bIB01.
 
-5. **Optional: Lorenz curve data**. Create a second query using the commented-out block in `dune_queries.sql` (the "Companion query" section). Save as `RWA_M2_lorenz_data_BUIDL`. Export to CSV via the download button, this feeds the Python notebook `onchain_analysis.py` for the high-resolution Lorenz curve in Figure 2 of the article.
+5. **Optional: Lorenz curve data**. Create a second query using the commented-out block in `dune_queries.sql` (the "Companion query" section). Save as `RWA_M2_lorenz_data_BUIDL`. Export the holder-level result or record the Top-3/Top-10/Top-25 constraints and smallest balances. `lorenz_real_data.py` uses those inputs to recompute the constrained reconstruction, exact LP bounds, and Figure 2.
 
 ---
 

@@ -1,8 +1,8 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1.2 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
+**Version**: 1.1.1 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
-**Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`onchain_analysis.py` and `lorenz_real_data.py`).
+**Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`lorenz_real_data.py`).
 
 ## Executive summary
 
@@ -57,7 +57,7 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 | Metric | Value | Source |
 |---|---|---|
 | Contract Ethereum | `0xCA30c93B02514f86d5C86a6e375E3A330B435Fb5` | bIB01 Final Terms |
-| AUM (Backed combined) | ~$250M+ | CV5 Capital |
+| AUM (Backed product suite, not bIB01-specific) | ~$250M+ | CV5 Capital |
 | Max issue volume per Final Terms | CHF 100,000,000 | FMA filing |
 | Holders Ethereum mainnet | ~35 | Dune 2026-06-17 |
 | Cumulative transfers Ethereum | 510 (492 secondary, 96%) | Dune 2026-06-17 |
@@ -77,7 +77,7 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 | C.2 Active and sizable market, concentration dimension | Fail (qualitative) | Fail (Gini 0.863, Top-3 = 55%) | **Strengthens** |
 | C.3 Committed market makers | Fail | Fail (no on-chain MMs identified; AMM presence minimal due to whitelist) | **Strengthens** |
 
-The empirical layer **does not change the verdict**, but it makes the conclusion *unassailable* under any supervisory review.
+The empirical layer does not change the framework verdict. It strengthens the market-liquidity evidence, while the final classification remains subject to supervisory interpretation and the limitations stated in the article.
 
 ## Comparison with traditional HQLA proxies
 

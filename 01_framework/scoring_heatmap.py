@@ -28,16 +28,33 @@ COLORS = ["#e8e8e8", "#d62728", "#ff9933", "#2ca02c"]
 
 
 def normalize_verdict(verdict_raw: str) -> str:
-    """Map non-standard verdicts (Block D descriptive strings) to canonical scale."""
+    """Map explicitly documented descriptive Block-D values to the scale.
+
+    Unknown values raise instead of being silently converted to ``Fail``.
+    """
     if verdict_raw in VERDICT_TO_VALUE:
         return verdict_raw
-    v = verdict_raw.lower().strip()
-    if "1 layer" in v: return "Pass"
-    if "2 layer" in v: return "Conditional"
-    if any(s in v for s in ["3 layer", "4 layer", "5 layer"]): return "Fail"
-    if v in ("yes", "true"): return "Fail"
-    if v in ("no", "false"): return "Pass"
-    return "Fail"
+    aliases = {
+        "0 layers": "Pass",
+        "1 layer": "Pass",
+        "2 layers": "Conditional",
+        "3 layers": "Fail",
+        "4 layers": "Fail",
+        "5 layers": "Fail",
+        "standard fund mechanics": "Pass",
+        "standard limitation": "Conditional",
+        "not assessed (implicit non-eligible)": "N/A",
+        "fail (explicit)": "Fail",
+        "yes": "Fail",
+        "true": "Fail",
+        "no": "Pass",
+        "false": "Pass",
+    }
+    key = verdict_raw.lower().strip()
+    if key in aliases:
+        return aliases[key]
+    raise ValueError(f"Unknown verdict value: {verdict_raw!r}")
+
 
 
 def load_matrix(path):

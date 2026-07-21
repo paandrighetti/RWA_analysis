@@ -1,8 +1,8 @@
 {
   "framework": {
     "name": "RWA HQLA Eligibility Framework",
-    "version": "1.0",
-    "date": "2026-05-11",
+    "version": "1.1.1",
+    "date": "2026-07-21",
     "scope": "Tokenised Real-World Assets — HQLA eligibility under Basel III LCR",
     "products_assessed": ["BUIDL", "OUSG", "bIB01"],
     "regulatory_basis": [
@@ -15,7 +15,7 @@
       "Directive 98/26/EC (SFD)"
     ],
     "scoring_scale": ["Pass", "Conditional", "Fail", "N/A"],
-    "methodology": "Block A cascades (any Fail closes the level). Blocks B, C, D independent. Overall HQLA verdict requires Pass in A + B + C. Block D collects wrapper-specific frictions for qualitative supervisory review."
+    "methodology": "Block A tests alternative eligibility routes and closes a route when a mandatory criterion fails. Block C tests market-liquidity requirements. Block B contains operational requirements that must be satisfied in use but may be remediable; Block D is a qualitative wrapper-friction overlay. Final classification remains subject to supervisory judgement."
   },
   "products": {
     "BUIDL": {
@@ -209,7 +209,7 @@
           "name": "Active and sizable market with low concentration",
           "reference": "BCBS 238 §24(d)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "76 holders Ethereum mainnet (≈50 effective after dust filtering), Top-3 = 55%, Gini = 0.866. 14,046 total transfers / 3,151 secondary over 26 months = ~4 secondary tx/day. Dune snapshot 2026-06-17."},
+            "BUIDL": {"verdict": "Fail", "justification": "76 holders on Ethereum mainnet (approximately 51 effective after dust filtering); Top-3 = 55.22%, constrained-reconstruction Gini = 0.863, exact feasible bounds [0.850, 0.885]. 14,046 total transfers / 3,151 secondary over 26 months = approximately 4 secondary transfers/day. Dune snapshot 2026-06-17."},
             "OUSG": {"verdict": "Fail", "justification": "2,119 total / 851 secondary transfers over 41 months = ~0.7 secondary tx/day. Dune snapshot 2026-06-17."},
             "bIB01": {"verdict": "Conditional", "justification": "Empirical paradox: 510 total / 492 secondary = 96% secondary share (highest of the three, structural distinction as debt instrument vs whitelisted fund share). However, only 0.43 secondary tx/day in absolute terms. Ratio nuances binary Fail; absolute volume still insufficient for HQLA. Dune snapshot 2026-06-17."}
           }
