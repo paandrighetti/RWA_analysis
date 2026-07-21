@@ -1,15 +1,12 @@
-# S6: Implications for Bank Treasurers: A Practical Framework
+# Implications for Bank Treasurers: An Illustrative Analytical Framework
 
-**Version**: 1.0, 2026-05-11
-**Status**: source material for Section 7 of article (target 400 words in final draft, full content here is ~2200 words)
-**Editorial voice**: analytical for framework sections, first-person for recommendations ("If I were the treasurer today...")
-**NDA scope**: strictly limited to hypothetical analyst reasoning; no reference to specific institutional practices
+**Version**: 1.1.2, 2026-07-21
 
 ## Why this section matters
 
-Tokenised treasuries are not HQLA today. But they are not excluded from a European or US bank's balance sheet either. Treasurers and ALM teams need a working classification, valuation, and limits framework, *now*, pending the regulatory evolution described in Section 6 (gradient). The absence of an authoritative prudential treatment does not absolve treasurers of the need to make decisions.
+Under the assessment in this repository, the three products are not HQLA today. They may still be considered for other permitted balance-sheet purposes, subject to the institution's accounting, legal, prudential and risk-governance framework.
 
-This section proposes a practical framework, with explicit numerical proposals that should be re-calibrated by each institution's ALM committee.
+> **Use of this note.** The numerical ranges below are illustrative stress-test inputs for analytical discussion. They are not empirically calibrated recommendations, regulatory haircuts, suitable exposure limits or a model policy for any institution.
 
 ## 7.1: Current prudential classification
 
@@ -49,7 +46,7 @@ The €50 million is therefore a *yielding* asset (with returns aligned to short
 
 Since tokenised treasuries are not HQLA, the standard regulatory haircuts (0% Level 1, 15% Level 2A, 25-50% Level 2B) do not apply by reference. But treasurers nonetheless need a way to value the asset for internal liquidity buffer purposes, particularly if the holding is to be considered part of a *contingency* liquidity reserve (even if not LCR-eligible).
 
-I propose an internal haircut framework composed of four risk premiums, each adjustable per product and per ALM committee judgement:
+The following table illustrates four wrapper-risk components that an institution could test. The ranges are scenario inputs, not calibrated target haircuts:
 
 | Risk component | Haircut range | Rationale |
 |---|---|---|
@@ -61,22 +58,17 @@ I propose an internal haircut framework composed of four risk premiums, each adj
 
 These are not regulatory haircuts. They are internal management adjustments to reflect wrapper-specific risks that the regulatory framework does not yet price.
 
-### Reference points for calibration
+### Reference point and calibration warning
 
-For comparison:
-- Level 2B HQLA receives a regulatory 25-50% haircut for fully eligible assets
-- A typical bank's internal buffer haircut on a Money Market Fund unit (not HQLA-eligible) is 10-15%
-- A typical bank's internal haircut on corporate bonds rated CQS2 (not HQLA-eligible) is 10-20%
-
-A cumulative 20-30% internal haircut on tokenised treasuries places them somewhere between an MMF unit and a Level 2B HQLA asset, reflecting their structural distance to true sovereign exposure.
+Level 2B HQLA receives a regulatory haircut of 25-50% when the asset is otherwise eligible. That regulatory treatment is not a calibration source for an ineligible tokenised wrapper. The remaining ranges in this note are illustrative only; the repository does not publish empirical evidence for a universal internal haircut.
 
 ### Adjustment dynamics
 
-The haircut should not be static. I would propose:
+An institution-specific methodology could include:
 - **Quarterly recalibration** by the ALM committee
-- **Stress event trigger**: if a smart contract bug, oracle failure, custody event, or pause function is exercised on the holding, an emergency haircut increase of 10-20 percentage points should be applied pending full reassessment
-- **Regulatory evolution monitoring**: when a product reaches L1 status (UCITS MMF), the haircut should reduce by 10-15 percentage points
-- **ECB collateral eligibility**: products that achieve L2 status (DLT-PR via authorised CSD, operational since 30 March 2026) should see a reduction of 5-10 percentage points
+- **Stress event trigger**: predefined escalation and revaluation procedures following a smart-contract, oracle, custody or pause event; this note does not calibrate the size of the adjustment
+- **Regulatory evolution monitoring**: reassessment if the legal structure or prudential classification changes; no automatic reduction is assumed
+- **Eurosystem collateral route**: reassessment only if the specific asset becomes eligible and operationally mobilisable; DLT issuance alone does not justify a reduction
 
 ## 7.3: Internal limits matrix
 
@@ -84,9 +76,9 @@ The haircut should not be static. I would propose:
 
 A 25% haircut on a €10 million holding means little. A 25% haircut on a €500 million holding means significant capital and liquidity impact. Concentration limits are the primary control mechanism for tokenised treasury exposure.
 
-I propose the following limits structure as a starting point, chiffres à calibrer selon ALM committee:
+The following matrix is an illustrative concentration-stress scenario. Its percentages are not recommended limits:
 
-| Limit | Proposed cap | Rationale |
+| Limit dimension | Illustrative scenario input | Rationale to test |
 |---|---|---|
 | Single-product cap (e.g., BUIDL alone) | 5% of total liquid assets | Avoid material exposure to a single wrapper + issuer |
 | Single-issuer cap (e.g., BlackRock-managed) | 10% of total liquid assets | Avoid management concentration |
@@ -96,24 +88,22 @@ I propose the following limits structure as a starting point, chiffres à calibr
 
 ### Calibration logic
 
-The 1-2% aggregate cap reflects the analytical reality: until products reach L1 status, tokenised treasuries should be a yield-enhancement allocation, not a structural liquidity reserve. Even at 2% of liquid assets, a €100 billion bank would have €1-2 billion exposure, non-trivial in absolute terms, sufficient for treasury yield optimisation, but bounded in systemic terms.
-
-The single-product cap of 5% is more permissive at the granular level because internal diversification within the tokenised RWA bucket is harder than diversification across the wider liquid asset universe.
+The aggregate and component percentages are included only to make concentration interactions concrete in a stress exercise. They are not inferred from observed loss data and should not be used as policy defaults. A live limit framework would need to be derived from the institution's permitted purpose, redemption and secondary-liquidity tests, legal opinions, operational capacity, capital and liquidity treatment, and risk appetite.
 
 ### Caveat: to calibrate per institution
 
-These numbers are starting points. They should be adjusted by ALM committee based on:
+Any institution-specific limits would need to be determined by the relevant governance bodies using evidence on:
 - Institution size and complexity
 - Existing liquid asset diversification
 - Risk appetite framework
 - Regulatory dialogue with home supervisor (ACPR, BaFin, CSSF, etc.)
 - Operational maturity (custody, monitoring, audit)
 
-A G-SIB might tighten these caps further (e.g., 0.5% aggregate). A neo-bank with a different risk profile might find them appropriate as-is or might choose a different framework altogether. Fintechs operating without the LCR constraint can use this framework as inspiration but should adapt to their specific cash management context.
+No inference should be drawn from the example percentages about an appropriate limit for a G-SIB, another bank, a fintech or an entity outside the LCR perimeter.
 
 ## 7.4: Regulatory monitoring checklist
 
-Treasurers should establish a quarterly monitoring routine on the following indicators:
+A monitoring framework could cover the following indicators at a frequency determined by the institution:
 
 ### EU supervisory developments
 - EBA work programme on tokenised HQLA classification
@@ -151,40 +141,25 @@ The Internal Capital Adequacy Assessment Process should explicitly map tokenised
 | Legal risk | Non-bankruptcy-remote structure for some products (bIB01 creditor cascade); jurisdictional uncertainty (BVI for BUIDL, Jersey for bIB01) | Pre-investment legal opinion; documentation review per ALM committee |
 | Reputation risk | Public chain transparency means all holdings are visible to competitors and journalists | Communication strategy; coordinated disclosure |
 
-Liquidity-dimension items above belong to the ILAAP; the total ICAAP capital allocation for tokenised RWA exposures should reflect the cumulative materiality of these risks. For a typical European bank holding tokenised treasuries at 1-2% of liquid assets, this would translate to a marginal capital impact under Pillar 2.
+Liquidity-dimension items above belong primarily to the ILAAP. Any ICAAP capital response would depend on the institution-specific materiality, accounting classification, risk measurement, controls and supervisory assessment; this note does not estimate a Pillar 2 capital impact.
 
-## 7.6: "If I were the treasurer today"
+## 7.6: Decision framework for a hypothetical treasury review
 
-As an analytical exercise, here is how I would approach tokenised treasury allocation as a hypothetical treasurer at a European bank in May 2026:
+This section is an analytical checklist, not a recommendation to allocate.
 
-**Decision 1, Whether to allocate at all**. The opportunity cost of *not* allocating any treasury cash to tokenised products is the foregone yield enhancement, typically 25-50 basis points above traditional MMF returns once operational costs are factored in. For a bank with €100 billion liquid assets, even a small allocation generates meaningful incremental income. The decision to allocate should be based on: (a) operational maturity of custody and reporting infrastructure, (b) ALM committee comfort with the wrapper-specific risks documented in this framework, (c) strategic positioning for the regulatory evolution toward L1/L2 eligibility. I would allocate modestly (~1% of liquid assets) for the first 12-18 months, with capacity to scale to 2-3% as the framework matures.
+1. **Permitted purpose**: determine whether the exposure is intended for yield, settlement experimentation, client service or another approved purpose. Do not treat it as an HQLA substitute under the present framework.
+2. **Product evidence**: review the legal claim, redemption mechanics, insolvency ranking, transfer restrictions, pause and upgrade controls, current prospectus status and any chain-specific terms.
+3. **Custody and operational design**: assess regulated custody options, key governance, insurance scope, transaction controls, incident response, reconciliation and the consequences of each additional intermediary. This note does not rank or endorse providers.
+4. **Chain and settlement perimeter**: select the chain only after testing settlement finality, operational resilience, liquidity access, supported custody and contingency procedures. This note does not prescribe Ethereum or any other network.
+5. **Liquidity testing and limits**: calibrate limits from institution-specific redemption tests, observable secondary depth, concentration, legal opinions and risk appetite. The example ranges elsewhere in this note are stress-test inputs, not target limits.
+6. **Monitoring and exit criteria**: define measurable triggers for contract pauses, oracle failures, custody incidents, legal-document changes, loss of redemption access, concentration breaches and regulatory action before entering the position.
 
-**Decision 2, Which products**. I would choose BUIDL as the primary allocation (~70% of tokenised RWA bucket) because of its closest structural distance to HQLA, BlackRock fiduciary, BNY Mellon custody, and clear path to L1 via UCITS restructuring. OUSG would be a secondary allocation (~30%) for diversification. I would explicitly *avoid* bIB01 because of the five contractual disqualifiers documented in Section 4 (Block D fails), particularly the Article XVII Extraordinary Event $0.01 floor and the three-layer creditor cascade.
-
-**Decision 3, Custody arrangement**. Self-custody via Anchorage Digital Bank (US OCC-chartered) or Fireblocks (with appropriate insurance) for institutional-grade key management. I would explicitly *avoid* exchange-based custody (Coinbase Custody is acceptable as second-tier but adds counterparty risk). The custody choice has direct implications for the operational risk haircut.
-
-**Decision 4, Chain selection**. Ethereum mainnet only for the initial allocation. Multi-chain deployment (Solana, Polygon, Arbitrum) adds operational complexity without proportionate yield benefit. The single-chain concentration is acceptable at the modest aggregate allocation level (1-2% of liquid assets).
-
-**Decision 5, Monitoring infrastructure**. I would build (or buy) an internal dashboard that tracks: real-time NAV vs on-chain price; daily transfer volume on the contract; holder concentration metrics; custody key health; regulatory news flow. The dashboard cost is justified by the operational risk exposure.
-
-**Decision 6, Exit strategy**. Any of the following triggers would prompt immediate liquidation: smart contract pause beyond 24 hours; oracle failure; custody breach; product Extraordinary Event clause invocation; aggregate exposure exceeding 2.5% of liquid assets (10% over policy cap); regulatory enforcement action against the issuer.
-
-This is the analytical exercise as it would be performed by a hypothetical treasurer. The actual decisions of any specific institution will depend on its risk appetite, ALM committee judgement, supervisor dialogue, and operational maturity.
-
-## What this means for the article narrative
-
-Section 7 (Implications) of the article should:
-
-1. **Lead with the LCR mechanics**: tokenised RWA contributes zero to HQLA numerator today. State this clearly.
-2. **Propose the haircut framework**: 20-30% cumulative internal haircut, with the four-component breakdown for analytical credibility
-3. **Anchor with the limits matrix**: 5% single product, 10% single issuer, 25% single chain, 33% single custodian, 1-2% aggregate. Caveat: à calibrer per institution.
-4. **Close with the "if I were the treasurer" exercise**: 6 decisions, brief justification each. This is the section that distinguishes the article from generic regulatory analysis.
-5. **Avoid CASA-specific references**: the entire content is hypothetical analyst reasoning. No claim about any institution's actual practice.
+The resulting decision depends on the institution's balance-sheet purpose, risk appetite, ALM and risk-committee governance, accounting and prudential treatment, operational maturity and supervisor dialogue. Product comparisons in this repository should not be converted directly into allocations.
 
 ## Caveats and limitations
 
 1. This framework is one analyst's proposal. Other analysts may propose different cap percentages, haircut compositions, or product preferences with equally defensible rationales.
-2. The framework reflects June 2026 product structures. Regulatory evolution toward L1/L2 will materially change the framework parameters (lower haircuts, possibly higher caps).
+2. The framework reflects June 2026 product structures. Any later legal or regulatory change requires a new assessment; no automatic change in haircuts or limits is assumed.
 3. The framework focuses on European prudential context (CRR, DR 2015/61, ECB collateral framework). US bank treasurers operating under FRB/OCC/FDIC technology-neutral guidance (March 2026) have a different starting point and may calibrate differently.
 4. Fintechs and neo-banks not subject to LCR have more operational flexibility but should still consider the haircut and limits framework for prudent treasury management.
 

@@ -1,13 +1,12 @@
 """
-RWA HQLA Framework: Internal Haircut Calculator
-Version 1.0: 2026-05-11
+RWA HQLA Framework: Illustrative Haircut Stress-Scenario Calculator
+Version 1.1.2: 2026-07-21
 
-Implements the internal haircut framework proposed in 04_implications/bank_implications.md.
+Implements an illustrative haircut stress scenario described in 04_implications/bank_implications.md.
 Computes a cumulative internal management haircut for tokenised RWA exposures,
 decomposed into four risk components, with product-specific parameters.
 
-This is an analytical tool, not regulatory guidance. All parameters should be
-re-calibrated by each institution's ALM committee.
+This is an uncalibrated analytical scenario tool, not regulatory guidance, a valuation model, or a recommendation. The bundled parameters are examples only and must not be used as policy defaults.
 
 Usage:
     python haircut_calculator.py
@@ -58,7 +57,7 @@ class HaircutComponents:
 # ============================================================================
 # Product-specific risk profiles
 # ============================================================================
-# Parameters derived from the eligibility matrix (01_framework).
+# Illustrative parameters informed by the eligibility matrix; they are not empirically calibrated.
 # Custody chain layers: BUIDL=2, OUSG=3, bIB01=3
 # All three fail settlement finality (no SFD), have upgradeable contracts,
 # and exhibit issuer/chain concentration.
@@ -69,7 +68,7 @@ PRODUCT_PROFILES: dict[str, HaircutComponents] = {
         custody_chain=0.06,           # 2 custody layers (BNY Mellon -> BVI fund)
         settlement_finality=0.12,     # Ethereum-dominant, no SFD/DLT-PR
         contract_upgradeability=0.04, # Securitize admin multisig
-        issuer_concentration=0.08,    # BlackRock single manager, 95% Ethereum
+        issuer_concentration=0.08,    # illustrative issuer/provider concentration input
     ),
     "OUSG": HaircutComponents(
         custody_chain=0.09,           # 3 custody layers (fund-of-funds)
@@ -170,9 +169,9 @@ def apply_haircut_to_position(
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("RWA HQLA Framework: Internal Haircut Calculator")
+    print("RWA HQLA Framework: Illustrative Haircut Stress-Scenario Calculator")
     print("=" * 70)
-    print("\nBase haircuts by product (multiplicative aggregation):\n")
+    print("\nIllustrative scenario outputs by product (multiplicative aggregation):\n")
 
     for product in PRODUCT_PROFILES:
         hc = compute_haircut(product, method="multiplicative")
@@ -189,19 +188,19 @@ if __name__ == "__main__":
         print(f"    Issuer concentration  : {c.issuer_concentration*100:4.1f}%")
         print()
 
-    print("Example: $50M BUIDL position under normal conditions:\n")
+    print("Worked example only: $50M BUIDL position under the bundled scenario:\n")
     result = apply_haircut_to_position("BUIDL", 50_000_000)
     print(f"  Book value          : ${result['book_value_usd']:,.0f}")
     print(f"  Effective haircut   : {result['effective_haircut']*100:.1f}%")
     print(f"  Internal liq. value : ${result['internal_liquidity_value_usd']:,.0f}")
     print(f"  Haircut amount      : ${result['haircut_amount_usd']:,.0f}")
 
-    print("\nExample: same position with smart-contract-pause stress overlay (+15%):\n")
+    print("\nWorked example only: same position with a +15 percentage-point stress overlay:\n")
     result_stress = apply_haircut_to_position("BUIDL", 50_000_000, stress_overlay=0.15)
     print(f"  Effective haircut   : {result_stress['effective_haircut']*100:.1f}%")
     print(f"  Internal liq. value : ${result_stress['internal_liquidity_value_usd']:,.0f}")
 
     print("\n" + "=" * 70)
-    print("These are analytical parameters, not regulatory haircuts.")
-    print("Re-calibrate per institution ALM committee judgement.")
+    print("These are uncalibrated scenario inputs, not regulatory haircuts or recommendations.")
+    print("Do not use the bundled values as policy defaults; replace them with institution-specific evidence and governance decisions.")
     print("=" * 70)

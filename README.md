@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.1-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.2-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 
@@ -14,7 +14,7 @@ Three widely cited tokenised treasury products, BlackRock BUIDL, Ondo OUSG, and 
 
 **Scope note**: independent analytical assessment under the stated framework and public documentation as of the snapshot date. This is not legal, regulatory, accounting, or investment advice; no affiliation with or endorsement by any issuer is implied; supervisory conclusions may differ in specific cases.
 
-**Empirical layer**: On-chain analysis (snapshot 17 June 2026) shows that BUIDL has 76 holders on Ethereum mainnet (25 of them dust wallets, leaving 51 effective), a Gini coefficient of 0.863 (constrained reconstruction), bounded by linear programming to [0.850, 0.885] across all distributions consistent with the measured concentration constraints (Top-3 = 55% of supply, Top-25 = 99.5%), and approximately 4 secondary transfers per day averaged over 26 months. The market microstructure is materially more concentrated than that of traditional HQLA reference assets.
+**Empirical layer**: On-chain analysis (snapshot 17 June 2026) shows that BUIDL has 76 holders on Ethereum mainnet (25 of them dust wallets, leaving 51 effective), a Gini coefficient of 0.863 (constrained reconstruction), bounded by linear programming to [0.850, 0.885] across all distributions consistent with the measured concentration constraints (Top-3 = 55% of supply, Top-25 = 99.5%), and approximately 4 secondary transfers per day averaged over 26 months. The Ethereum address-level microstructure is highly concentrated. These address-level measures are product evidence and are not directly comparable with beneficial-owner or account-level concentration statistics for traditional securities.
 
 ---
 
@@ -50,7 +50,7 @@ Three widely cited tokenised treasury products, BlackRock BUIDL, Ondo OUSG, and 
 ├── 05_figures/
 │   ├── aum_timeseries.png/svg      # Reported AUM milestones; Backed line is product-suite, not bIB01-specific
 │   ├── scoring_heatmap.png         # 24 criteria across 3 products heatmap
-│   ├── lorenz_buidl.png (+_wide)   # BUIDL concentration Lorenz curve
+│   ├── lorenz_buidl.png           # BUIDL concentration Lorenz curve
 │   ├── market_comparison.png       # Block C empirical validation
 │   └── gradient_staircase.png/svg  # L0 → L3 roadmap visualisation
 │
@@ -116,19 +116,19 @@ Direct comparison with traditional securities is not like-for-like: blockchain a
 | Level | Description | Timeline | Resulting eligibility |
 |---|---|---|---|
 | **L0** | Status quo (June 2026) | Today | Not HQLA |
-| **L1** | UCITS MMF restructuration | 12-30 months | HQLA Level 1/2A via Art. 15 look-through |
-| **L2** | DLT-issued via authorised CSD | 6-24 months | Potential ECB collateral route for assets that also satisfy the standard eligibility and settlement criteria |
-| **L3** | Native sovereign DLT | 5-7 years | Direct Level 1 HQLA |
+| **L1** | UCITS MMF restructuration | Illustrative 12-30 months | Potential Level 1/2A treatment via Art. 15 look-through, subject to structure and supervisory interpretation |
+| **L2** | DLT-issued via authorised CSD | Illustrative 6-24 months | Potential ECB collateral route for assets that also satisfy the standard eligibility, settlement and collateral-management criteria |
+| **L3** | Native sovereign DLT | Illustrative long-horizon scenario | Candidate Level 1 treatment, subject to the ordinary issuer, claim, currency and operational criteria |
 
-The L1+L2 combination (24-36 months) is the most credible institutional roadmap for BUIDL, with BlackRock as the natural executor given its existing UCITS infrastructure in Luxembourg and Ireland.
+The L1+L2 combination is an illustrative institutional pathway for BUIDL rather than a forecast. Execution would depend on issuer strategy, product restructuring, infrastructure selection, authorisation and supervisory interpretation.
 
 ---
 
 ## Practical framework for treasurers
 
-For bank treasurers needing to handle tokenised RWA exposures today (not HQLA but not excluded):
+For bank treasurers considering tokenised RWA exposures today, the repository includes an **illustrative internal-policy scenario**. The values below are not empirically calibrated recommendations and must be replaced by institution-specific ALM, legal, custody and market-liquidity analysis.
 
-**Internal haircut framework** (cumulative 23-40% over book value):
+**Illustrative internal haircut envelope** (23-40% over book value):
 - Custody chain risk: 5-10%
 - Settlement finality risk: 10-15%
 - Contract upgradeability risk: 3-5%
@@ -191,13 +191,13 @@ python 02_empirical/aum_timeseries.py
 python 03_gradient/gradient_diagram.py
 ```
 
-All five scripts embed their measured inputs and run offline; figures are written to `05_figures/`.
+All five scripts run offline. Snapshot inputs shared across scripts are stored in `data/snapshot_metrics.json`; reconstruction constraints specific to the Lorenz analysis remain documented in `02_empirical/lorenz_real_data.py`. Figures are written to `05_figures/`.
 
 To extract live on-chain data:
 1. Open a Dune Analytics account
 2. Copy queries from `02_empirical/dune_queries.sql`
 3. Adjust contract addresses if needed (verify via Etherscan)
-4. Compare the exported values against the constants embedded in the scripts
+4. Compare the exported values against `data/snapshot_metrics.json` and update the canonical snapshot only when the supporting export and calculation are retained
 
 ---
 
@@ -218,7 +218,7 @@ The dashboard tracks:
 
 If this framework informs your research or analysis, please cite:
 
-> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
+> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1.2: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
 
 ---
 

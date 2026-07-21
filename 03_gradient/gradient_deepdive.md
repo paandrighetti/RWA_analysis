@@ -1,7 +1,6 @@
-# S5: The Gradient of Eligibility: What Would It Take?
+# The Gradient of Eligibility: What Would It Take?
 
-**Version**: 1.0, 2026-05-11
-**Status**: source material for Section 6 of article (target 600 words in final draft, full content here is ~2000 words)
+**Version**: 1.1.2, 2026-07-21
 **Focus**: BUIDL specifically as primary case study, with cross-references to OUSG and bIB01 where relevant.
 
 ## Framework reminder
@@ -12,10 +11,10 @@ The S3 verdict closed at L0: no tokenised RWA product currently qualifies as HQL
 |---|---|---|---|
 | **L0** | Status quo | Today | Not HQLA, not ECB-eligible |
 | **L1** | UCITS-compatible MMF wrapper | Restructure issuance as authorised UCITS MMF under MMFR (2017/1131) | Level 1 or 2A HQLA potential via DR 2015/61 Art. 15 look-through |
-| **L2** | DLT-issued via authorised CSD | Token issuance via CSD using DLT-based services, T2S-reachable | ECB collateral eligibility (operational since 30 March 2026) |
+| **L2** | DLT-issued via authorised CSD | Token issuance via a CSD using DLT-based services and an eligible settlement route | Potential Eurosystem collateral route from 30 March 2026, subject to all standard criteria |
 | **L3** | Native sovereign DLT issuance | Sovereign treasury issues debt natively on DLT-SS | Candidate Level 1 HQLA + ECB eligibility, subject to the usual issuer/claim/currency/operational criteria |
 
-The critical update for this version: **L2 has moved from prospective to operational on 30 March 2026** following the ECB Governing Council decision of 27 January 2026.
+The critical update for this version is that, from 30 March 2026, qualifying marketable assets issued in CSDs using DLT-based services may enter the Eurosystem collateral framework when they also satisfy the standard eligibility, settlement and collateral-management requirements. This creates a potential L2 route; it does not make DLT issuance sufficient by itself.
 
 ## L1: UCITS MMF restructuration
 
@@ -110,7 +109,7 @@ A BUIDL UCITS MMF (L1) issued via 21X AG DLT-TSS (L2) would simultaneously hold:
 - ECB collateral eligibility from 30 March 2026 framework
 - Settlement finality opposable under EU law via DLT Pilot Regime exemptions
 
-This is the most credible 24-36 month target structure. It does not require sovereign issuance changes; it builds on existing regulatory infrastructure.
+This is an illustrative 24-to-36-month pathway rather than a forecast. It would build on existing regulatory infrastructure, but execution depends on issuer strategy, authorisation, legal structure and supervisory interpretation.
 
 ## L3: Native sovereign DLT issuance
 
@@ -130,18 +129,18 @@ The 2024 exploratory work that informed this strategy involved 64 participants o
 
 The ultimate state would be: the French Trésor, German Finanzagentur, or US Treasury issues debt directly on a DLT-SS, with no intermediate wrapper. Token holders are direct claimants on the sovereign.
 
-Under DR 2015/61 Art. 10(1)(a)-(d), this would immediately qualify as **Level 1 HQLA**, no haircut, no operational restrictions specific to the wrapper. The DLT just becomes the issuance and settlement technology.
+A direct sovereign claim issued on DLT could be a candidate for **Level 1 HQLA** if it satisfies the ordinary issuer, claim, currency and operational criteria. DLT would be the issuance and settlement technology rather than an intermediate wrapper; tokenisation alone would not determine eligibility.
 
-### Why this is 5-7 years out
+### Illustrative long-horizon scenario
 
-A conservative timeline reflects:
+The 5-to-7-year range below is an author scenario, not a forecast or commitment by any public authority. It reflects:
 - The Pontes pilot starts Q3 2026; observation period at least 12-18 months before scaled deployment
 - Sovereign issuance under DLT requires national debt management agencies to adopt new infrastructure
 - Treaty-level alignment between Eurosystem and individual national treasuries
 - Political dimension: sovereigns are highly conservative about debt issuance technology changes (cf. the slow adoption of even electronic Treasury auctions; AFT moved to electronic-only in 2003, 25 years after first electronic trials)
 - The 3-5 years window assumes near-perfect political execution. The 5-7 years window adds margin for the typical regulatory drift observed in European financial market infrastructure projects (cf. T2S which was originally targeted for 2013, went live 2015-2017)
 
-Realistic conservative timeline (Eurozone):
+Illustrative Eurozone sequence:
 - 2026 Q3, Pontes pilot launches
 - 2027-2028, first non-sovereign issuances under Pontes
 - 2028-2029, first experimental sovereign issuances (small tranches alongside traditional auctions)
@@ -149,7 +148,7 @@ Realistic conservative timeline (Eurozone):
 
 ### US Treasury L3: DTCC Canton Network and the absence of a Pontes equivalent
 
-The US has no public sector equivalent to Pontes/Appia. The closest functional parallel is the private-sector DTCC-Digital Asset partnership announced December 2025 to tokenize DTC-custodied US Treasury securities on the Canton Network, with a minimum viable product targeted for H1 2026.
+The US has no public-sector equivalent to Pontes/Appia. DTCC announced a private-sector tokenisation service for DTC-custodied assets, including US Treasuries. The original Canton partnership targeted a controlled-production MVP in the first half of 2026; DTCC subsequently described a broader Tokenization Service launch planned for October 2026. This remains tokenisation of existing DTC-custodied securities rather than native Treasury issuance.
 
 Critical distinctions with Pontes:
 - **Operator**: DTCC is a private-sector clearing house (regulated, but not central bank). Pontes is run by the Eurosystem (ECB + NCBs).
@@ -158,13 +157,13 @@ Critical distinctions with Pontes:
 
 For genuine L3 in the US sense, the relevant question is when the Treasury itself would issue T-bills natively as tokens on a DLT-SS. As of May 2026, no public roadmap exists. The October 2024 TBAC presentation explicitly cited concerns about the incumbent advantage of legacy infrastructure and the high transition costs.
 
-A reasonable US L3 timeline is therefore:
-- 2026 H1, DTCC-Canton MVP launches (tokenised representation of existing book-entry Treasuries)
+An illustrative US L3 sequence is:
+- 2026, controlled-production milestones and planned rollout of the DTCC Tokenization Service (tokenised representations of existing DTC-custodied securities)
 - 2027-2029, possible Federal Reserve pilot for wholesale DLT settlement (no commitment publicly)
 - 2030+, earliest realistic horizon for native Treasury issuance on DLT
 - 2032-2035, meaningful share of primary issuance
 
-The US is approximately 12-24 months behind the Eurozone on the native sovereign DLT path. This is partly structural (decentralized monetary system, sovereign autonomy of the Federal Reserve) and partly political (TBAC scepticism). The Trump administration's executive orders on crypto policy (January 2025) have not specifically addressed sovereign DLT issuance, the focus has been on private-sector innovation and stablecoin regulation, not government debt infrastructure.
+The public initiatives reviewed suggest different institutional paths in the United States and the euro area. The evidence does not support a precise 12-to-24-month lead or lag, and the relative sequence may change with policy and infrastructure decisions. The Trump administration's executive orders on crypto policy (January 2025) have not specifically addressed sovereign DLT issuance, the focus has been on private-sector innovation and stablecoin regulation, not government debt infrastructure.
 
 ### Summary of L3 prospects
 
@@ -180,70 +179,31 @@ The four-level gradient is best visualised as a staircase showing structural dis
 
 ```
                            L3: Native sovereign DLT
-                          /  • Direct Level 1 HQLA
-                         /   • Full ECB collateral
-                        /    • Timeline: 5-7 years
+                          /  • Candidate Level 1 treatment subject to standard criteria
+                         /   • Potential Eurosystem collateral route
+                        /    • Illustrative long-horizon scenario
                        /
               L2: DLT-PR via authorised CSD
-             /  • ECB collateral eligibility ←── operational since 30 Mar 2026
-            /   • Settlement finality opposable
-           /    • Timeline: 6-24 months
+             /  • Potential collateral route from 30 Mar 2026
+            /   • Standard eligibility and settlement criteria still apply
+           /    • Illustrative 6-24 month implementation range
           /
    L1: UCITS MMF restructuration
-  /  • HQLA Level 1/2A via look-through (Art. 15)
- /   • EU passport access
-/    • Timeline: 12-30 months
+  /  • Potential Level 1/2A treatment via look-through
+ /   • EU authorisation and supervisory interpretation required
+/    • Illustrative 12-30 month implementation range
 L0: Status quo (current state June 2026)
  • Not HQLA
  • Not ECB collateral
  • All three products (BUIDL, OUSG, bIB01)
 ```
 
-The path L0 → L1+L2 (combined, 24-36 months) → L3 (5-7 years) represents the most credible institutional roadmap, with BlackRock as the natural executor for L1 given its existing UCITS infrastructure in Luxembourg and Ireland.
+The path L0 → L1+L2 → L3 is an illustrative structural sequence, not a forecast. BlackRock has relevant UCITS infrastructure for an L1-type restructuring, but no issuer decision or timetable is assumed.
 
 ## Implications for the three products
 
 | Product | Most credible target | Estimated timeline | Main obstacle |
 |---|---|---|---|
-| BUIDL | L1+L2 (BlackRock UCITS MMF via 21X AG DLT-TSS) | 24-36 months | Regulatory dialogue with CSSF or CBI on public blockchain as system of record |
-| OUSG | L1 indirect (via underlying UCITS MMFs) | Already partially possible if Ondo flattens fund-of-funds | Loss of BlackRock partnership economics |
-| bIB01 | New product launch (not a restructuring) | Effectively N/A, would require Backed Finance to become a fund manager | Business model misalignment |
-
-## What this means for the article narrative
-
-Section 6 (Gradient) of the article should:
-
-1. **Lead with the regulatory update**: the L2 path became operational on 30 March 2026. This is news for many readers and frames the gradient as practically actionable, not academic
-2. **Use BUIDL as primary case**: the only product with a credible institutional pathway
-3. **Frame the L1+L2 combination** as the next 24-36 month target. Single-level steps L0→L1 or L0→L2 alone are sub-optimal
-4. **Note the asymmetry**: bIB01's debt-instrument structure makes the gradient inapplicable. OUSG's fund-of-funds creates economic obstacles. BUIDL is unique in having both a credible structure and an institutional shareholder (BlackRock) capable of executing the restructuring
-
-## Editorial decisions for the article (validated 2026-05-11)
-
-The following decisions have been validated for the article integration:
-
-1. **L1+L2 combination**: presented as 24-36 months target, ambitious but credible, anchored on Pontes Q3 2026 and three active DLT-PR authorisations
-2. **L3 timeline**: 5-7 years (conservative, accounts for political margin on sovereign debt issuance technology changes)
-3. **L3 sovereign coverage**: Eurozone (detailed Pontes/Appia pathway) + US Treasury (DTCC Canton Network MVP + TBAC scepticism + FRB/OCC/FDIC technology-neutral capital guidance)
-4. **BlackRock mention**: explicit reference as L1 executor for credibility and concreteness, supported by BlackRock's existing UCITS infrastructure (BlackRock Asset Management Ireland Limited, BlackRock Luxembourg S.A.)
-
-## Sources
-
-### Primary regulatory texts
-- Regulation (EU) 2017/1131 (MMFR), Money Market Funds Regulation
-- Regulation (EU) 2022/858, DLT Pilot Regime
-- ECB Press Release 27 January 2026: "ECB paves way for acceptance of DLT-based assets as eligible Eurosystem collateral"
-- ECB Press Release 1 July 2025: "ECB commits to distributed ledger technology settlement plans with dual-track strategy" (Pontes/Appia)
-- FRB/OCC/FDIC Interagency FAQ 5 March 2026 on capital treatment of tokenized securities
-
-### Operational documents
-- ESMA Report on DLT Pilot Regime functioning (ESMA75-117376770-460, 25 June 2025)
-- ECB Exploratory Work Report on DLT Settlement (November 2025 publication)
-- European Commission package proposed amendments to DLT-PR (December 2025)
-- TBAC Charge October 2024 Q4: "Digital Assets and the Treasury Market" presentation
-- DTCC-Digital Asset announcement December 2025: tokenization of DTC-custodied US Treasury securities on Canton Network
-
-### Precedent documents
-- Franklin Onchain U.S. Government Money Fund Prospectus and SEC filings (SEC EDGAR CIK 0001786958)
-- 21X AG DLT-TSS authorisation announcement (December 2024)
-- DTCC-Digital Asset UST Collateral Network Pilot results (September 2024)
+| BUIDL | Illustrative L1+L2 route through a UCITS-compatible structure and an authorised DLT infrastructure | No forecast; author scenario previously expressed as 24-36 months | Product redesign, authorisation, infrastructure selection and supervisory interpretation |
+| OUSG | Possible L1-oriented simplification of the fund-of-funds structure | No timetable established | Legal structure, look-through treatment and product economics |
+| bIB01 | A materially different product structure rather than a simple amendment | No timetable established | Current debt-instrument form and contractual features |

@@ -28,9 +28,10 @@ COLORS = ["#4c8fc9", "#e8893c", "#5aa469"]
 
 HOLDERS = [SNAPSHOT[p]["holders_raw"] for p in PRODUCTS]
 AUM_ETH_M = [
-    SNAPSHOT["BUIDL"]["aum_ethereum_usd"] / 1e6,
-    SNAPSHOT["OUSG"]["aum_ethereum_usd"] / 1e6,
-    None,
+    (SNAPSHOT[p]["aum_ethereum_usd"] / 1e6)
+    if SNAPSHOT[p].get("aum_ethereum_usd") is not None
+    else None
+    for p in PRODUCTS
 ]
 SECONDARY_TRANSFERS = [SNAPSHOT[p]["secondary_transfers"] for p in PRODUCTS]
 SECONDARY_SHARE = [SNAPSHOT[p]["secondary_share_pct"] for p in PRODUCTS]
@@ -41,26 +42,37 @@ def plot_comparison(output_path="05_figures/market_comparison.png"):
     fig, axes = plt.subplots(2, 2, figsize=(12, 9))
     fig.suptitle(
         "Block C: Market Criteria Empirical Validation\n"
-        "Snapshot 2026-06-17, Ethereum mainnet; bIB01 product AUM unavailable",
+        "Snapshot 2026-06-17, Ethereum mainnet; AUM shown only where sourced",
         fontsize=13
     )
 
-    # Panel 1: AUM on Ethereum mainnet (log scale, 3 orders of magnitude)
+    # Panel 1: AUM on Ethereum mainnet. Missing values remain missing; global
+    # product or product-suite AUM is never substituted for a chain-specific value.
     ax = axes[0, 0]
     known_idx = [i for i, value in enumerate(AUM_ETH_M) if value is not None]
     known_vals = [AUM_ETH_M[i] for i in known_idx]
     bars = ax.bar(known_idx, known_vals, color=[COLORS[i] for i in known_idx],
                   edgecolor="black", linewidth=0.5)
-    ax.set_yscale("log")
+    if known_vals:
+        ax.set_yscale("log")
     ax.set_xticks(range(len(PRODUCTS)), PRODUCTS)
-    ax.set_title("AUM on Ethereum mainnet ($M, log scale)")
-    ax.set_ylabel("$M (log)")
+    ax.set_title("AUM on Ethereum mainnet ($M, log scale where available)")
+    ax.set_ylabel("$M")
     for bar, val in zip(bars, known_vals):
         label = f"${val:.0f}M" if val >= 1 else f"${val*1000:.0f}K"
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height(),
                 label, ha="center", va="bottom", fontsize=9)
-    ax.text(2, min(known_vals), "AUM not established\nfrom included data",
-            ha="center", va="center", fontsize=8, style="italic", color="#555")
+
+    if known_vals:
+        annotation_y = max(min(known_vals), max(known_vals) * 0.15)
+    else:
+        annotation_y = 1.0
+        ax.set_ylim(0, 1.2)
+    for i, value in enumerate(AUM_ETH_M):
+        if value is None:
+            ax.text(i, annotation_y, "Not established\nfrom included data",
+                    ha="center", va="center", fontsize=8, style="italic",
+                    color="#555")
 
     # Panel 2: Holders
     ax = axes[0, 1]

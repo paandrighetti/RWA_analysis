@@ -1,10 +1,14 @@
 {
   "framework": {
     "name": "RWA HQLA Eligibility Framework",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "date": "2026-07-21",
     "scope": "Tokenised Real-World Assets — HQLA eligibility under Basel III LCR",
-    "products_assessed": ["BUIDL", "OUSG", "bIB01"],
+    "products_assessed": [
+      "BUIDL",
+      "OUSG",
+      "bIB01"
+    ],
     "regulatory_basis": [
       "BCBS 238 (January 2013)",
       "Regulation (EU) 575/2013 (CRR) art. 411-419, 122, 132",
@@ -14,8 +18,13 @@
       "Regulation (EU) 2022/858 (DLT Pilot Regime)",
       "Directive 98/26/EC (SFD)"
     ],
-    "scoring_scale": ["Pass", "Conditional", "Fail", "N/A"],
-    "methodology": "Block A tests alternative eligibility routes and closes a route when a mandatory criterion fails. Block C tests market-liquidity requirements. Block B contains operational requirements that must be satisfied in use but may be remediable; Block D is a qualitative wrapper-friction overlay. Final classification remains subject to supervisory judgement."
+    "scoring_scale": [
+      "Pass",
+      "Conditional",
+      "Fail",
+      "N/A"
+    ],
+    "methodology": "Block A tests alternative eligibility routes. A positive assessment under this framework also requires satisfaction of applicable Block B operational requirements and Block C market criteria. Block D is a qualitative wrapper-friction overlay. Final classification remains subject to supervisory judgement."
   },
   "products": {
     "BUIDL": {
@@ -30,7 +39,16 @@
       "tokenisation_provider": "Securitize Markets LLC + Securitize LLC (transfer agent)",
       "min_investment_usd": 5000000,
       "aum_estimate_usd_2026q1": 2700000000,
-      "chains": ["Ethereum", "Aptos", "Arbitrum", "Avalanche", "Optimism", "Polygon", "Solana", "BNB Chain"],
+      "chains": [
+        "Ethereum",
+        "Aptos",
+        "Arbitrum",
+        "Avalanche",
+        "Optimism",
+        "Polygon",
+        "Solana",
+        "BNB Chain"
+      ],
       "launch_date": "2024-03",
       "yield_target_annual": 0.045
     },
@@ -46,7 +64,13 @@
       "min_investment_instant_usd": 5000,
       "min_investment_non_instant_usd": 100000,
       "aum_estimate_usd_2026q1": 770000000,
-      "chains": ["Ethereum", "Solana", "Injective", "XRPL", "Polygon"],
+      "chains": [
+        "Ethereum",
+        "Solana",
+        "Injective",
+        "XRPL",
+        "Polygon"
+      ],
       "launch_date": "2023-01",
       "management_fee_waived_until": "2026-07-01",
       "yield_estimate_annual": 0.0375
@@ -60,8 +84,41 @@
       "legal_form": "Tracker certificate — debt instrument (CFI DEMMRM)",
       "exemption_regime": "EU Prospectus Regulation 2017/1129 (tripartite SPWS) + Swiss DLT art. 973d CO",
       "regulator_approval": "Liechtenstein FMA (FMA-ID 351548)",
-      "eu_passport": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE"],
-      "custodians": ["Maerki Baumann & Co. AG (Zurich)", "InCore Bank AG (Schlieren)"],
+      "eu_passport": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "custodians": [
+        "Maerki Baumann & Co. AG (Zurich)",
+        "InCore Bank AG (Schlieren)"
+      ],
       "security_agent": "Security Agent Services AG (Zug)",
       "tokenizer": "Backed Finance AG",
       "isin": "CH1173294260",
@@ -71,7 +128,13 @@
       "min_subscription_chf": 5000,
       "max_issue_volume_chf": 100000000,
       "aum_estimate_usd_2026q1": null,
-      "chains": ["Ethereum", "Polygon", "Base", "BNB Chain", "Gnosis"],
+      "chains": [
+        "Ethereum",
+        "Polygon",
+        "Base",
+        "BNB Chain",
+        "Gnosis"
+      ],
       "launch_date": "2023-01",
       "settlement_max_t_plus": 5,
       "governing_law_products": "Jersey",
@@ -89,9 +152,18 @@
           "name": "Direct sovereign claim (Level 1 candidate)",
           "reference": "DR 2015/61 art. 10(1)(a)-(d); BCBS 238 §49",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Token = interest in BVI fund Ltd, not direct claim on US Treasury. Investment Company Act §3(c)(7) confirms private fund status."},
-            "OUSG": {"verdict": "Fail", "justification": "Token = interest in Delaware LP holding fund interests (incl. BUIDL) — two-layer wrapping."},
-            "bIB01": {"verdict": "Fail", "justification": "Token = debt instrument issued by Backed Assets (JE) Limited, tracking ETF price. No direct sovereign exposure."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Token = interest in BVI fund Ltd, not direct claim on US Treasury. Investment Company Act §3(c)(7) confirms private fund status."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Token = interest in Delaware LP holding fund interests (incl. BUIDL) — two-layer wrapping."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Token = debt instrument issued by Backed Assets (JE) Limited, tracking ETF price. No direct sovereign exposure."
+            }
           }
         },
         {
@@ -99,9 +171,18 @@
           "name": "UCITS look-through (Level 1/2A via art. 15)",
           "reference": "DR 2015/61 art. 15; ESMA UCITS Eligible Assets Directive 2007/16/EC",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "BVI exempted fund is not a UCITS. No EU recognition or passport."},
-            "OUSG": {"verdict": "Fail", "justification": "Delaware LP is not a UCITS. Holds non-UCITS funds primarily."},
-            "bIB01": {"verdict": "Fail", "justification": "bIB01 itself is a debt instrument, not a part of a UCITS. Holding bIB01 = holding contractual debt of Backed Assets referenced to UCITS price. Underlying iShares IB01 is a UCITS but investor does not own it."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "BVI exempted fund is not a UCITS. No EU recognition or passport."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Delaware LP is not a UCITS. Holds non-UCITS funds primarily."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "bIB01 itself is a debt instrument, not a part of a UCITS. Holding bIB01 = holding contractual debt of Backed Assets referenced to UCITS price. Underlying iShares IB01 is a UCITS but investor does not own it."
+            }
           }
         },
         {
@@ -109,9 +190,18 @@
           "name": "Corporate debt rated ≥ CQS1 (Level 2A candidate)",
           "reference": "DR 2015/61 art. 12(1)(b); CRR Annex VI",
           "scoring": {
-            "BUIDL": {"verdict": "N/A", "justification": "Equity-like fund interest, not corporate debt."},
-            "OUSG": {"verdict": "N/A", "justification": "Equity-like fund interest."},
-            "bIB01": {"verdict": "Fail", "justification": "Backed Assets (JE) Limited is unrated. Under CRR art. 122 (Standardised Approach for corporates unrated) → 100% risk weight. Disqualifies Level 2A (requires 20% RW)."}
+            "BUIDL": {
+              "verdict": "N/A",
+              "justification": "Equity-like fund interest, not corporate debt."
+            },
+            "OUSG": {
+              "verdict": "N/A",
+              "justification": "Equity-like fund interest."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Backed Assets (JE) Limited is unrated. Under CRR art. 122 (Standardised Approach for corporates unrated) → 100% risk weight. Disqualifies Level 2A (requires 20% RW)."
+            }
           }
         },
         {
@@ -119,9 +209,18 @@
           "name": "Level 2B equity major index",
           "reference": "DR 2015/61 art. 14(b)",
           "scoring": {
-            "BUIDL": {"verdict": "N/A", "justification": "Not equity."},
-            "OUSG": {"verdict": "N/A", "justification": "Not equity."},
-            "bIB01": {"verdict": "N/A", "justification": "Not equity."}
+            "BUIDL": {
+              "verdict": "N/A",
+              "justification": "Not equity."
+            },
+            "OUSG": {
+              "verdict": "N/A",
+              "justification": "Not equity."
+            },
+            "bIB01": {
+              "verdict": "N/A",
+              "justification": "Not equity."
+            }
           }
         }
       ],
@@ -139,9 +238,18 @@
           "name": "Unencumbered (free transferability within 30-day stress)",
           "reference": "DR 2015/61 art. 7(2); BCBS 238 §31",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Whitelist KYC enforced on-chain; freeze function; transferable only between Securitize-onboarded accounts."},
-            "OUSG": {"verdict": "Fail", "justification": "Transferable only between investors onboarded to Ondo Qualified Access Funds."},
-            "bIB01": {"verdict": "Fail", "justification": "Pause function active; sanctions blocking via Chainalysis; freezing function reserved for upgrade; Issuer Call Option unilateral with 30 BD notice."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Whitelist KYC enforced on-chain; freeze function; transferable only between Securitize-onboarded accounts."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Transferable only between investors onboarded to Ondo Qualified Access Funds."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Pause function active; sanctions blocking via Chainalysis; freezing function reserved for upgrade; Issuer Call Option unilateral with 30 BD notice."
+            }
           }
         },
         {
@@ -149,9 +257,18 @@
           "name": "Control by liquidity management function",
           "reference": "DR 2015/61 art. 8(2)",
           "scoring": {
-            "BUIDL": {"verdict": "Conditional", "justification": "Self-custody possible via Anchorage, Fireblocks, Coinbase Custody, BitGo (whitelisted)."},
-            "OUSG": {"verdict": "Conditional", "justification": "Institutional custody compatible."},
-            "bIB01": {"verdict": "Conditional", "justification": "Custody via Maerki Baumann or InCore Bank; self-custody whitelisted possible."}
+            "BUIDL": {
+              "verdict": "Conditional",
+              "justification": "Self-custody possible via Anchorage, Fireblocks, Coinbase Custody, BitGo (whitelisted)."
+            },
+            "OUSG": {
+              "verdict": "Conditional",
+              "justification": "Institutional custody compatible."
+            },
+            "bIB01": {
+              "verdict": "Conditional",
+              "justification": "Custody via Maerki Baumann or InCore Bank; self-custody whitelisted possible."
+            }
           }
         },
         {
@@ -159,9 +276,18 @@
           "name": "Monetisation capacity within 30-day stress",
           "reference": "DR 2015/61 art. 7(2); BCBS 238 §28",
           "scoring": {
-            "BUIDL": {"verdict": "Pass", "justification": "USDC instant via Circle + USD T+1."},
-            "OUSG": {"verdict": "Pass", "justification": "USDC instant + USD T+1; daily NAV; JPMorgan/Mastercard/Ripple cross-border pilot validated 6 May 2026."},
-            "bIB01": {"verdict": "Conditional", "justification": "Settlement T+5 maximum. Underlying Illiquidity clause may further delay."}
+            "BUIDL": {
+              "verdict": "Pass",
+              "justification": "USDC instant via Circle + USD T+1."
+            },
+            "OUSG": {
+              "verdict": "Pass",
+              "justification": "USDC instant + USD T+1; daily NAV; JPMorgan/Mastercard/Ripple cross-border pilot validated 6 May 2026."
+            },
+            "bIB01": {
+              "verdict": "Conditional",
+              "justification": "Settlement T+5 maximum. Underlying Illiquidity clause may further delay."
+            }
           }
         },
         {
@@ -169,9 +295,18 @@
           "name": "Documented monetisation policy",
           "reference": "DR 2015/61 art. 8(3); BCBS 238 §39",
           "scoring": {
-            "BUIDL": {"verdict": "Conditional", "justification": "Mechanics in PPM (private). Public press releases confirm USDC + USD routes."},
-            "OUSG": {"verdict": "Conditional", "justification": "Detailed in Ondo Instant Limits documentation."},
-            "bIB01": {"verdict": "Conditional", "justification": "Issuance and Redemption fully documented in Base Prospectus §VI."}
+            "BUIDL": {
+              "verdict": "Conditional",
+              "justification": "Mechanics in PPM (private). Public press releases confirm USDC + USD routes."
+            },
+            "OUSG": {
+              "verdict": "Conditional",
+              "justification": "Detailed in Ondo Instant Limits documentation."
+            },
+            "bIB01": {
+              "verdict": "Conditional",
+              "justification": "Issuance and Redemption fully documented in Base Prospectus §VI."
+            }
           }
         },
         {
@@ -179,9 +314,18 @@
           "name": "Diversification at portfolio level",
           "reference": "DR 2015/61 art. 8(1)(c); CRR art. 417(e)",
           "scoring": {
-            "BUIDL": {"verdict": "N/A", "justification": "Institutional-level criterion, not product-level."},
-            "OUSG": {"verdict": "N/A", "justification": "Same."},
-            "bIB01": {"verdict": "N/A", "justification": "Same."}
+            "BUIDL": {
+              "verdict": "N/A",
+              "justification": "Institutional-level criterion, not product-level."
+            },
+            "OUSG": {
+              "verdict": "N/A",
+              "justification": "Same."
+            },
+            "bIB01": {
+              "verdict": "N/A",
+              "justification": "Same."
+            }
           }
         }
       ],
@@ -199,9 +343,18 @@
           "name": "Listed on developed and recognised exchange",
           "reference": "BCBS 238 §24(c)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Not registered with SEC and not listed on any exchange (BlackRock disclosure verbatim)."},
-            "OUSG": {"verdict": "Fail", "justification": "Not listed; secondary trading via Uniswap/CowSwap permissionless AMM only."},
-            "bIB01": {"verdict": "Fail", "justification": "Final Terms: Initial offer without admission to trading. Issuer intends to admit at INX Securities ATS but no market making, no liquidity guarantee."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Not registered with SEC and not listed on any exchange (BlackRock disclosure verbatim)."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Not listed; secondary trading via Uniswap/CowSwap permissionless AMM only."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Final Terms: Initial offer without admission to trading. Issuer intends to admit at INX Securities ATS but no market making, no liquidity guarantee."
+            }
           }
         },
         {
@@ -209,9 +362,18 @@
           "name": "Active and sizable market with low concentration",
           "reference": "BCBS 238 §24(d)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "76 holders on Ethereum mainnet (approximately 51 effective after dust filtering); Top-3 = 55.22%, constrained-reconstruction Gini = 0.863, exact feasible bounds [0.850, 0.885]. 14,046 total transfers / 3,151 secondary over 26 months = approximately 4 secondary transfers/day. Dune snapshot 2026-06-17."},
-            "OUSG": {"verdict": "Fail", "justification": "2,119 total / 851 secondary transfers over 41 months = ~0.7 secondary tx/day. Dune snapshot 2026-06-17."},
-            "bIB01": {"verdict": "Conditional", "justification": "Empirical paradox: 510 total / 492 secondary = 96% secondary share (highest of the three, structural distinction as debt instrument vs whitelisted fund share). However, only 0.43 secondary tx/day in absolute terms. Ratio nuances binary Fail; absolute volume still insufficient for HQLA. Dune snapshot 2026-06-17."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "76 holders on Ethereum mainnet (approximately 51 effective after dust filtering); Top-3 = 55.22%, constrained-reconstruction Gini = 0.863, exact feasible bounds [0.850, 0.885]. 14,046 total transfers / 3,151 secondary over 26 months = approximately 4 secondary transfers/day. Dune snapshot 2026-06-17."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "2,119 total / 851 secondary transfers over 41 months = ~0.7 secondary tx/day. Dune snapshot 2026-06-17."
+            },
+            "bIB01": {
+              "verdict": "Conditional",
+              "justification": "Empirical paradox: 510 total / 492 secondary = 96% secondary share (highest of the three, structural distinction as debt instrument vs whitelisted fund share). However, only 0.43 secondary tx/day in absolute terms. Ratio nuances binary Fail; absolute volume still insufficient for HQLA. Dune snapshot 2026-06-17."
+            }
           }
         },
         {
@@ -219,9 +381,18 @@
           "name": "Committed market makers",
           "reference": "BCBS 238 §24(d)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "No committed market makers."},
-            "OUSG": {"verdict": "Fail", "justification": "No committed market makers."},
-            "bIB01": {"verdict": "Fail", "justification": "Market Maker: Not applicable (verbatim in Final Terms §1.1)."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "No committed market makers."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "No committed market makers."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Market Maker: Not applicable (verbatim in Final Terms §1.1)."
+            }
           }
         },
         {
@@ -229,9 +400,18 @@
           "name": "Low bid-ask spread historical",
           "reference": "BCBS 238 §24(e)",
           "scoring": {
-            "BUIDL": {"verdict": "N/A", "justification": "Insufficient secondary market depth."},
-            "OUSG": {"verdict": "N/A", "justification": "Same."},
-            "bIB01": {"verdict": "N/A", "justification": "Same."}
+            "BUIDL": {
+              "verdict": "N/A",
+              "justification": "Insufficient secondary market depth."
+            },
+            "OUSG": {
+              "verdict": "N/A",
+              "justification": "Same."
+            },
+            "bIB01": {
+              "verdict": "N/A",
+              "justification": "Same."
+            }
           }
         },
         {
@@ -239,9 +419,18 @@
           "name": "Proven liquidity in stress (max drawdown 10% over 30-day stress)",
           "reference": "BCBS 238 §24(f); DR 2015/61 art. 12(1)(b)(iii)",
           "scoring": {
-            "BUIDL": {"verdict": "N/A", "justification": "Insufficient track record (since March 2024); no qualifying stress event observed."},
-            "OUSG": {"verdict": "N/A", "justification": "Same logic."},
-            "bIB01": {"verdict": "N/A", "justification": "Same logic."}
+            "BUIDL": {
+              "verdict": "N/A",
+              "justification": "Insufficient track record (since March 2024); no qualifying stress event observed."
+            },
+            "OUSG": {
+              "verdict": "N/A",
+              "justification": "Same logic."
+            },
+            "bIB01": {
+              "verdict": "N/A",
+              "justification": "Same logic."
+            }
           }
         }
       ],
@@ -258,90 +447,180 @@
           "id": "D.1",
           "name": "Settlement finality (SFD 98/26/EC compliance)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Ethereum/multi-chain not designated as SFD system; not operating under DLT Pilot Regime."},
-            "OUSG": {"verdict": "Fail", "justification": "Same."},
-            "bIB01": {"verdict": "Fail", "justification": "Same. Swiss art. 973d CO grants Swiss legal certainty but no SFD coverage."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Ethereum/multi-chain not designated as SFD system; not operating under DLT Pilot Regime."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Same."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Same. Swiss art. 973d CO grants Swiss legal certainty but no SFD coverage."
+            }
           }
         },
         {
           "id": "D.2",
           "name": "Custody chain layers between token and underlying Treasury",
           "scoring": {
-            "BUIDL": {"verdict": "2 layers", "justification": "BNY Mellon → BVI fund Ltd → token holder."},
-            "OUSG": {"verdict": "3 layers", "justification": "MMF custodians → Coinbase → Ondo I LP → token holder."},
-            "bIB01": {"verdict": "3 layers", "justification": "State Street Ireland → Maerki/InCore → JE Limited → token holder."}
+            "BUIDL": {
+              "verdict": "2 layers",
+              "justification": "BNY Mellon → BVI fund Ltd → token holder."
+            },
+            "OUSG": {
+              "verdict": "3 layers",
+              "justification": "MMF custodians → Coinbase → Ondo I LP → token holder."
+            },
+            "bIB01": {
+              "verdict": "3 layers",
+              "justification": "State Street Ireland → Maerki/InCore → JE Limited → token holder."
+            }
           }
         },
         {
           "id": "D.3",
           "name": "Oracle dependency for valuation",
           "scoring": {
-            "BUIDL": {"verdict": "Conditional", "justification": "NAV by Securitize; on-chain via RedStone."},
-            "OUSG": {"verdict": "Conditional", "justification": "End-of-day NAV via Ondo Price Oracle."},
-            "bIB01": {"verdict": "Conditional", "justification": "Chainlink + SIX Swiss Exchange + LSE references."}
+            "BUIDL": {
+              "verdict": "Conditional",
+              "justification": "NAV by Securitize; on-chain via RedStone."
+            },
+            "OUSG": {
+              "verdict": "Conditional",
+              "justification": "End-of-day NAV via Ondo Price Oracle."
+            },
+            "bIB01": {
+              "verdict": "Conditional",
+              "justification": "Chainlink + SIX Swiss Exchange + LSE references."
+            }
           }
         },
         {
           "id": "D.4",
           "name": "Smart contract upgradeability (admin keys risk)",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Proxy upgradeable; admin multisig held by Securitize."},
-            "OUSG": {"verdict": "Fail", "justification": "Upgradeable contracts."},
-            "bIB01": {"verdict": "Fail", "justification": "Updating function explicit per Terms §II. Tokenizer Backed Finance AG controls."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Proxy upgradeable; admin multisig held by Securitize."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Upgradeable contracts."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Updating function explicit per Terms §II. Tokenizer Backed Finance AG controls."
+            }
           }
         },
         {
           "id": "D.5",
           "name": "Pause / freeze function",
           "scoring": {
-            "BUIDL": {"verdict": "Fail", "justification": "Compliance freeze function present."},
-            "OUSG": {"verdict": "Fail", "justification": "Same."},
-            "bIB01": {"verdict": "Fail", "justification": "Pausing active; freezing function reserved for upgrade per §II."}
+            "BUIDL": {
+              "verdict": "Fail",
+              "justification": "Compliance freeze function present."
+            },
+            "OUSG": {
+              "verdict": "Fail",
+              "justification": "Same."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Pausing active; freezing function reserved for upgrade per §II."
+            }
           }
         },
         {
           "id": "D.6",
           "name": "Issuer Call Option / forced redemption clauses",
           "scoring": {
-            "BUIDL": {"verdict": "Standard fund mechanics", "justification": "Per PPM; not unilateral termination clause publicly documented."},
-            "OUSG": {"verdict": "Standard fund mechanics", "justification": "Per Ondo terms."},
-            "bIB01": {"verdict": "Fail", "justification": "Article VI.iii: Issuer Call Option exercisable with 30 BD notice 'without providing for a specific reason'; in stress, Redemption Amount 'may be considerably lower'."}
+            "BUIDL": {
+              "verdict": "Standard fund mechanics",
+              "justification": "Per PPM; not unilateral termination clause publicly documented."
+            },
+            "OUSG": {
+              "verdict": "Standard fund mechanics",
+              "justification": "Per Ondo terms."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Article VI.iii: Issuer Call Option exercisable with 30 BD notice 'without providing for a specific reason'; in stress, Redemption Amount 'may be considerably lower'."
+            }
           }
         },
         {
           "id": "D.7",
           "name": "Substitution of issuer without investor consent",
           "scoring": {
-            "BUIDL": {"verdict": "Standard fund mechanics", "justification": "Not documented publicly as unilateral."},
-            "OUSG": {"verdict": "Standard fund mechanics", "justification": "Same."},
-            "bIB01": {"verdict": "Fail", "justification": "Article XXIV: Issuer entitled at any time and without consent of Investors to be substituted as debtor by a new issuer."}
+            "BUIDL": {
+              "verdict": "Standard fund mechanics",
+              "justification": "Not documented publicly as unilateral."
+            },
+            "OUSG": {
+              "verdict": "Standard fund mechanics",
+              "justification": "Same."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Article XXIV: Issuer entitled at any time and without consent of Investors to be substituted as debtor by a new issuer."
+            }
           }
         },
         {
           "id": "D.8",
           "name": "Liability cap / Extraordinary Event clauses",
           "scoring": {
-            "BUIDL": {"verdict": "Standard limitation", "justification": "Fund-level liability limitation per BVI law and PPM."},
-            "OUSG": {"verdict": "Standard limitation", "justification": "Per Ondo terms."},
-            "bIB01": {"verdict": "Fail", "justification": "Article XVII: liability exclusion for fraud, theft, cyber-attacks, drastic regulatory changes; Redemption Amount 'may be as low as USD 0.01' upon Extraordinary Event."}
+            "BUIDL": {
+              "verdict": "Standard limitation",
+              "justification": "Fund-level liability limitation per BVI law and PPM."
+            },
+            "OUSG": {
+              "verdict": "Standard limitation",
+              "justification": "Per Ondo terms."
+            },
+            "bIB01": {
+              "verdict": "Fail",
+              "justification": "Article XVII: liability exclusion for fraud, theft, cyber-attacks, drastic regulatory changes; Redemption Amount 'may be as low as USD 0.01' upon Extraordinary Event."
+            }
           }
         },
         {
           "id": "D.9",
           "name": "Realization Event creditor cascade before investors",
           "scoring": {
-            "BUIDL": {"verdict": "0 layers", "justification": "BVI fund assets bankruptcy-remote; investors are residual claimants on fund assets directly."},
-            "OUSG": {"verdict": "0 layers", "justification": "Same logic for Delaware LP fund structure."},
-            "bIB01": {"verdict": "3 layers", "justification": "Per Article XXII.ii: Security Agent fees → Paying Account Providers → Custodian + Broker (pari passu) → THEN investors pro-rata. Plus other realization costs."}
+            "BUIDL": {
+              "verdict": "0 layers",
+              "justification": "BVI fund assets bankruptcy-remote; investors are residual claimants on fund assets directly."
+            },
+            "OUSG": {
+              "verdict": "0 layers",
+              "justification": "Same logic for Delaware LP fund structure."
+            },
+            "bIB01": {
+              "verdict": "3 layers",
+              "justification": "Per Article XXII.ii: Security Agent fees → Paying Account Providers → Custodian + Broker (pari passu) → THEN investors pro-rata. Plus other realization costs."
+            }
           }
         },
         {
           "id": "D.10",
           "name": "ECB collateral eligibility status",
           "scoring": {
-            "BUIDL": {"verdict": "Not assessed (implicit non-eligible)", "justification": "Implicit non-eligibility given BVI domicile and absence of EU notification."},
-            "OUSG": {"verdict": "Not assessed (implicit non-eligible)", "justification": "Same logic."},
-            "bIB01": {"verdict": "Fail (explicit)", "justification": "Section 6 verbatim: 'ECB eligibility: The Product is not expected to be ECB eligible.'"}
+            "BUIDL": {
+              "verdict": "Not assessed (implicit non-eligible)",
+              "justification": "Implicit non-eligibility given BVI domicile and absence of EU notification."
+            },
+            "OUSG": {
+              "verdict": "Not assessed (implicit non-eligible)",
+              "justification": "Same logic."
+            },
+            "bIB01": {
+              "verdict": "Fail (explicit)",
+              "justification": "Section 6 verbatim: 'ECB eligibility: The Product is not expected to be ECB eligible.'"
+            }
           }
         }
       ],
@@ -360,7 +639,11 @@
       "block_D_fails": 3,
       "overall_HQLA_verdict": "Not HQLA",
       "distance_to_HQLA_rank": 1,
-      "main_blockers": ["BVI fund not UCITS-equivalent", "Not listed", "Whitelist restrictions"]
+      "main_blockers": [
+        "BVI fund not UCITS-equivalent",
+        "Not listed",
+        "Whitelist restrictions"
+      ]
     },
     "OUSG": {
       "block_A": "Fail",
@@ -369,7 +652,11 @@
       "block_D_fails": 3,
       "overall_HQLA_verdict": "Not HQLA",
       "distance_to_HQLA_rank": 2,
-      "main_blockers": ["Fund-of-funds two-layer wrapping", "Delaware LP not MMF UCITS", "Not listed"]
+      "main_blockers": [
+        "Fund-of-funds two-layer wrapping",
+        "Delaware LP not MMF UCITS",
+        "Not listed"
+      ]
     },
     "bIB01": {
       "block_A": "Fail",
@@ -390,7 +677,7 @@
   },
   "gradient_of_eligibility_roadmap": {
     "L0": {
-      "label": "Status quo (current state May 2026)",
+      "label": "Status quo (current state June 2026)",
       "verdict": "No product eligible for any HQLA level"
     },
     "L1": {
@@ -401,22 +688,25 @@
         "OUSG": "Harder — fund-of-funds structure to flatten to direct holdings before UCITS wrapping",
         "bIB01": "Requires radical reformulation from debt to fund unit; effectively a new product"
       },
-      "timeline_months": "12-18",
-      "resulting_HQLA_level_potential": "Level 1 or 2A via art. 15 UCITS look-through"
+      "timeline_months": "Illustrative author scenario: 12-30 months; no issuer forecast",
+      "resulting_HQLA_level_potential": "Potential Level 1 or 2A treatment via Article 15 look-through, subject to structure and supervisory interpretation"
     },
     "L2": {
       "label": "DLT Pilot Regime compliance",
       "required_change": "Issuance via authorised DLT-SS or DLT-TSS under Regulation (EU) 2022/858",
-      "current_state": "3 entities authorised in EU as of 2026-Q1; none of BUIDL/OUSG/bIB01 operate under DLT-PR",
-      "timeline_months": "18-24",
-      "resulting_HQLA_potential": "Settlement finality resolved; ECB collateral eligibility discussion opens"
+      "current_state": "Six DLT market infrastructures had been authorised by March 2026; ESMA maintains the current list. None of the three products is analysed here as operating through an authorised DLT market infrastructure.",
+      "timeline_months": "Illustrative author scenario: 6-24 months; no issuer forecast",
+      "resulting_HQLA_potential": "Potential settlement and Eurosystem collateral route, subject to all standard eligibility, settlement and collateral-management criteria"
     },
     "L3": {
       "label": "Native sovereign DLT issuance",
       "required_change": "Tokens issued directly by sovereign treasury via authorised DLT-SS",
-      "precedents_in_trial": ["ECB Eurosystem trials on wholesale CBDC 2024-2026", "Banque de France TARGET Instant Payment Settlement on DLT"],
-      "timeline_years": "3-5",
-      "resulting_HQLA_potential": "Direct Level 1 sovereign claim; full ECB collateral eligibility; bankruptcy remoteness equivalent to book-entry sovereign debt"
+      "precedents_in_trial": [
+        "ECB Eurosystem trials on wholesale CBDC 2024-2026",
+        "Banque de France TARGET Instant Payment Settlement on DLT"
+      ],
+      "timeline_years": "No official timetable; companion 5-9 year ranges are author scenarios",
+      "resulting_HQLA_potential": "Candidate Level 1 treatment for a direct sovereign claim, subject to ordinary issuer, claim, currency, operational and collateral criteria"
     }
   },
   "limitations": [

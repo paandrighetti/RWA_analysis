@@ -15,9 +15,10 @@
   },
   "OUSG": {
     "holders_raw": 69,
-    "aum_ethereum_usd": 1900000.0,
+    "aum_ethereum_usd": null,
     "secondary_transfers": 851,
-    "secondary_share_pct": 40.2
+    "secondary_share_pct": 40.2,
+    "aum_note": "Product-specific Ethereum USD AUM is not established from the included public data package. The approximately USD 770 million figure cited in the article is global product AUM and must not be substituted for an Ethereum-only value."
   },
   "bIB01": {
     "holders_raw": 32,
@@ -27,5 +28,13 @@
     "aum_ethereum_usd": null,
     "aum_note": "Product-specific Ethereum USD AUM is not established from the included public data package; Backed product-suite AUM must not be substituted for bIB01 AUM."
   },
-  "_source": "Dune exports M1/M2/M2-bis, snapshot 2026-06-17; null values are deliberately unestablished (do not backfill without a sourced export)"
+  "_source": {
+    "snapshot_date": "2026-06-17",
+    "holder_and_transfer_metrics": "Dune exports M2/M2-bis/M6 as described in 02_empirical/dune_queries.sql",
+    "BUIDL_aum_ethereum_usd": "Dune export M1 / public snapshot value retained from the measured package",
+    "OUSG_aum_ethereum_usd": "unestablished: source export not included in the public repository",
+    "bIB01_aum_ethereum_usd": "unestablished: product-suite AUM is not product-specific AUM",
+    "policy": "Null values are deliberate and must not be backfilled without a cited export and calculation.",
+    "version": "1.1.2"
+  }
 }

@@ -1,7 +1,7 @@
-# RWA HQLA Eligibility Matrix: v1.1
+# RWA HQLA Eligibility Matrix: v1.1.2
 
 **Framework**: Basel III LCR HQLA eligibility scoring for tokenised Real-World Assets
-**Version**: 1.1, 2026-06-17 (scoring unchanged from v1.0 of 2026-05-11; empirical layer refreshed with measured Dune data)
+**Version**: 1.1.2, 2026-07-21 (empirical snapshot 2026-06-17)
 **Scope**: BUIDL (BlackRock), OUSG (Ondo Finance), bIB01 (Backed Finance)
 **Regulatory basis**: BCBS 238 (Jan 2013); CRR (EU) 575/2013 art. 411-419; Commission Delegated Regulation (EU) 2015/61 art. 7-17; EU Prospectus Regulation (EU) 2017/1129; ESMA Guidelines on eligible assets for UCITS.
 
@@ -124,9 +124,9 @@ Reference: BCBS 238 §24(c)-(f).
 ### C.2: Active and sizable market with low concentration
 | Product | Score | Justification | Source |
 |---|---|---|---|
-| BUIDL | Fail | Primary market = redemption with issuer ($2.5-2.9B AUM). Secondary market = AMMs with typical daily volume <$1M. Not "deep and active" in BCBS sense. | RWA.xyz, Messari |
-| OUSG | Fail | ~$770M AUM, secondary volume minimal. | RWA.xyz |
-| bIB01 | Fail | Secondary volume documented near zero on standard data providers. Reported $250M+ AUM across Backed product suite. | CoinDesk, Bybit |
+| BUIDL | Fail | 76 Ethereum addresses (approximately 51 effective after dust filtering); Top-3 = 55.2%, constrained-reconstruction Gini = 0.863 with exact feasible bounds [0.850, 0.885]; 3,151 secondary transfers over approximately 26 months. | Dune M2/M2-bis/M6, snapshot 2026-06-17 |
+| OUSG | Fail | 69 Ethereum addresses and 851 secondary transfers over approximately 41 months. Global product AUM is not substituted for an Ethereum-only value. | Dune M6, snapshot 2026-06-17 |
+| bIB01 | Conditional | 32 Ethereum addresses; 492 secondary transfers and a 96.5% secondary-share ratio, but only about 0.43 secondary transfers per day. Product-suite AUM is not treated as bIB01-specific AUM. | Dune M6, snapshot 2026-06-17 |
 
 ### C.3: Committed market makers
 | Product | Score | Justification | Source |
@@ -254,28 +254,28 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 - OUSG → harder pivot due to fund-of-funds structure; would require flattening to direct holdings + UCITS MMF wrapper.
 - bIB01 → would require radical reformulation from debt instrument to fund unit. Backed Assets is currently a debt issuer, not a fund manager. Effectively, this is a new product.
 
-**Timeline**: 12-18 months for issuer; subject to FMA/CSSF/CBI authorisation.
+**Illustrative implementation range**: 12-30 months. This is an author scenario, not an issuer or authority forecast; product design, authorisation and supervisory interpretation are gating conditions.
 
-**Resulting HQLA potential**: Level 1 or 2A via DR 2015/61 art. 15 UCITS look-through.
+**Resulting HQLA potential**: possible Level 1 or 2A treatment via DR 2015/61 art. 15 look-through, subject to the final structure and supervisory interpretation.
 
 ### L2: DLT Pilot Regime compliance
 **Required structural change**: issuance via authorised DLT-SS or DLT-TSS under Regulation (EU) 2022/858. By March 2026, six DLT market infrastructures had been authorised under the regime; ESMA maintains the current list. None of BUIDL, OUSG, or bIB01 is analysed here as operating through an authorised DLT market infrastructure.
 
-**Timeline**: 18-24 months; dependent on issuer execution, authorisation capacity, and legislative follow-up to ESMA's 2025 review of the regime.
+**Illustrative implementation range**: 6-24 months. This is not a forecast and depends on issuer execution, infrastructure selection, authorisation and legal structure.
 
 **Resulting HQLA potential**: stronger settlement-finality and legal-certainty arguments. ECB collateral eligibility remains conditional on the asset satisfying the standard Eurosystem eligibility and settlement requirements; DLT issuance alone is insufficient.
 
 ### L3: Native sovereign DLT issuance
 **Required structural change**: tokens issued directly by sovereign treasury (US Treasury, German Finance Ministry, France AFT) via authorised DLT-SS.
 
-**Timeline**: 3-5 years. Precedents in trial: ECB Eurosystem trials on wholesale CBDC settlement 2024-2026; Banque de France TARGET Instant Payment Settlement on DLT.
+**Timeline**: no official timetable. The 5-to-9-year ranges used in the companion gradient note are author scenarios, not public-authority forecasts.
 
-**Resulting HQLA potential**: direct Level 1 sovereign claim (DR Art. 10(1)(a)-(d)); full ECB collateral eligibility; bankruptcy remoteness equivalent to traditional book-entry sovereign debt.
+**Resulting HQLA potential**: a direct sovereign DLT claim could be a Level 1 candidate if it satisfies the ordinary issuer, claim, currency, operational and collateral-eligibility criteria. Tokenisation alone is not sufficient.
 
 ## Limitations and caveats
 
 1. This framework is based on **public documentation only**. Private Placement Memoranda (PPMs) for BUIDL and Ondo I LP are not public; analysis relies on Form D filings, regulatory compliance pages, and issuer press releases.
-2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at snapshot date. the First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. This change is consequential for the gradient analysis: Kraken lacks the UCITS management infrastructure that would be required for an L1 pivot.
+2. The bIB01 Securities Note dated 8 May 2025 expired on 7 May 2026 per Article 12 of the Prospectus Regulation, before the publication date of this framework. No Successor Base Prospectus was published on the issuer's website at the snapshot date. The First Supplement to the Registration Document dated 30 January 2026 discloses a material ownership change: Backed Finance AG is now 100% owned by Payward Europe Limited (Ireland), itself 100% owned by Payward, Inc. (US), i.e. Kraken. The ownership change may affect strategic incentives, but this framework makes no inference about a future issuer restructuring plan.
 3. Scoring is qualitative judgement based on regulatory text interpretation. Final supervisory verdict (PRA, ACPR, BaFin, CSSF, etc.) may differ in specific cases. Framework is intended as analytical guide, not regulatory advice.
 4. Product structures evolve. BlackRock filed new tokenised fund offerings on 9 May 2026; any post-publication structural change requires framework re-application.
 5. Stress event track record is insufficient (longest = BUIDL since March 2024). No supervisory-relevant 30-day stress observed. C.5 scoring is N/A.
@@ -300,10 +300,10 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 - bIB01: Base Prospectus dated 8 May 2025 (Backed Assets, Liechtenstein FMA-approved, EU passport notified)
 
 ### Supervisory commentary
-- ESMA Report on DLT Pilot Regime functioning (ESMA75-117376770-460, 25 June 2025)
+- ESMA Report on DLT Pilot Regime functioning (ESMA75-117376770-460, 25 June 2025) and ESMA maintained list of authorised DLT market infrastructures
 - EBA Report on tokenised deposits (12 December 2024)
 - AFME submission on DLT Pilot Regime (April 2025)
 
 ---
 
-*Framework v1.1, 2026-06-17. Methodology open for iteration. Comments and supervisory feedback welcome.*
+*Framework v1.1.2, empirical snapshot 2026-06-17, consistency update 2026-07-21. Methodology open for iteration. Comments and supervisory feedback welcome.*

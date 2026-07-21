@@ -37,7 +37,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
             "y": 0.3,
             "w": 3.5,
             "h": 2.2,
-            "title": "L0: Status quo (May 2026)",
+            "title": "L0: Status quo (June 2026)",
             "color": "#d62728",       # red
             "alpha": 0.20,
             "bullets": [
@@ -60,11 +60,11 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
             "bullets": [
                 "Public Debt CNAV under MMFR 2017/1131",
                 "Lux (CSSF) or Irl (CBI) authorisation",
-                "HQLA Level 1/2A via Art. 15 look-through",
+                "Potential Level 1/2A via Art. 15 look-through",
                 "Precedent: Franklin BENJI (1940 Act US)",
             ],
-            "status": "ACHIEVABLE",
-            "timeline": "12-30 months"
+            "status": "ILLUSTRATIVE PATH",
+            "timeline": "Illustrative 12-30 months"
         },
         {
             "id": "L2",
@@ -77,12 +77,12 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
             "alpha": 0.25,
             "bullets": [
                 "DLT-PR Regulation (EU) 2022/858",
-                "Via CSD Prague, 21X AG, or 360X AG",
-                "ECB collateral eligibility OPERATIONAL",
-                "since 30 March 2026 (ECB decision 27 Jan)",
+                "Via an authorised DLT market infrastructure",
+                "Potential collateral route from 30 March 2026",
+                "Standard eligibility and settlement criteria still apply",
             ],
-            "status": "OPERATIONAL FRAMEWORK",
-            "timeline": "6-24 months for BUIDL"
+            "status": "POTENTIAL ROUTE",
+            "timeline": "Illustrative 6-24 months"
         },
         {
             "id": "L3",
@@ -97,10 +97,10 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
                 "Treasury issues directly on DLT-SS",
                 "ECB Pontes pilot Q3 2026",
                 "ECB Appia long-term integrated",
-                "Direct Level 1 HQLA",
+                "Candidate Level 1 subject to standard criteria",
             ],
-            "status": "PROSPECTIVE",
-            "timeline": "5-7 years"
+            "status": "LONG-HORIZON SCENARIO",
+            "timeline": "No official timetable"
         }
     ]
 
@@ -221,7 +221,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
     )
     ax.text(
         8, 11.5,
-        "From current state (L0) to native sovereign DLT issuance (L3), May 2026 snapshot",
+        "From current state (L0) to native sovereign DLT issuance (L3), June 2026 snapshot",
         fontsize=10.5, style="italic", color="#666",
         ha="center", va="center"
     )
@@ -230,7 +230,7 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
     ax.text(
         0.5, -0.95,
         "Source: BCBS 238 ; DR 2015/61 ; Reg (EU) 2017/1131 (MMFR) ; Reg (EU) 2022/858 (DLT-PR) ; "
-        "ECB Press Release 27 January 2026 ; ECB Pontes/Appia 1 July 2025.",
+        "ECB Press Release 27 January 2026 ; ECB Pontes/Appia 1 July 2025 ; ESMA maintained DLT-MI list.",
         fontsize=8, color="#888", ha="left", va="center",
         style="italic"
     )

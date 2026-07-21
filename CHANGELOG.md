@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.2 (2026-07-21) - public consistency and provenance pass
+
+- Reframed the product set as three selected, widely cited structures rather than the three largest products.
+- Set OUSG Ethereum-specific AUM to `null` because the supporting M1 export is not included in the public package; global OUSG AUM is not substituted for a chain-specific value.
+- Updated `market_comparison.py` to display AUM only where the included public data establishes it.
+- Qualified address-level Gini comparisons and wallet-operator attributions.
+- Updated the DLT Pilot discussion to six authorised infrastructures by March 2026 and referred readers to ESMA's maintained current list.
+- Clarified that DLT issuance opens a potential Eurosystem collateral route only when all standard eligibility, settlement and collateral-management requirements are also met.
+- Recast bank allocation, haircut and timeline numbers as illustrative scenarios rather than calibrated recommendations or forecasts.
+- Removed the active editorial plan, the superseded synthetic pipeline and the duplicate Lorenz image.
+- Added a CI workflow and `.gitignore` so the published repository state matches this changelog.
+
 ## v1.1.1 (2026-07-13) - honesty and consistency pass
 
 - Concentration reporting reframed: Top-3/10/25 shares and the 25 smallest

@@ -1,11 +1,11 @@
 """
 RWA HQLA Framework: AUM Time-Series Visualisation
-Version 1.0: 2026-05-11
+Version 1.1.2: 2026-07-21
 
 Produces the AUM trajectory chart for Section 3 of the article.
-Data points are anchored on publicly reported milestones; intermediate
-values are interpolated for visualisation. Replace with Dune query output
-(M1 in 02_empirical/dune_queries.sql) for production accuracy.
+Data points are anchored on publicly reported milestones; connecting lines are
+visual aids and do not represent daily observations. The Backed series is
+platform-level and is not a bIB01-specific AUM history.
 
 Output: 05_figures/aum_timeseries.png / .svg
 """

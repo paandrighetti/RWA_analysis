@@ -1,6 +1,6 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1.1 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
+**Version**: 1.1.2 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
 **Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`lorenz_real_data.py`).
 
@@ -44,10 +44,9 @@ The market microstructure is closer to a **bilateral institutional product** (ar
 | Metric | Value | Source |
 |---|---|---|
 | AUM global (Apr 2026) | ~$770M | RWA.xyz |
-| Holders Ethereum mainnet | ~80 | Dune 2026-06-17 |
+| Holders Ethereum mainnet | 69 | Dune 2026-06-17 |
 | Cumulative transfers Ethereum | 2,119 (851 secondary) | Dune 2026-06-17 |
 | Secondary transfer rate | ~0.7/day | Computed |
-| 24h secondary volume | Low five-digit USD range (estimate) | CoinGecko / aggregators |
 | Major position | Ripple (post-XRPL pilot 6 May 2026) | Press release |
 
 Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, and Ripple validates operational rails, but is an **institutional B2B integration**, not a public secondary market.
@@ -59,7 +58,7 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 | Contract Ethereum | `0xCA30c93B02514f86d5C86a6e375E3A330B435Fb5` | bIB01 Final Terms |
 | AUM (Backed product suite, not bIB01-specific) | ~$250M+ | CV5 Capital |
 | Max issue volume per Final Terms | CHF 100,000,000 | FMA filing |
-| Holders Ethereum mainnet | ~35 | Dune 2026-06-17 |
+| Holders Ethereum mainnet | 32 | Dune 2026-06-17 |
 | Cumulative transfers Ethereum | 510 (492 secondary, 96%) | Dune 2026-06-17 |
 | Secondary transfer rate | ~0.43/day | Computed |
 | INX ATS listing | Yes, no market making | Final Terms §3 |
@@ -79,24 +78,21 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 
 The empirical layer does not change the framework verdict. It strengthens the market-liquidity evidence, while the final classification remains subject to supervisory interpretation and the limitations stated in the article.
 
-## Comparison with traditional HQLA proxies
+## Relationship to traditional HQLA market evidence
 
-Reference points, indicative orders of magnitude only (heterogeneous bases: onchain addresses vs beneficial owners, venue-reported vs interdealer volumes):
-
-| Asset | Holders worldwide | Daily volume USD | Gini equivalent |
-|---|---|---|---|
-| 1-year US Treasury Bill | 100,000+ (via primary + secondary) | $500B+ | ~0.5 (illustrative) |
-| Money market mutual fund (typical) | 1,000-50,000 | $50M-$1B | ~0.65 |
-| iShares IB01 UCITS ETF | n/a (intra-exchange) | $1-10M | ~0.40 (ETF wrapper) |
-| **BUIDL global** | ~150-200 | **$0 secondary** | **0.863** (reconstr.) |
-| **OUSG** | ~80-100 | ~$50K | ~0.70 (est.) |
-| **bIB01** | ~35-50 | ~$5K | ~0.65 (est.) |
-
-The gap with traditional HQLA assets is two-to-four orders of magnitude on volume and holders count. **This is the structural disqualifier that the framework captures empirically.**
+The repository does not publish a harmonised cross-market Gini or holder-count
+benchmark. Blockchain addresses are not equivalent to beneficial owners,
+omnibus accounts, custodians or brokerage accounts, and venue-reported token
+activity is not directly comparable with interdealer Treasury-market volume.
+The empirical layer is therefore used only to assess whether each product's
+own observed market structure supports the qualitative Block C requirements.
+Under this framework, the low address counts, high concentration and limited
+secondary activity strengthen the product-level market-liquidity finding; they
+do not establish a universal numerical threshold for HQLA markets.
 
 ## How the article uses this layer
 
-Section 5 of `../article/article.md` builds directly on these measurements: the $0 24h volume statistic for BUIDL leads the empirical argument, the Lorenz curve (Gini = 0.863, reconstruction) serves as the visual centerpiece against traditional HQLA benchmarks (Gini 0.40-0.65), and the secondary transfer rates (~4/day BUIDL, ~0.7/day OUSG, ~0.43/day bIB01) quantify the "trading metabolism" gap against assets that trade thousands of times per day across hundreds of venues.
+Section 5 of `../article/article.md` builds directly on these measurements: the BUIDL snapshot, constrained Lorenz reconstruction and secondary-transfer rates quantify the observed product-level market structure. The article does not treat address-level Gini values as directly comparable with beneficial-owner or account-level statistics for traditional securities.
 
 ## Limitations and roadmap
 

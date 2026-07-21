@@ -1,6 +1,6 @@
 # Framework Methodology
 
-**Version**: 1.0, 2026-05-11
+**Version**: 1.1.2, 2026-07-21
 
 This document explains the methodology underlying the RWA HQLA Eligibility Framework. It is intended to be read alongside the scoring matrix (`eligibility_matrix.md` / `.json`).
 
@@ -44,7 +44,7 @@ The cascade is closed by the first Fail at each level: if an asset is not a dire
 - B.4 Documented monetisation policy, DR 2015/61 Art. 8(3)
 - B.5 Diversification at portfolio level, DR 2015/61 Art. 8(1)(c)
 
-These are largely remediable through institutional arrangements (custody, policy, limits) and do not by themselves defeat eligibility.
+These are operational requirements that must be satisfied in use. Some failures may be remediable through custody, policy or contractual arrangements, but a criterion remains failed until the relevant condition is evidenced.
 
 ### Block C: Market criteria (independent)
 
@@ -81,11 +81,7 @@ Each criterion is rated per product on a four-level scale:
 
 ## Verdict logic
 
-The overall HQLA verdict requires:
-- Pass in Block A (eligibility category), AND
-- Pass in Block C (market criteria)
-
-Block B Fails are typically remediable and do not alone defeat eligibility. Block D Fails are qualitative red flags for supervisory review and contribute to the distance-to-HQLA assessment.
+Under this framework, a positive HQLA assessment requires an eligible route in Block A, satisfaction of the applicable operational requirements in Block B, and satisfaction of the market criteria in Block C. Block D is a qualitative wrapper-friction overlay that informs supervisory interpretation and the distance-to-eligibility analysis. A potentially remediable failure is still a failure until the remediation is implemented and evidenced.
 
 ## Auditability principle
 
