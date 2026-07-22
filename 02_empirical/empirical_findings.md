@@ -94,6 +94,10 @@ do not establish a universal numerical threshold for HQLA markets.
 
 Section 5 of `../article/article.md` builds directly on these measurements: the BUIDL snapshot, constrained Lorenz reconstruction and secondary-transfer rates quantify the observed product-level market structure. The article does not treat address-level Gini values as directly comparable with beneficial-owner or account-level statistics for traditional securities.
 
+## Valuation and NAV policy
+
+USD AUM is retained only where the publication package contains a dated source or export establishing the value. Token supply is not treated as USD AUM by default. Any future conversion from token units to USD must identify the applicable NAV or market price, its observation timestamp, the token unit convention and the complete calculation. Null Ethereum AUM values for OUSG and bIB01 are deliberate until matching retained evidence is published.
+
 ## Limitations and roadmap
 
 - **Concentration: measured constraints, reconstructed scalar** (v1.1). The per-holder export (query M2-bis) measures the cumulative shares directly (Top-3 = 55.2%, Top-10 = 83.0%, Top-25 = 99.5%) and the 25 smallest balances verbatim; the Gini of 0.863 is computed on a reconstruction under those constraints, and exact LP bounds give [0.850, 0.885] across all consistent distributions. The v1.0 Pareto estimate (anchored on the July 2024 Ondo OUSG ~35% observation) landed in the same region.

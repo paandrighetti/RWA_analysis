@@ -95,7 +95,11 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
 
     # Annotation for the empirical paradox
     ax.annotate(
-        "BUIDL: $2.28B AUM\nbut $0 secondary 24h volume",
+        (
+            "BUIDL: $2.28B reported global product AUM\n"
+            "CoinGecko-reported secondary 24h volume: $0\n"
+            "Observation dated 6 May 2026"
+        ),
         xy=(datetime.strptime("2026-05-06", "%Y-%m-%d"), 2.28),
         xytext=(datetime.strptime("2025-01-15", "%Y-%m-%d"), 1.9),
         fontsize=9, color="#1f77b4",
@@ -106,8 +110,10 @@ def plot_aum_timeseries(output_png="05_figures/aum_timeseries.png",
 
     fig.text(
         0.5, 0.005,
-        "Source: BlackRock press releases, Ondo Finance reporting, Backed Assets Final Terms, RWA.xyz, CoinGecko. "
-        "Intermediate values interpolated for visualisation. The Backed line is product-suite AUM, not bIB01-specific.",
+        "Sources: BlackRock press releases, Ondo Finance reporting, Backed Assets Final Terms, "
+        "RWA.xyz and CoinGecko. The $0 secondary 24h volume is a CoinGecko observation dated "
+        "6 May 2026, not a claim that secondary transfers are impossible. Connecting lines are "
+        "visual aids between reported milestones. The Backed line is product-suite AUM, not bIB01-specific.",
         ha="center", fontsize=8, style="italic", color="#888"
     )
 

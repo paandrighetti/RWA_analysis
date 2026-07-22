@@ -54,7 +54,18 @@ def plot_comparison(output_path="05_figures/market_comparison.png"):
     bars = ax.bar(known_idx, known_vals, color=[COLORS[i] for i in known_idx],
                   edgecolor="black", linewidth=0.5)
     if known_vals:
+        if any(value <= 0 for value in known_vals):
+            raise ValueError("AUM values on a logarithmic axis must be positive")
         ax.set_yscale("log")
+        y_min = min(known_vals) / 2.0
+        y_max = max(known_vals) * 1.8
+        if not 0 < y_min < y_max:
+            raise ValueError(f"invalid logarithmic AUM limits: {y_min}, {y_max}")
+        ax.set_ylim(y_min, y_max)
+        annotation_y = float(np.sqrt(y_min * y_max))
+    else:
+        ax.set_ylim(0, 1.2)
+        annotation_y = 0.6
     ax.set_xticks(range(len(PRODUCTS)), PRODUCTS)
     ax.set_title("AUM on Ethereum mainnet ($M, log scale where available)")
     ax.set_ylabel("$M")
@@ -64,10 +75,11 @@ def plot_comparison(output_path="05_figures/market_comparison.png"):
                 label, ha="center", va="bottom", fontsize=9)
 
     if known_vals:
-        annotation_y = max(min(known_vals), max(known_vals) * 0.15)
-    else:
-        annotation_y = 1.0
-        ax.set_ylim(0, 1.2)
+        lower_bound, upper_bound = ax.get_ylim()
+        if lower_bound <= 0:
+            raise RuntimeError("logarithmic AUM axis has a non-positive lower bound")
+        if max(known_vals) >= upper_bound:
+            raise RuntimeError("at least one AUM bar is clipped by the upper limit")
     for i, value in enumerate(AUM_ETH_M):
         if value is None:
             ax.text(i, annotation_y, "Not established\nfrom included data",
