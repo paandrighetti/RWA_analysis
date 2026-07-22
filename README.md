@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.3-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.4-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 
@@ -201,7 +201,7 @@ The dashboard tracks:
 
 If this framework informs your research or analysis, please cite:
 
-> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1.3: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
+> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1.4: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
 
 ---
 

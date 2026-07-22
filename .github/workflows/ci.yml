@@ -1,0 +1,44 @@
+name: Publication validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.11"
+          - "3.12"
+          - "3.13"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile analysis scripts
+        run: |
+          python -m py_compile \
+            01_framework/scoring_heatmap.py \
+            02_empirical/lorenz_real_data.py \
+            02_empirical/market_comparison.py \
+            02_empirical/aum_timeseries.py \
+            03_gradient/gradient_diagram.py \
+            04_implications/haircut_calculator.py \
+            validate_publication.py \
+            validate_repository.py
+
+      - name: Run non-mutating repository checks
+        run: python validate_repository.py
+
+      - name: Ensure validation did not modify files
+        run: git diff --exit-code
