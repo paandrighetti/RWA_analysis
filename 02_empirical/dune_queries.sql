@@ -1,15 +1,15 @@
 -- ============================================================================
--- RWA HQLA Framework — Dune SQL Queries v1.2
--- Updated 2026-05-27
+-- RWA HQLA Framework — Dune SQL Queries v1.3
+-- Updated 2026-07-22
 -- ============================================================================
 --
--- DESIGN PRINCIPLE FOR v1.2:
+-- DESIGN PRINCIPLE FOR v1.3:
 -- All queries below depend on a SINGLE confirmed table: tokens.transfers
 -- Schema confirmed at https://docs.dune.com/data-catalog/curated/token-transfers/overview
 -- Columns used : block_date, block_time, blockchain, contract_address, "from", "to", amount, amount_usd, symbol
 -- Partition keys : blockchain, block_date (always filter on these)
 --
--- Why no balances.erc20_latest in v1.2? Because the exact column names of
+-- Why no balances.erc20_latest in v1.3? Because the exact column names of
 -- The relevant source-table fields are not documented in the public materials reviewed.
 -- Computing balances by aggregating tokens.transfers is slower but
 -- guaranteed to work.
@@ -50,7 +50,7 @@ LIMIT 10;
 
 
 -- ============================================================================
--- M1 — AUM time-series (daily)
+-- M1 — BUIDL token-supply time series (daily)
 -- ============================================================================
 
 WITH supply_changes AS (
@@ -76,7 +76,7 @@ WITH supply_changes AS (
 )
 SELECT
     day,
-    SUM(net_supply_change) OVER (ORDER BY day) AS aum_tokens
+    SUM(net_supply_change) OVER (ORDER BY day) AS supply_tokens
 FROM supply_changes
 ORDER BY day;
 
@@ -327,8 +327,8 @@ ORDER BY current_supply DESC;
 --    -> Or use materialized view : Dune can save expensive CTEs as materialized
 --       views, refreshed periodically. See dune.com/docs.
 --
--- IF YOU HAVE A SPECIFIC ERROR :
--- send me the exact error string and the SQL that triggered it.
+-- For diagnosis, record the exact error message and the SQL query
+-- that triggered it.
 -- The following query targets mint and burn supply changes directly.
 -- ============================================================================
 

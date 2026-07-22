@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.1.4 (2026-07-22) - final publication consistency pass
+
+- Replaced the figure-regenerating CI path with non-mutating repository checks.
+- Updated GitHub Actions to the current Node.js 24-based action releases.
+- Corrected the cumulative Block A/B/C verdict logic and retained Block D as a
+  wrapper-specific supervisory-risk overlay.
+- Qualified cross-market concentration comparisons as non-like-for-like.
+- Renamed M1 as a BUIDL token-supply series rather than USD AUM.
+- Removed residual conversational SQL wording and aligned the SQL header date
+  and version with the publication release.
+
 ## v1.1.3 (2026-07-22) - publication reproducibility and wording pass
 
 - Distinguished offline reproduction of analytical transformations from reproduction of the original Dune extraction.

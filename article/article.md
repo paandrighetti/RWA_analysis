@@ -1,4 +1,4 @@
-# Why Three Major Tokenised Treasury Products Are Not HQLA: and What It Would Take
+# Why Three Major Tokenised Treasury Products Are Not HQLA — and What It Would Take
 
 *A regulatory and empirical framework for assessing the High-Quality Liquid Asset eligibility of tokenised Real-World Assets under Basel III*
 
@@ -10,7 +10,7 @@ BlackRock's BUIDL fund holds $2.28 billion in tokenised US Treasury exposure acr
 
 All three products are described, marketed, and analysed as tokenised treasuries. None of them qualifies as High-Quality Liquid Asset (HQLA) under the Basel III Liquidity Coverage Ratio framework: neither as Level 1, nor Level 2A, nor Level 2B.
 
-This article explains why. It walks through a 24-criteria eligibility framework derived from BCBS 238 (2013), the EU Capital Requirements Regulation (CRR), and Commission Delegated Regulation (EU) 2015/61. It pairs the regulatory analysis with on-chain empirical data showing that the market microstructure of tokenised treasuries is materially more concentrated than that of traditional HQLA reference assets. And it sets out a gradient of structural changes (L1 to L3) that would be required to reach progressively higher levels of eligibility.
+This article explains why. It walks through a 24-criteria eligibility framework derived from BCBS 238 (2013), the EU Capital Requirements Regulation (CRR), and Commission Delegated Regulation (EU) 2015/61. It pairs the regulatory analysis with on-chain empirical data showing highly concentrated address-level ownership structures. Direct comparison with traditional HQLA reference assets is not like-for-like because blockchain addresses are not equivalent to beneficial owners, custody accounts, or omnibus accounts. And it sets out a gradient of structural changes (L1 to L3) that would be required to reach progressively higher levels of eligibility.
 
 The verdict is straightforward. The path forward is not.
 
@@ -42,7 +42,7 @@ Basel III HQLA eligibility is a cascade. An asset must satisfy four cumulative c
 
 **Block D: Wrapper-specific friction.** The Basel and EU texts predate tokenised wrappers. This block, the framework's own contribution, identifies frictions specific to current wrapper designs: settlement finality under SFD 98/26/EC, custody chain layers, oracle dependency, smart contract upgradeability, pause and freeze functions, unilateral issuer call options, substitution clauses without investor consent, extraordinary event clauses, creditor cascade structures, and explicit ECB collateral eligibility status.
 
-Each criterion is rated per product on a four-level scale: Pass, Conditional, Fail, or N/A. Block A is cascading: any Fail closes the level for that product. Blocks B, C, and D are independent. The overall HQLA verdict requires Pass in Blocks A and C; Block B Fails are typically remediable through operational changes; Block D Fails are qualitative red flags for supervisory review.
+Each criterion is rated per product on a four-level scale: Pass, Conditional, Fail, or N/A. Block A is cascading: any Fail closes the level for that product. Blocks B, C, and D are independent. The overall HQLA verdict requires an eligible route in Block A and satisfaction of the applicable requirements in Blocks B and C. Block D provides an additional wrapper-specific supervisory-risk overlay.
 
 The framework deliberately uses primary regulatory references in each cell. Every Fail is anchored to either a specific statutory provision (DR 2015/61 Art. 10(1)(a) for direct sovereign claim; CRR Art. 122 for unrated corporate treatment) or a specific contractual clause from the product's primary documentation (Final Terms, Form D filing, Private Placement Memorandum). The methodology is auditable. The conclusions are structured analytical judgements anchored to cited regulatory provisions, public product documentation, and the stated framework; supervisory interpretation may differ.
 
