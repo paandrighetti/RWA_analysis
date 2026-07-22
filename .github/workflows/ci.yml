@@ -1,0 +1,56 @@
+﻿name: Publication validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.11"
+          - "3.12"
+          - "3.13"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          else
+            python -m pip install numpy pandas matplotlib scipy
+          fi
+
+      - name: Compile analysis scripts
+        run: |
+          python -m py_compile \
+            01_framework/scoring_heatmap.py \
+            02_empirical/lorenz_real_data.py \
+            02_empirical/market_comparison.py \
+            02_empirical/aum_timeseries.py \
+            03_gradient/gradient_diagram.py \
+            04_implications/haircut_calculator.py \
+            validate_publication.py
+
+      - name: Validate publication
+        env:
+          MPLBACKEND: Agg
+        run: python validate_publication.py
+
+      - name: Ensure generated files are committed
+        run: git diff --exit-code

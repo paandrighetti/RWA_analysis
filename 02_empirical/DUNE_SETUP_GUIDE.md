@@ -55,3 +55,18 @@ python 04_implications/haircut_calculator.py
 Holder counts, transfer counts and AUM are point-in-time observations and may legitimately change at every refresh. The address-level Gini is not directly comparable with beneficial-owner or account-level concentration measures in traditional securities. Transfers are also not synonymous with trades: issuance, redemption, operational routing, bridges and custody movements must be considered before drawing market-liquidity conclusions.
 
 The Dune dashboard is a current monitoring surface. The dated files and canonical JSON in this repository are the publication record for the article's stated snapshot.
+
+## Canonical snapshot boundary
+
+The published empirical results use a cutoff of **17 June 2026**.
+
+Queries intended to reproduce the publication must include the following upper boundary:
+
+    AND block_date <= DATE '2026-06-17'
+
+The equivalent exclusive timestamp boundary is:
+
+    AND block_time < TIMESTAMP '2026-06-18 00:00:00 UTC'
+
+A query without an upper boundary is a live query and will not reproduce the published snapshot.
+Live dashboard queries must be stored separately from the publication queries.

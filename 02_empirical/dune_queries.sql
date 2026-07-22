@@ -10,7 +10,7 @@
 -- Partition keys : blockchain, block_date (always filter on these)
 --
 -- Why no balances.erc20_latest in v1.2? Because the exact column names of
--- that table are not in the public docs and I refuse to guess again.
+-- The relevant source-table fields are not documented in the public materials reviewed.
 -- Computing balances by aggregating tokens.transfers is slower but
 -- guaranteed to work.
 --
@@ -67,6 +67,7 @@ WITH supply_changes AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
       AND (
           "from" = 0x0000000000000000000000000000000000000000
           OR "to" = 0x0000000000000000000000000000000000000000
@@ -92,6 +93,7 @@ WITH movements AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
 
     UNION ALL
 
@@ -102,6 +104,7 @@ WITH movements AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
 ),
 balances AS (
     SELECT
@@ -140,12 +143,14 @@ WITH movements AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
     UNION ALL
     SELECT "from" AS address, -amount AS amt
     FROM tokens.transfers
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
 )
 SELECT
     address,
@@ -173,6 +178,7 @@ WHERE blockchain = 'ethereum'
   AND "from" != 0x0000000000000000000000000000000000000000
   AND "to"   != 0x0000000000000000000000000000000000000000
   AND block_date >= DATE '2024-03-01'
+  AND block_date <= DATE '2026-06-17'
 GROUP BY 1
 ORDER BY 1;
 
@@ -195,6 +201,7 @@ WITH classified AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
 )
 SELECT
     day,
@@ -223,6 +230,7 @@ WHERE blockchain = 'ethereum'
   AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
   AND "to" = 0x0000000000000000000000000000000000000000
   AND block_date >= DATE '2024-03-01'
+  AND block_date <= DATE '2026-06-17'
 GROUP BY "from"
 ORDER BY total_burned DESC
 LIMIT 50;
@@ -238,6 +246,7 @@ WITH all_transfers AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
+      AND block_date <= DATE '2026-06-17'
 
     UNION ALL
 
@@ -246,6 +255,7 @@ WITH all_transfers AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x1b19c19393e2d034d8ff31ff34c81252fcbbee92
       AND block_date >= DATE '2023-01-01'
+      AND block_date <= DATE '2026-06-17'
 
     UNION ALL
 
@@ -254,6 +264,7 @@ WITH all_transfers AS (
     WHERE blockchain = 'ethereum'
       AND contract_address = 0xca30c93b02514f86d5c86a6e375e3a330b435fb5
       AND block_date >= DATE '2023-04-01'
+      AND block_date <= DATE '2026-06-17'
 )
 SELECT
     product,
@@ -318,35 +329,42 @@ ORDER BY current_supply DESC;
 --
 -- IF YOU HAVE A SPECIFIC ERROR :
 -- send me the exact error string and the SQL that triggered it.
--- I will stop guessing and target the actual issue.
+-- The following query targets mint and burn supply changes directly.
 -- ============================================================================
 
 
 -- ============================================================================
--- M7 — Unified AUM time-series (3 products in one chart)
+-- M7 — Unified token-supply time series in product-native units
 -- ============================================================================
--- Added in v1.1 (2026-06-17). Produces a single result set with three series
--- (one per product) for plotting BUIDL, OUSG, bIB01 on a single chart in
--- Dune. Use a log-scale Y-axis given the three orders of magnitude difference
--- (BUIDL ~$181M vs OUSG ~$1.9M vs bIB01 ~$40K on Ethereum mainnet).
--- Save on Dune as: RWA_HQLA_M7_AUM_unified_3products
+-- This query reconstructs outstanding token supply from mint and burn events.
+-- It does not calculate USD AUM. The three products use different native units
+-- and must not be compared as dollar values without a dated NAV or price source.
+--
+-- Save on Dune as: RWA_HQLA_M7_token_supply_3products
 -- ============================================================================
 
 WITH all_supply_changes AS (
     SELECT
         block_date AS day,
         'BUIDL' AS product,
-        SUM(CASE
-            WHEN "from" = 0x0000000000000000000000000000000000000000 THEN amount
-            WHEN "to"   = 0x0000000000000000000000000000000000000000 THEN -amount
-            ELSE 0
-        END) AS net_change
+        SUM(
+            CASE
+                WHEN "from" = 0x0000000000000000000000000000000000000000
+                    THEN amount
+                WHEN "to" = 0x0000000000000000000000000000000000000000
+                    THEN -amount
+                ELSE 0
+            END
+        ) AS net_change
     FROM tokens.transfers
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x7712c34205737192402172409a8f7ccef8aa2aec
       AND block_date >= DATE '2024-03-01'
-      AND ("from" = 0x0000000000000000000000000000000000000000
-           OR "to" = 0x0000000000000000000000000000000000000000)
+      AND block_date <= DATE '2026-06-17'
+      AND (
+          "from" = 0x0000000000000000000000000000000000000000
+          OR "to" = 0x0000000000000000000000000000000000000000
+      )
     GROUP BY 1
 
     UNION ALL
@@ -354,17 +372,24 @@ WITH all_supply_changes AS (
     SELECT
         block_date AS day,
         'OUSG' AS product,
-        SUM(CASE
-            WHEN "from" = 0x0000000000000000000000000000000000000000 THEN amount
-            WHEN "to"   = 0x0000000000000000000000000000000000000000 THEN -amount
-            ELSE 0
-        END) AS net_change
+        SUM(
+            CASE
+                WHEN "from" = 0x0000000000000000000000000000000000000000
+                    THEN amount
+                WHEN "to" = 0x0000000000000000000000000000000000000000
+                    THEN -amount
+                ELSE 0
+            END
+        ) AS net_change
     FROM tokens.transfers
     WHERE blockchain = 'ethereum'
       AND contract_address = 0x1b19c19393e2d034d8ff31ff34c81252fcbbee92
       AND block_date >= DATE '2023-01-01'
-      AND ("from" = 0x0000000000000000000000000000000000000000
-           OR "to" = 0x0000000000000000000000000000000000000000)
+      AND block_date <= DATE '2026-06-17'
+      AND (
+          "from" = 0x0000000000000000000000000000000000000000
+          OR "to" = 0x0000000000000000000000000000000000000000
+      )
     GROUP BY 1
 
     UNION ALL
@@ -372,28 +397,40 @@ WITH all_supply_changes AS (
     SELECT
         block_date AS day,
         'bIB01' AS product,
-        SUM(CASE
-            WHEN "from" = 0x0000000000000000000000000000000000000000 THEN amount
-            WHEN "to"   = 0x0000000000000000000000000000000000000000 THEN -amount
-            ELSE 0
-        END) AS net_change
+        SUM(
+            CASE
+                WHEN "from" = 0x0000000000000000000000000000000000000000
+                    THEN amount
+                WHEN "to" = 0x0000000000000000000000000000000000000000
+                    THEN -amount
+                ELSE 0
+            END
+        ) AS net_change
     FROM tokens.transfers
     WHERE blockchain = 'ethereum'
       AND contract_address = 0xca30c93b02514f86d5c86a6e375e3a330b435fb5
       AND block_date >= DATE '2023-04-01'
-      AND ("from" = 0x0000000000000000000000000000000000000000
-           OR "to" = 0x0000000000000000000000000000000000000000)
+      AND block_date <= DATE '2026-06-17'
+      AND (
+          "from" = 0x0000000000000000000000000000000000000000
+          OR "to" = 0x0000000000000000000000000000000000000000
+      )
     GROUP BY 1
 )
 SELECT
     day,
     product,
-    SUM(net_change) OVER (PARTITION BY product ORDER BY day) AS aum_tokens
+    SUM(net_change) OVER (
+        PARTITION BY product
+        ORDER BY day
+    ) AS token_supply_units
 FROM all_supply_changes
 ORDER BY product, day;
 
--- Visualization tip on Dune:
---   Chart type : Line chart
---   X-axis     : day
---   Y-axis     : aum_tokens (LOG SCALE — critical, otherwise BUIDL drowns OUSG and bIB01)
---   Group by   : product
+-- Visualization:
+--   X-axis   : day
+--   Y-axis   : token_supply_units
+--   Group by : product
+--
+-- Plot each product independently or normalise each series to an index.
+-- Do not label this output as USD AUM without a dated product-level NAV.
