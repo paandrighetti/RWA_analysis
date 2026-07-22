@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.2-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+[![Framework Version](https://img.shields.io/badge/version-1.1.3-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
 
 ---
 
@@ -126,20 +126,7 @@ The L1+L2 combination is an illustrative institutional pathway for BUIDL rather 
 
 ## Practical framework for treasurers
 
-For bank treasurers considering tokenised RWA exposures today, the repository includes an **illustrative internal-policy scenario**. The values below are not empirically calibrated recommendations and must be replaced by institution-specific ALM, legal, custody and market-liquidity analysis.
-
-**Illustrative internal haircut envelope** (23-40% over book value):
-- Custody chain risk: 5-10%
-- Settlement finality risk: 10-15%
-- Contract upgradeability risk: 3-5%
-- Issuer concentration risk: 5-10%
-
-**Internal limits matrix** (to calibrate per ALM committee):
-- Single-product cap: 5% of total liquid assets
-- Single-issuer cap: 10% of total liquid assets
-- Single-chain cap: 25% of tokenised RWA
-- Single-custodian cap: 33% of tokenised RWA
-- Total tokenised RWA cap: 1-2% of total liquid assets
+The repository includes an **illustrative internal-policy stress scenario** in `04_implications/`. Its haircut components and concentration parameters are uncalibrated examples for committee challenge, not regulatory treatments, recommended limits, or suitable defaults for any institution. A live implementation requires institution-specific ALM, legal, accounting, custody, operational and market-liquidity evidence.
 
 ---
 
@@ -191,13 +178,9 @@ python 02_empirical/aum_timeseries.py
 python 03_gradient/gradient_diagram.py
 ```
 
-All five scripts run offline. Snapshot inputs shared across scripts are stored in `data/snapshot_metrics.json`; reconstruction constraints specific to the Lorenz analysis remain documented in `02_empirical/lorenz_real_data.py`. Figures are written to `05_figures/`.
+These five downstream transformations run offline from the published canonical snapshot. Shared inputs are stored in `data/snapshot_metrics.json`; reconstruction constraints specific to the Lorenz analysis remain documented in `02_empirical/lorenz_real_data.py`. Figures are written to `05_figures/`.
 
-To extract live on-chain data:
-1. Open a Dune Analytics account
-2. Copy queries from `02_empirical/dune_queries.sql`
-3. Adjust contract addresses if needed (verify via Etherscan)
-4. Compare the exported values against `data/snapshot_metrics.json` and update the canonical snapshot only when the supporting export and calculation are retained
+This reproduces the analytical transformations and figures, not the original on-chain extraction. To refresh the snapshot, run the queries in `02_empirical/dune_queries.sql`, retain the dated query exports and calculation notes, then update `data/snapshot_metrics.json`. The detailed protocol is in `02_empirical/DUNE_SETUP_GUIDE.md`.
 
 ---
 
@@ -218,7 +201,7 @@ The dashboard tracks:
 
 If this framework informs your research or analysis, please cite:
 
-> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1.2: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
+> Pierre-Antoine Andrighetti. (2026). *RWA HQLA Framework v1.1.3: A regulatory and empirical assessment of tokenised treasury HQLA eligibility.* https://github.com/paandrighetti/RWA_analysis
 
 ---
 

@@ -1,6 +1,6 @@
 """
 RWA HQLA Framework: AUM Time-Series Visualisation
-Version 1.1.2: 2026-07-21
+Version 1.1.3: 2026-07-22
 
 Produces the AUM trajectory chart for Section 3 of the article.
 Data points are anchored on publicly reported milestones; connecting lines are

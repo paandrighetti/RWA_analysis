@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.1.3 (2026-07-22) - publication reproducibility and wording pass
+
+- Distinguished offline reproduction of analytical transformations from reproduction of the original Dune extraction.
+- Rewrote the Dune snapshot-update guide around dated exports, field-level provenance and the canonical 17 June 2026 snapshot.
+- Reframed transfer counts as supporting evidence rather than a direct trade-volume or beneficial-owner measure.
+- Clarified that transfer restrictions are treated as impairing operational availability within this framework, not as a formal legal determination of encumbrance.
+- Updated the DTCC section to reflect the successful live-production transactions reported on 15 July 2026 and the planned October 2026 service launch.
+- Replaced duplicate figure workflows with one validator-driven CI workflow and expanded checks to all analytical scripts and exact Gini bounds.
+- Removed prescriptive scenario percentages from the README summary; detailed values remain labelled as uncalibrated examples in the treasury appendix.
+
 ## v1.1.2 (2026-07-21) - public consistency and provenance pass
 
 - Reframed the product set as three selected, widely cited structures rather than the three largest products.

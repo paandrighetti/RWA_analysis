@@ -1,7 +1,7 @@
-# RWA HQLA Eligibility Matrix: v1.1.2
+# RWA HQLA Eligibility Matrix: v1.1.3
 
 **Framework**: Basel III LCR HQLA eligibility scoring for tokenised Real-World Assets
-**Version**: 1.1.2, 2026-07-21 (empirical snapshot 2026-06-17)
+**Version**: 1.1.3, 2026-07-22 (empirical snapshot 2026-06-17)
 **Scope**: BUIDL (BlackRock), OUSG (Ondo Finance), bIB01 (Backed Finance)
 **Regulatory basis**: BCBS 238 (Jan 2013); CRR (EU) 575/2013 art. 411-419; Commission Delegated Regulation (EU) 2015/61 art. 7-17; EU Prospectus Regulation (EU) 2017/1129; ESMA Guidelines on eligible assets for UCITS.
 
@@ -306,4 +306,4 @@ All three products fail Block A categorically. Frictions in Blocks B-D compound.
 
 ---
 
-*Framework v1.1.2, empirical snapshot 2026-06-17, consistency update 2026-07-21. Methodology open for iteration. Comments and supervisory feedback welcome.*
+*Framework v1.1.3, empirical snapshot 2026-06-17, consistency update 2026-07-22. Methodology open for iteration. Comments and supervisory feedback welcome.*

@@ -1,6 +1,6 @@
 # Implications for Bank Treasurers: An Illustrative Analytical Framework
 
-**Version**: 1.1.2, 2026-07-21
+**Version**: 1.1.3, 2026-07-22
 
 ## Why this section matters
 

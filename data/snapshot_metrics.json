@@ -35,6 +35,6 @@
     "OUSG_aum_ethereum_usd": "unestablished: source export not included in the public repository",
     "bIB01_aum_ethereum_usd": "unestablished: product-suite AUM is not product-specific AUM",
     "policy": "Null values are deliberate and must not be backfilled without a cited export and calculation.",
-    "version": "1.1.2"
+    "version": "1.1.3"
   }
 }

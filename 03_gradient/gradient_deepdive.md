@@ -1,6 +1,6 @@
 # The Gradient of Eligibility: What Would It Take?
 
-**Version**: 1.1.2, 2026-07-21
+**Version**: 1.1.3, 2026-07-22
 **Focus**: BUIDL specifically as primary case study, with cross-references to OUSG and bIB01 where relevant.
 
 ## Framework reminder

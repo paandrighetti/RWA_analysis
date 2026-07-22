@@ -1,6 +1,6 @@
 # Framework Methodology
 
-**Version**: 1.1.2, 2026-07-21
+**Version**: 1.1.3, 2026-07-22
 
 This document explains the methodology underlying the RWA HQLA Eligibility Framework. It is intended to be read alongside the scoring matrix (`eligibility_matrix.md` / `.json`).
 

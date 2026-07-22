@@ -1,6 +1,6 @@
 """
 RWA HQLA Framework: Illustrative Haircut Stress-Scenario Calculator
-Version 1.1.2: 2026-07-21
+Version 1.1.3: 2026-07-22
 
 Implements an illustrative haircut stress scenario described in 04_implications/bank_implications.md.
 Computes a cumulative internal management haircut for tokenised RWA exposures,

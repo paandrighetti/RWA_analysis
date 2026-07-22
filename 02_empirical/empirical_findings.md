@@ -1,6 +1,6 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1.2 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
+**Version**: 1.1.3 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
 **Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`lorenz_real_data.py`).
 
@@ -65,7 +65,7 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 
 **Particularity 1**: structural cap of CHF 100M per Final Terms limits scale by design. Smaller AUM is therefore not a market failure but a **deliberate issuance limit by the issuer**.
 
-**Particularity 2**: the 96% secondary transfer ratio is the highest of the three products, a mechanical consequence of bIB01 being a freely transferable debt instrument rather than a whitelisted fund share. In absolute terms, however, 492 secondary transfers over three years (roughly one every two days) remains structurally indistinguishable from no market. The ratio is high because the denominator is tiny; the scoring matrix records this as a Conditional rather than a Fail on criterion C.2.
+**Particularity 2**: the 96% secondary transfer ratio is the highest of the three products and is consistent with bIB01's more permissive transfer structure relative to the whitelisted fund shares. The absolute count remains small: 492 secondary transfers over roughly three years, or about one every two days. Because a blockchain transfer is not necessarily an independent trade or a change in beneficial ownership, the ratio and count are treated as supporting evidence rather than a standalone market-volume measure; the scoring matrix records criterion C.2 as Conditional rather than Fail.
 
 ## Block C scoring: empirical validation
 

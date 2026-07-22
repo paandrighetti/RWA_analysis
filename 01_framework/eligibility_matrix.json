@@ -1,8 +1,8 @@
 {
   "framework": {
     "name": "RWA HQLA Eligibility Framework",
-    "version": "1.1.2",
-    "date": "2026-07-21",
+    "version": "1.1.3",
+    "date": "2026-07-22",
     "scope": "Tokenised Real-World Assets — HQLA eligibility under Basel III LCR",
     "products_assessed": [
       "BUIDL",

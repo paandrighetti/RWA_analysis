@@ -1,6 +1,6 @@
 """
 RWA HQLA Framework: Scoring Heatmap Generator
-Version 1.1.2: 2026-07-21
+Version 1.1.3: 2026-07-22
 
 Reads eligibility_matrix.json and produces the heatmap PNG used in
 Section 4 (Block-by-block verdict) of the article.
