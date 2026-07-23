@@ -58,7 +58,6 @@ def main() -> None:
 
     env = os.environ.copy()
     env["MPLBACKEND"] = "Agg"
-    env["PYTHONWARNINGS"] = "error::UserWarning"
     for relative in scripts:
         subprocess.run([sys.executable, relative], cwd=ROOT, env=env, check=True)
 

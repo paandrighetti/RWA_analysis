@@ -67,6 +67,7 @@ def plot_comparison(output_path="05_figures/market_comparison.png"):
         ax.set_ylim(0, 1.2)
         annotation_y = 0.6
     ax.set_xticks(range(len(PRODUCTS)), PRODUCTS)
+    ax.set_xlim(-0.5, len(PRODUCTS) - 0.5)
     ax.set_title("AUM on Ethereum mainnet ($M, log scale where available)")
     ax.set_ylabel("$M")
     for bar, val in zip(bars, known_vals):
