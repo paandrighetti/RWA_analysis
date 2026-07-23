@@ -245,5 +245,4 @@ The empirical layer relies on data from:
 ## Contact
 
 https://www.linkedin.com/in/pierre-antoine-andrighetti
-https://x.com/bandulf
 p.a.andrighetti@gmail.com
