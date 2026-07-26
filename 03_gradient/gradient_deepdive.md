@@ -1,6 +1,6 @@
 # The Gradient of Eligibility: What Would It Take?
 
-**Version**: 1.1.3, 2026-07-22
+**Version**: 1.1.4, 2026-07-22
 **Focus**: BUIDL specifically as primary case study, with cross-references to OUSG and bIB01 where relevant.
 
 ## Framework reminder
@@ -25,7 +25,7 @@ Convert BUIDL from a §3(c)(7)-exempt BVI fund into an EU-authorised UCITS Money
 - **Fund vehicle**: UCITS Public Debt Constant NAV MMF (Short-Term)
 - **Authorisation**: CSSF (Luxembourg) or Central Bank of Ireland, these are the two jurisdictions where Public Debt CNAV is allowed; France only permits VNAV which adds complexity for the $1.00 stable-value design
 - **Investment Manager**: BlackRock Asset Management Ireland Limited or BlackRock (Luxembourg) S.A. would act as ManCo, both are existing entities with UCITS infrastructure in place. BlackRock has the institutional capacity to execute this restructuring without external dependencies
-- **Depositary**: EU credit institution under CRR Article 401 (BNY Mellon has Luxembourg/Ireland branches that qualify; alternatively State Street Bank International, J.P. Morgan SE)
+- **Depositary**: an eligible UCITS depositary under Article 23(2) of Directive 2009/65/EC (for example, an authorised EU credit institution meeting the applicable national requirements)
 - **Custodian**: same EU credit institution acting as depositary
 - **Distribution**: UCITS passport into 30 EEA states
 

@@ -40,12 +40,31 @@ def main() -> None:
     article = ARTICLE.read_text(encoding="utf-8")
     guide = GUIDE.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
-    active_text = "\n".join((readme, sql, article, guide, workflow))
+    active_version_files = (
+        ROOT / "01_framework/scoring_heatmap.py",
+        ROOT / "01_framework/methodology.md",
+        ROOT / "01_framework/eligibility_matrix.md",
+        ROOT / "01_framework/eligibility_matrix.json",
+        ROOT / "02_empirical/aum_timeseries.py",
+        ROOT / "02_empirical/empirical_findings.md",
+        ROOT / "03_gradient/gradient_deepdive.md",
+        ROOT / "04_implications/bank_implications.md",
+        ROOT / "04_implications/haircut_calculator.py",
+        ROOT / "04_implications/limits_matrix.json",
+        ARTICLE,
+    )
+    active_version_text = "\n".join(
+        path.read_text(encoding="utf-8") for path in active_version_files
+    )
+    active_text = "\n".join((readme, sql, article, guide, workflow, active_version_text))
     forbidden = (
         "CRR Article 401", "I refuse to guess again", "I will stop guessing",
         "IF YOU HAVE A SPECIFIC ERROR", "RWA_HQLA_M7_AUM",
         "no meaningful secondary market exists", "BUIDL ~$181M vs OUSG ~$1.9M",
         "M1 — AUM time-series", "AS aum_tokens",
+        "does not create a secondary market in any meaningful sense",
+        "secondary transfers are largely re-routing through this single intermediary",
+        "referenced via StreetInsider, CIK pending direct EDGAR fetch",
     )
     for phrase in forbidden:
         if phrase in active_text:
@@ -69,12 +88,24 @@ def main() -> None:
         fail("snapshot section is missing from the Dune guide")
     if "version-1.1.4-blue" not in readme or "RWA HQLA Framework v1.1.4:" not in readme:
         fail("README version markers are not v1.1.4")
+    if "1.1.3" in active_version_text:
+        fail("an active publication file still declares version 1.1.3")
     if "## v1.1.4 " not in changelog:
         fail("v1.1.4 changelog entry is missing")
     if "run: python validate_repository.py" not in workflow:
         fail("CI does not run validate_repository.py")
     if "run: python validate_publication.py" not in workflow:
         fail("CI does not regenerate and validate publication figures")
+
+    compiled_artifacts = [
+        path for path in ROOT.rglob("*")
+        if path.is_file() and ("__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"})
+    ]
+    if compiled_artifacts:
+        fail(
+            "compiled Python artifacts are present: "
+            + ", ".join(str(path.relative_to(ROOT)) for path in compiled_artifacts[:10])
+        )
 
     try:
         json.loads(METRICS.read_text(encoding="utf-8"))

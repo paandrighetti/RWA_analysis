@@ -147,18 +147,18 @@ The verdict on the three products can now be stated in its final form:
 The three products are not HQLA today. Sections 5 through 7 of this article examine the empirical microstructure, the gradient of structural changes required to reach eligibility, and the practical implications for bank treasurers operating in this environment now.
 ## 5. The empirical layer: on-chain reality
 
-The Block C scoring of Section 4 rested on framework criteria. The empirical microstructure of these products on-chain converts those framework verdicts into hard data. Three observations defeat any residual argument that tokenised treasuries constitute a "deep and active market" in the BCBS 238 §24 sense.
+The Block C scoring of Section 4 rested on framework criteria. The empirical microstructure of these products on-chain converts those framework verdicts into hard data. Three observations provide strong evidence against treating these products as a "deep and active market" in the BCBS 238 §24 sense under this framework.
 
 **Concentration is extreme.** BUIDL on Ethereum mainnet, on-chain market cap approximately $181 million, has 76 unique holders as of 17 June 2026, though roughly 25 of these hold dust balances (less than $2), bringing the effective holder count to ~51. Empirically measured concentration shares: Top-3 = 55%, Top-10 = 83%, Top-25 = 99.5%. The Gini coefficient computed on a reconstruction under the measured per-holder constraints is **0.863** (exact bounds [0.850, 0.885] across all consistent distributions). Address-level concentration is therefore high within BUIDL on Ethereum. Comparisons with traditional Treasury or fund ownership statistics are not like-for-like because blockchain addresses are not equivalent to beneficial owners, omnibus accounts, custodians, or brokerage accounts. The result supports a product-level concentration finding; it does not establish a harmonised cross-market Gini ranking.
 
-A note on the holder count evolution: between the initial 6 May 2026 snapshot (54 holders) and the 17 June 2026 measurement (76 holders), the Top-3 share dropped from approximately 63% to 55%. Investigation of the burn pattern reveals that wallet `0x54d0a1447e1431db925e871ae799f23f408631a1` executed 14 burns totaling $411 million between August and October 2025, in a pattern consistent with an institutional redeemer, potentially Ondo OUSG, reducing part of a BUIDL position; the beneficial operator was not independently verified. The redistribution to ranks 4-10 reflects an internal institutional rebalancing, not a broadening to retail.
+A note on the holder count evolution: between the initial 6 May 2026 snapshot (54 holders) and the 17 June 2026 measurement (76 holders), the Top-3 share dropped from approximately 63% to 55%. Investigation of the burn pattern reveals that wallet `0x54d0a1447e1431db925e871ae799f23f408631a1` executed 14 burns totaling $411 million between August and October 2025, in a pattern consistent with an institutional redeemer, potentially Ondo OUSG, reducing part of a BUIDL position; the beneficial operator was not independently verified. The redistribution to ranks 4-10 is consistent with institutional rebalancing. Address-level data cannot establish beneficial ownership or rule out broader distribution, so the interpretation remains provisional.
 
 ![Figure 2: Lorenz curve for BUIDL holder distribution on Ethereum mainnet](../05_figures/lorenz_buidl.png)
 *Figure 2: Lorenz curve for BUIDL addresses on Ethereum mainnet. Gini coefficient = 0.863 under the constrained reconstruction, with exact feasible bounds [0.850, 0.885]. The metric is address-level and is not directly comparable with beneficial-owner or account-level concentration measures in traditional securities.*
 
 **Observed Ethereum transfer activity is low across all three products.** Over each token's operational history to the Dune snapshot of 17 June 2026, BUIDL records 14,046 total transfers, of which 3,151 are classified as secondary, or approximately 4 per day; OUSG records 2,119 total and 851 secondary, approximately 0.7 per day; bIB01 records 510 total and 492 secondary, approximately 0.43 per day. The 96% secondary ratio for bIB01 is consistent with its more permissive transfer structure relative to the whitelisted fund shares, but the absolute count remains small. A blockchain transfer is not necessarily an independent trade or a change in beneficial ownership, so these counts are not a direct market-volume measure. They nevertheless provide no evidence, in the observed Ethereum activity, of the active and sizable secondary market required by the framework's Block C test.
 
-For BUIDL specifically, the 22% secondary share masks a redemption-driven microstructure rather than a peer-to-peer market. Investigation of the burn pattern reveals that wallet `0x8780dd016171b91e4df47075da0a947959c34200` accounts for 162 burns totaling $1.51 billion across the fund's history, a dominant redemption intermediary. Its transaction pattern is consistent with a transfer-agent or affiliated operational wallet, potentially operated by Securitize, but the operator was not independently verified. The "secondary" transfers are largely re-routing through this single intermediary rather than genuine peer-to-peer trading.
+For BUIDL specifically, the burn record evidences a redemption-heavy primary-market channel. Wallet `0x8780dd016171b91e4df47075da0a947959c34200` accounts for 162 burns totaling $1.51 billion across the fund's history. Its transaction pattern is consistent with a transfer-agent or affiliated operational wallet, but the operator was not independently verified. Because the secondary-transfer query excludes mint and burn events, this burn evidence does not identify the counterparties or economic purpose of the separately classified secondary transfers.
 
 **Cross-product comparison.** OUSG and bIB01 show structurally similar low-activity patterns at smaller scale. The snapshot records 69 OUSG addresses and 32 bIB01 addresses on Ethereum. Global product or product-suite AUM figures are not substituted for chain-specific product AUM where the corresponding export is not included. Across the three products, transfer counts remain low and activity appears dominated by institutional distribution, issuance, redemption, or operational intermediaries rather than a broad peer-to-peer market.
 
@@ -237,7 +237,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 
 ### Product primary documentation
 - BUIDL: Form D, SEC EDGAR CIK 0002013810, filing 0002014390-24-000001; BlackRock press release 13 November 2024.
-- OUSG: Ondo Finance regulatory compliance documentation (docs.ondo.finance).
+- OUSG: Ondo Finance regulatory compliance documentation; Ondo I LP Form D/A, SEC EDGAR CIK 0001957431, accession 0001957431-26-000001, filed 20 January 2026.
 - bIB01: Securities Note dated 8 May 2025 (Backed Assets (JE) Limited, FMA-ID 351548); Final Terms Nr. 5 dated 11 July 2025; First Supplement to Registration Document dated 30 January 2026.
 
 ### Empirical data sources
@@ -255,7 +255,7 @@ The verdict of this framework is that none of BUIDL, OUSG, or bIB01 is HQLA toda
 
 ---
 
-*Framework v1.1.3 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
+*Framework v1.1.4 (empirical snapshot 2026-06-17). Methodology open for iteration. Comments and supervisory feedback welcome via the GitHub repository.*
 
 *Author: Pierre-Antoine Andrighetti*
 *Repository: https://github.com/paandrighetti/RWA_analysis*
