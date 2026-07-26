@@ -1,4 +1,4 @@
-# Why Three Major Tokenised Treasury Products Are Not HQLA — and What It Would Take
+# Why Three Major Tokenised Treasury Products Are Not HQLA, and What It Would Take
 
 *A regulatory and empirical framework for assessing the High-Quality Liquid Asset eligibility of tokenised Real-World Assets under Basel III*
 

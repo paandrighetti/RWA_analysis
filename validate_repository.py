@@ -61,7 +61,7 @@ def main() -> None:
         "CRR Article 401", "I refuse to guess again", "I will stop guessing",
         "IF YOU HAVE A SPECIFIC ERROR", "RWA_HQLA_M7_AUM",
         "no meaningful secondary market exists", "BUIDL ~$181M vs OUSG ~$1.9M",
-        "M1 — AUM time-series", "AS aum_tokens",
+        "M1, AUM time-series", "AS aum_tokens",
         "does not create a secondary market in any meaningful sense",
         "secondary transfers are largely re-routing through this single intermediary",
         "referenced via StreetInsider, CIK pending direct EDGAR fetch",

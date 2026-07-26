@@ -2,7 +2,7 @@
 
 **A regulatory and empirical framework for assessing the High-Quality Liquid Asset (HQLA) eligibility of tokenised Real-World Assets under Basel III.**
 
-[![Framework Version](https://img.shields.io/badge/version-1.1.4-blue)]() [![Snapshot](https://img.shields.io/badge/snapshot-2026--06--17-green)]() [![Methodology](https://img.shields.io/badge/methodology-open-orange)]()
+![Framework version 1.1.4](https://img.shields.io/badge/version-1.1.4-blue) ![Empirical snapshot 2026-06-17](https://img.shields.io/badge/empirical%20snapshot-2026--06--17-green) ![Open methodology](https://img.shields.io/badge/methodology-open-orange)
 
 ---
 
@@ -11,6 +11,8 @@
 Three widely cited tokenised treasury products, BlackRock BUIDL, Ondo OUSG, and Backed bIB01, are evaluated against a 24-criteria HQLA eligibility framework derived from BCBS 238, CRR (EU) 575/2013, and Commission Delegated Regulation (EU) 2015/61.
 
 **Verdict**: None of the three qualifies as HQLA Level 1, 2A, or 2B under Basel III LCR. The framework identifies the structural changes required to reach progressively higher eligibility levels (L0 → L3).
+
+**Dates**: the empirical snapshot is 17 June 2026; the framework revision (v1.1.4) is dated 22 July 2026. Regulatory analysis reflects public documentation as of the framework date, empirical figures as of the snapshot date.
 
 **Scope note**: independent analytical assessment under the stated framework and public documentation as of the snapshot date. This is not legal, regulatory, accounting, or investment advice; no affiliation with or endorsement by any issuer is implied; supervisory conclusions may differ in specific cases.
 
@@ -133,7 +135,7 @@ The repository includes an **illustrative internal-policy stress scenario** in `
 ## Limitations and caveats
 
 1. Framework is based on publicly available documentation. Private Placement Memoranda for BUIDL and Ondo I LP are not public.
-2. bIB01 Securities Note dated 8 May 2025 expired 7 May 2026; no successor base prospectus was published at the snapshot date, and the issuer (Backed Finance AG) was acquired by Kraken in January 2026. Verify the current prospectus status before relying on the Block D analysis.
+2. The bIB01 issuer profile changed in nature during the analysis window: Backed Finance AG moved from an independent Swiss issuer to a subsidiary of a crypto exchange group that had filed confidentially for a US listing. Block D criteria on issuer substitution, creditor cascade and central-bank eligibility should be re-read against that change, not only against the prospectus. bIB01 Securities Note dated 8 May 2025 expired 7 May 2026; no successor base prospectus was published at the snapshot date, and the issuer (Backed Finance AG) agreed to be acquired by Kraken in December 2025 (Kraken announcement, 2 December 2025). Verify the current prospectus status before relying on the Block D analysis.
 3. Empirical snapshot is 17 June 2026; products evolve fast.
 4. The framework is one analyst's contribution. Final supervisory verdict may differ in specific cases.
 5. The "if I were the treasurer" section reflects analytical reasoning, not the operational practice of any specific institution.

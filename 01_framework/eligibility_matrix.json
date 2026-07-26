@@ -3,7 +3,7 @@
     "name": "RWA HQLA Eligibility Framework",
     "version": "1.1.4",
     "date": "2026-07-22",
-    "scope": "Tokenised Real-World Assets — HQLA eligibility under Basel III LCR",
+    "scope": "Tokenised Real-World Assets, HQLA eligibility under Basel III LCR",
     "products_assessed": [
       "BUIDL",
       "OUSG",
@@ -82,7 +82,7 @@
       "issuer_domicile": "Jersey",
       "issuer_lei": "984500001AB7C6C7F577",
       "parent": "Backed Finance AG (Switzerland)",
-      "legal_form": "Tracker certificate — debt instrument (CFI DEMMRM)",
+      "legal_form": "Tracker certificate, debt instrument (CFI DEMMRM)",
       "exemption_regime": "EU Prospectus Regulation 2017/1129 (tripartite SPWS) + Swiss DLT art. 973d CO",
       "regulator_approval": "Liechtenstein FMA (FMA-ID 351548)",
       "eu_passport": [
@@ -159,7 +159,7 @@
             },
             "OUSG": {
               "verdict": "Fail",
-              "justification": "Token = interest in Delaware LP holding fund interests (incl. BUIDL) — two-layer wrapping."
+              "justification": "Token = interest in Delaware LP holding fund interests (incl. BUIDL), two-layer wrapping."
             },
             "bIB01": {
               "verdict": "Fail",
@@ -664,7 +664,7 @@
       "block_B": "Fail",
       "block_C": "Fail",
       "block_D_fails": 8,
-      "overall_HQLA_verdict": "Not HQLA — additional contractual disqualifiers",
+      "overall_HQLA_verdict": "Not HQLA, additional contractual disqualifiers",
       "distance_to_HQLA_rank": 3,
       "main_blockers": [
         "Debt instrument legal form (CRR art. 122 unrated)",
@@ -685,8 +685,8 @@
       "label": "UCITS-compatible MMF wrapper",
       "required_change": "Restructure issuance as UCITS MMF under Regulation (EU) 2017/1131; domicile in EU jurisdiction (LU/IE/FR)",
       "feasibility_by_product": {
-        "BUIDL": "Plausible — Luxembourg UCITS MMF version. Precedent: Franklin BENJI under US 1940 Act",
-        "OUSG": "Harder — fund-of-funds structure to flatten to direct holdings before UCITS wrapping",
+        "BUIDL": "Plausible, Luxembourg UCITS MMF version. Precedent: Franklin BENJI under US 1940 Act",
+        "OUSG": "Harder, fund-of-funds structure to flatten to direct holdings before UCITS wrapping",
         "bIB01": "Requires radical reformulation from debt to fund unit; effectively a new product"
       },
       "timeline_months": "Illustrative author scenario: 12-30 months; no issuer forecast",
@@ -712,7 +712,7 @@
   },
   "limitations": [
     "Based on public documentation only; PPMs for BUIDL and Ondo I LP are not public",
-    "bIB01 Securities Note dated 8 May 2025 expires 7 May 2026 — Successor Base Prospectus status to verify",
+    "bIB01 Securities Note dated 8 May 2025 expires 7 May 2026, Successor Base Prospectus status to verify",
     "Scoring is qualitative judgement; final supervisory verdict may differ",
     "Product structures evolve (BlackRock new offerings filed 9 May 2026); requires framework re-application",
     "Stress event track record insufficient (longest = BUIDL since March 2024)"

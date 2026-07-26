@@ -1,5 +1,5 @@
 -- ============================================================================
--- RWA HQLA Framework — Dune SQL Queries v1.3
+-- RWA HQLA Framework, Dune SQL Queries v1.3
 -- Updated 2026-07-22
 -- ============================================================================
 --
@@ -25,7 +25,7 @@
 
 
 -- ============================================================================
--- STEP 0 — Sanity check before running any other query
+-- STEP 0, Sanity check before running any other query
 -- ============================================================================
 -- Run this FIRST on Dune (DuneSQL engine).
 -- If it returns rows : table and contract address are correct, proceed.
@@ -50,7 +50,7 @@ LIMIT 10;
 
 
 -- ============================================================================
--- M1 — BUIDL token-supply time series (daily)
+-- M1, BUIDL token-supply time series (daily)
 -- ============================================================================
 
 WITH supply_changes AS (
@@ -82,7 +82,7 @@ ORDER BY day;
 
 
 -- ============================================================================
--- M2 — Holders count + Top concentration shares
+-- M2, Holders count + Top concentration shares
 -- ============================================================================
 
 WITH movements AS (
@@ -134,7 +134,7 @@ FROM ranked;
 
 
 -- ============================================================================
--- M2-bis — Per-holder balance export (CSV for Python Lorenz plot)
+-- M2-bis, Per-holder balance export (CSV for Python Lorenz plot)
 -- ============================================================================
 
 WITH movements AS (
@@ -163,7 +163,7 @@ ORDER BY balance ASC;
 
 
 -- ============================================================================
--- M3 — Transfer activity (daily, excluding mint/burn)
+-- M3, Transfer activity (daily, excluding mint/burn)
 -- ============================================================================
 
 SELECT
@@ -184,7 +184,7 @@ ORDER BY 1;
 
 
 -- ============================================================================
--- M4 — Primary (mint/burn) vs Secondary classification
+-- M4, Primary (mint/burn) vs Secondary classification
 -- ============================================================================
 
 WITH classified AS (
@@ -214,7 +214,7 @@ ORDER BY 1, 2;
 
 
 -- ============================================================================
--- M5 — Burn pattern analysis
+-- M5, Burn pattern analysis
 -- ============================================================================
 
 SELECT
@@ -237,7 +237,7 @@ LIMIT 50;
 
 
 -- ============================================================================
--- M6 — Cross-product comparison (BUIDL / OUSG / bIB01 in one query)
+-- M6, Cross-product comparison (BUIDL / OUSG / bIB01 in one query)
 -- ============================================================================
 
 WITH all_transfers AS (
@@ -285,7 +285,7 @@ ORDER BY current_supply DESC;
 
 
 -- ============================================================================
--- DEBUGGING — if Step 0 fails
+-- DEBUGGING, if Step 0 fails
 -- ============================================================================
 --
 -- 1. "Table 'tokens.transfers' not found":
@@ -334,7 +334,7 @@ ORDER BY current_supply DESC;
 
 
 -- ============================================================================
--- M7 — Unified token-supply time series in product-native units
+-- M7, Unified token-supply time series in product-native units
 -- ============================================================================
 -- This query reconstructs outstanding token supply from mint and burn events.
 -- It does not calculate USD AUM. The three products use different native units
