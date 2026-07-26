@@ -1,6 +1,6 @@
 # RWA HQLA Framework: Empirical Findings
 
-**Version**: 1.1.3 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
+**Version**: 1.1.4 (data snapshot 2026-06-17) (initial extraction 2026-05-11)
 **Source data**: Dune Analytics (snapshot 17 June 2026), Etherscan, CoinGecko, RWA.xyz, ESMA filings, Messari, BlackRock/Ondo press releases
 **Methodology**: on-chain extraction via the SQL queries in `dune_queries.sql`, concentration metrics via Python (`lorenz_real_data.py`).
 
@@ -9,12 +9,12 @@
 The on-chain empirical analysis **strongly confirms and extends the scoring matrix verdict**. Block C (Market Criteria), which scored Fail across all three products on the regulatory text alone, is now validated by directly measured data (Dune Analytics, snapshot 17 June 2026):
 
 - BUIDL Ethereum mainnet: **76 holders** for ~$181M, of which 25 hold dust balances below $2 (effective holder count 51). The multi-chain global figure of $2.28B means Ethereum now represents only about 8% of total AUM, the bulk having migrated to Solana and other chains.
-- **Near-zero secondary trading volume** on the only public price aggregator (CoinGecko)
+- CoinGecko reported **$0 of 24-hour secondary-market volume on 6 May 2026**. This is a dated venue observation, not a claim that secondary transfers or off-venue transactions were impossible.
 - Cumulative concentration measured from the per-holder export (query M2-bis): Top-3 = 55.2%, Top-10 = 83.0%, Top-25 = 99.5%. Scalar Gini = **0.863** on a reconstruction under these measured constraints; exact LP bounds show every consistent distribution has Gini in **[0.850, 0.885]**
 - Top-3 holders: 55% of supply; Top-10: 83%; Top-25: 99.5%
 - 14,046 cumulative transfers, of which 3,151 secondary, approximately 4 secondary transfers per day averaged over the fund's 26-month history
 
-The market microstructure is closer to a **bilateral institutional product** (around 50 effective counterparties transacting with BlackRock and Securitize) than to a "deep and active market with committed market makers" as required by BCBS 238 §24(d).
+The observed Ethereum address distribution and transfer activity are more consistent with a concentrated institutional product than with a "deep and active market with committed market makers" as required by BCBS 238 §24(d). Addresses are not treated as verified counterparties or beneficial owners.
 
 ## Detailed findings by product
 
@@ -37,7 +37,7 @@ The market microstructure is closer to a **bilateral institutional product** (ar
 - Top-10 holders = 83% of supply
 - Top-25 holders = 99.5% of supply
 
-**Interpretation**: BUIDL is structurally a wholesale institutional money market product accessed through a fund-share token wrapper. The "blockchain" property adds 24/7 transferability and USDC settlement rails but **does not create a secondary market in any meaningful sense**.
+**Interpretation**: BUIDL is structurally a wholesale institutional money market product accessed through a fund-share token wrapper. The token wrapper adds programmable transfer and settlement rails, but the observed data do not evidence an active and sizable secondary market in the prudential sense used by this framework.
 
 ### OUSG: empirical snapshot
 
@@ -72,7 +72,7 @@ Recent cross-border settlement pilot with Kinexys (JPMorgan), Mastercard MTN, an
 | Criterion | Framework verdict (regulatory text) | Empirical verdict (measured) | Strengthens or weakens? |
 |---|---|---|---|
 | C.1 Listed on developed exchange | Fail | Fail (BUIDL/OUSG: not listed; bIB01: ATS without market making) | **Strengthens** |
-| C.2 Active and sizable market, volume dimension | Fail | Fail (BUIDL: $0 24h volume) | **Strengthens decisively** |
+| C.2 Active and sizable market, volume dimension | Fail | Fail under the framework (dated CoinGecko $0 observation plus low historical transfer activity) | **Strengthens** |
 | C.2 Active and sizable market, concentration dimension | Fail (qualitative) | Fail (Gini 0.863, Top-3 = 55%) | **Strengthens** |
 | C.3 Committed market makers | Fail | Fail (no on-chain MMs identified; AMM presence minimal due to whitelist) | **Strengthens** |
 

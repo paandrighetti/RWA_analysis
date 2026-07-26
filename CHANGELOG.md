@@ -10,6 +10,9 @@
 - Renamed M1 as a BUIDL token-supply series rather than USD AUM.
 - Removed residual conversational SQL wording and aligned the SQL header date
   and version with the publication release.
+- Aligned all active framework, article, empirical and implication files to v1.1.4.
+- Replaced an indirect OUSG Form D reference with the direct SEC EDGAR filing.
+- Removed unsupported beneficial-owner and secondary-transfer inferences from the empirical narrative.
 
 ## v1.1.3 (2026-07-22) - publication reproducibility and wording pass
 
@@ -91,7 +94,7 @@ All concentration and volume metrics in Section 5 of the article have been repla
 - Volume data: replaced "$0 24h volume" snapshot with cumulative transfer counts (BUIDL: 14,046 total, 3,151 secondary; OUSG: 2,119 / 851; bIB01: 510 / 492).
 - **Added bIB01 paradox discussion**: 96% secondary share ratio but only 0.43 transfers per day in absolute terms.
 - **Identified BUIDL primary redemption agent**: `0x8780dd016171b91e4df47075da0a947959c34200`, 162 burns totalling $1.51B.
-- **Identified secondary redeemer**: `0x54d0a1447e1431db925e871ae799f23f408631a1` (likely Ondo OUSG), 14 burns totalling $411M Aug-Oct 2025, explains the Top-3 share decline.
+- **Observed a large institutional redemption pattern**: `0x54d0a1447e1431db925e871ae799f23f408631a1`, 14 burns totalling $411M Aug-Oct 2025. The beneficial operator was not independently verified.
 
 ### Figures
 
