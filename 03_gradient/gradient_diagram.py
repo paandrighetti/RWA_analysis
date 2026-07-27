@@ -229,8 +229,8 @@ def draw_gradient_diagram(output_png: str = "./05_figures/gradient_staircase.png
     # Footnote
     ax.text(
         0.5, -0.95,
-        "Source: BCBS 238 ; DR 2015/61 ; Reg (EU) 2017/1131 (MMFR) ; Reg (EU) 2022/858 (DLT-PR) ; "
-        "ECB Press Release 27 January 2026 ; ECB Pontes/Appia 1 July 2025 ; ESMA maintained DLT-MI list.",
+        "Source: BCBS 238; DR 2015/61; Reg (EU) 2017/1131 (MMFR); Reg (EU) 2022/858 (DLT-PR); "
+        "ECB Press Release 27 January 2026; ECB Pontes/Appia 1 July 2025; ESMA maintained DLT-MI list.",
         fontsize=8, color="#888", ha="left", va="center",
         style="italic"
     )

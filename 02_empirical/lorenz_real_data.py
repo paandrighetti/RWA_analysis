@@ -150,7 +150,7 @@ def compute_gini_bounds():
         row = np.zeros(n_free); row[:top_k] = 1.0
         A_eq.append(row); b_eq.append(share * T)
 
-    # monotonic descending: x_{k+1} - x_k <= 0 ; and tail continuity -x_51 <= -max(tail)
+    # monotonic descending: x_{k+1} - x_k <= 0; and tail continuity -x_51 <= -max(tail)
     A_ub, b_ub = [], []
     for k in range(n_free - 1):
         row = np.zeros(n_free); row[k] = -1.0; row[k + 1] = 1.0
